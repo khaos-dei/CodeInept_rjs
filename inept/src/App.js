@@ -1,22 +1,22 @@
 import logo from './logo.svg';
-import { useState } from 'react'
 import './App.css';
-import { Toggle } from './Toggle.js'
-import './Toggle.css';
 
 function App() {
-  const logState = state => {
-    console.log("Toggled:", state)
-  }
-
   return (
     <div className="App">
       <header className="App-header">
-        
-          <input type='button'></input>
-          <Toggle
-            toggled={false}
-            onClick={logState}/>
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </header>
     </div>
   );
