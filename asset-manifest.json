@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CodeInept_rjs/static/css/main.6af5921b.css",
+    "main.js": "/CodeInept_rjs/static/js/main.11d9584b.js",
+    "static/js/787.9b3b8173.chunk.js": "/CodeInept_rjs/static/js/787.9b3b8173.chunk.js",
+    "index.html": "/CodeInept_rjs/index.html",
+    "main.6af5921b.css.map": "/CodeInept_rjs/static/css/main.6af5921b.css.map",
+    "main.11d9584b.js.map": "/CodeInept_rjs/static/js/main.11d9584b.js.map",
+    "787.9b3b8173.chunk.js.map": "/CodeInept_rjs/static/js/787.9b3b8173.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6af5921b.css",
+    "static/js/main.11d9584b.js"
+  ]
+}
