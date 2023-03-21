@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import Row from 'react-bootstrap/Row';
 //import Col from 'react-bootstrap/Col';
 import './App.css';
+import DigiClock from './components/digi-clck.js';
 
 
 
@@ -19,7 +20,7 @@ function App() {
         <div className='nice-box' style={{'grid-column-start': 'span 2'}}>Triage</div>
         <div className='nice-box' style={{ 'grid-area': '2/5/span 4/span 1' }}>Notepad</div>
         <div className='nice-box' style={{ 'grid-area': '3/3/span 5/span 2' }}>EMPTY</div>
-        <div className='nice-box' style={{}}>Digi Clock</div>
+        <div className='nice-box' style={{}}><DigiClock /></div>
         <div className='nice-box' style={{}}>Buttons</div>
         <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div>
         <div className='nice-box' style={{}}>Zen Gif</div>
