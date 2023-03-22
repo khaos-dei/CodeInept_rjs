@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import Row from 'react-bootstrap/Row';
 //import Col from 'react-bootstrap/Col';
 import './App.css';
-import DigiClock from './components/digi-clck.js';
+import DigiClock from './components/digi_clck.js';
 
 
 
