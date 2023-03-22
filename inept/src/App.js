@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import AnaClock from './components/ana_clck.js';
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <body className="App-body">
         <div className='nice-box' style={{ 'grid-column-start': 'span 5'}}>Month</div>
-        <div className='nice-box' style={{'grid-area': '2/1/span 2/span 1'}}>Clock</div>
+        <div className='nice-box' style={{'grid-area': '2/1/span 2/span 1'}}><AnaClock /></div>
         <div className='nice-box' style={{'grid-area':'2/2/span 2/span 1' }}>Calendar</div>
         <div className='nice-box' style={{'grid-column-start': 'span 2'}}>Triage</div>
         <div className='nice-box' style={{ 'grid-area': '2/5/span 4/span 1' }}>Notepad</div>
