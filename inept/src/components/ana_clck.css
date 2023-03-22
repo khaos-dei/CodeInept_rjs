@@ -1,0 +1,28 @@
+.Analogue_Clock {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    color: red;
+  }
+.HR-hand {
+    height: 40px;
+    width: 4px;
+    transform-origin: 50% 0%;
+    position: absolute;
+    background: cyan;
+  }
+.MN-hand {
+    height: 40px;
+    width: 2px;
+    transform-origin: 50% 0%;
+    position: absolute;
+    background: cyan;
+  }
+.clck-body {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    
+    background: grey;
+    border-radius: 50%
+  }

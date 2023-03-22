@@ -10,9 +10,14 @@ function AnaClock() {
 
     var hrs = dateState.getHours();//wlb func input
     var mins = dateState.getMinutes();//wlb func input
-
+    hrs = 180+30*hrs+mins/2; 
+    mins = 180+mins*6; 
     return (
-     <div>{hrs+':'+mins}</div>
+     <div className='Analogue_Clock'>
+        <div className='clck-body' style={{top: 10, left: 10}}></div>
+        <div className='HR-hand' style={{top: 60, left: 57, transform: `rotate(${hrs}deg)`}}></div>
+        <div className='MN-hand' style={{top: 60, left: 58, transform: `rotate(${mins}deg)`}}></div>
+    </div>
     );
   }
 
