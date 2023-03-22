@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { render } from 'react-dom';
-import './digi-clck.css';
+import './digi_clck.css';
 
 function DigiClock() {
     const [dateState, setDateState] = useState(new Date());
