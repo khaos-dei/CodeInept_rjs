@@ -1,15 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import DatePage from './components/date_page';
 
 
 function App() {
+  
   return (
     <div className="App">
       <body className="App-body">
         <div className='nice-box' style={{ 'grid-column-start': 'span 5'}}>Month</div>
         <div className='nice-box' style={{'grid-area': '2/1/span 2/span 1'}}>Clock</div>
-        <div className='nice-box' style={{'grid-area':'2/2/span 2/span 1' }}>Calendar</div>
+        <DatePage />
         <div className='nice-box' style={{'grid-column-start': 'span 2'}}>Triage</div>
         <div className='nice-box' style={{ 'grid-area': '2/5/span 4/span 1' }}>Notepad</div>
         <div className='nice-box' style={{ 'grid-area': '3/3/span 5/span 2' }}>EMPTY</div>
