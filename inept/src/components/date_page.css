@@ -16,15 +16,15 @@
   }
     
 .Day {
-    font-size:140%; 
+    font-size:3.8vmin; 
     font-weight: 700;
     position: absolute;
-    top:7%;
+    top:5%;
     text-align: center;
     color: cyan;
   }
 .Month {
-    font-size:100%; 
+    font-size:2.5vmin; 
     font-weight: 700;
     position: absolute;
     top:33%;
@@ -32,7 +32,7 @@
     color: cyan;
   }
 .Weekday {
-    font-size:100%; 
+    font-size:2.65vmin; 
     font-weight: 700;
     position: absolute;
     top:53%;
@@ -40,7 +40,7 @@
     color: cyan;
   }
 .Year {
-    font-size:100%; 
+    font-size:2.65vmin; 
     font-weight: 700;
     position: absolute;
     top:73%;

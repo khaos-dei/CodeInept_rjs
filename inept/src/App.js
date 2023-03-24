@@ -10,7 +10,7 @@ import DatePage from './components/date_page';
 function App() {
   const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
-        setInterval(() => setDateState(new Date()), 30000);//new state every 30 seconds, may lower for click fund 
+        setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds, may lower for click fund 
     }, []);
   return (
     <div className="App">
