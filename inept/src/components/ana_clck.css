@@ -1,28 +1,36 @@
 .Analogue_Clock {
-    width: 110px;
-    height: 110px;
-    position: relative;
-    color: red;
+  display: flex;
+  border-style: solid;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(101, 90, 148);
+  position: relative;
+  grid-area: 2/1/span 2/span 1
   }
+.clck-body {
+  width:15vmin;
+  height:15vmin;
+  background: grey;
+  border-radius: 50%
+}
 .HR-hand {
-    height: 40px;
-    width: 4px;
+    height: 6vmin;
+    width: 0.7vmin;
+    top:50%;
+    left:50%;
+    margin-right:0.35vmin;
     transform-origin: 50% 0%;
-    position: absolute;
+    position:absolute;
     background: cyan;
   }
 .MN-hand {
-    height: 40px;
-    width: 2px;
+    height: 7vmin;
+    width: 0.4vmin;
+    top:50%;
+    left:50%;
+    margin-right:0.2vmin;
+    position: 50% 50%;
     transform-origin: 50% 0%;
     position: absolute;
     background: cyan;
-  }
-.clck-body {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    
-    background: grey;
-    border-radius: 50%
   }

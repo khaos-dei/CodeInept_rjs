@@ -3,15 +3,11 @@ import { render } from 'react-dom';
 import {dates, weekdays, months} from '../constants/DateConsts';
 import './date_page.css';
 
-function DatePage() {
-    const [dateState, setDateState] = useState(new Date());
-    useEffect(() => {
-        setInterval(() => setDateState(new Date()), 30000);//new state every 30 seconds(cannot set it to a min, the app may be started at the latter half of a second)
-    }, []);//all of this wl later get moved to the broader "right up" function
-    var year = dateState.getHours();//wlb func input
-    var month = months[dateState.getMonth()];//wlb func inpu
-    var weekday = weekdays[dateState.getDay()-1];//wlb func input
-    var date = dates[dateState.getDate()-1];//wlb func input
+function DatePage(props) {
+    var year = props.datentime.getHours();//wlb func input
+    var month = months[props.datentime.getMonth()];//wlb func inpu
+    var weekday = weekdays[props.datentime.getDay()-1];//wlb func input
+    var date = dates[props.datentime.getDate()-1];//wlb func input
     return (
         <div className='Calendar_Page'>
             <div className='Decorative_Line'></div>
