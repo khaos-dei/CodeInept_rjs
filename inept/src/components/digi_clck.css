@@ -3,14 +3,25 @@
     src: url('../assets/TickingTimebombBB.ttf');
   }
 
-.a-box {
+.Calendar_Page {
     display: flex;
+    border-style: solid;
     justify-content: center;
     align-items: center;
+    background-color: rgb(101, 90, 148);
+    position: relative;
+    grid-area: 2/2/span 2/span 1;
+}
+
+.a-box {
+    display: flex;
     border-style: solid;
-    font-size: 28px;
+    justify-content: center;
+    align-items: center;  
     font-family: "TimeBomb";
-    padding: 2pt 5pt;
+    font-size:240%; 
+    padding-top:5%;
     background-color: rgb(30, 16, 85);
+    grid-area: 4/1;
   }
   
