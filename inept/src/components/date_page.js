@@ -5,8 +5,8 @@ import './date_page.css';
 
 function DatePage(props) {
     var year = props.datentime.getHours();//wlb func input
-    var month = months[props.datentime.getMonth()+6];//wlb func inpu
-    var weekday = weekdays[props.datentime.getDay()-1];//wlb func input
+    var month = months[props.datentime.getMonth()];//wlb func inpu
+    var weekday = weekdays[props.datentime.getDay()];//wlb func input
     var date = dates[props.datentime.getDate()-1];//wlb func input
     return (
         <div className='Calendar_Page'>
