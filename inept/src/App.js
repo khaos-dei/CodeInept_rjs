@@ -1,13 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
-
+import React, { useEffect, useState } from 'react'
+import MonthProgressLine from './components/m_prog_line.js';
 
 function App() {
+  const [dateState, setDateState] = useState(new Date());
+  useEffect(() => {
+      setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds, may lower for click fund 
+  }, []);
   return (
     <div className="App">
       <body className="App-body">
-        <div className='nice-box' style={{ 'grid-column-start': 'span 5'}}>Month</div>
+        <MonthProgressLine datentime={dateState} />
         <div className='nice-box' style={{'grid-area': '2/1/span 2/span 1'}}>Clock</div>
         <div className='nice-box' style={{'grid-area':'2/2/span 2/span 1' }}>Calendar</div>
         <div className='nice-box' style={{'grid-column-start': 'span 2'}}>Triage</div>
