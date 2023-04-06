@@ -1,9 +1,16 @@
 .Month_Progress_Line{
     display: flex;
-    border-style: solid;
     justify-content: center;
     align-items: center;
-    background-color: rgb(101, 90, 148);
+    /*
+    border-style: solid;
+    background-color: rgb(101, 90, 148);*/
     position: relative;
     grid-area: 1/1/span 1/span 5;
   }
+
+  .DayBlocks{
+    stroke: white;
+    stroke-width: 0.5;
+  }
+  
