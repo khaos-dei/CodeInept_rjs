@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+import MonthProgressLine from './components/m_prog_line.js';
 import AnaClock from './components/ana_clck.js';
 import DigiClock from './components/digi_clck.js';
 import DatePage from './components/date_page';
