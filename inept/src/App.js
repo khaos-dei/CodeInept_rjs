@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <body className="App-body">
-        <div className='nice-box' style={{ 'grid-column-start': 'span 5'}}>Month</div>
+        <MonthProgressLine datentime={dateState} />
         <AnaClock datentime={dateState} />
         <DatePage datentime={dateState} />
         <div className='nice-box' style={{'grid-column-start': 'span 2'}}>Triage</div>
