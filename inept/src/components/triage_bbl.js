@@ -3,11 +3,17 @@ import './triage_bbl.css';
 
 function Triage_Bubble(props) {
     //const [triageState, setTriageState] = useState(new Triage());
+    //
     return (
         <div className='Triage_Bubble'>
-            <div className='Triage_Tag'>Triage</div>
-            <textarea className='Triage_Text'/>
+            <div className='wrapper-parent'>
+                <div class="Triage_Tag">Triage</div>
+                <div class="Triage_Text" contenteditable="true">
+                    "Be at miss or each good play home they. It leave taste mr in it fancy. She son lose does fond bred gave lady get. Sir her company conduct expense bed any."
+                </div>
+            </div>
         </div>
+        
     );
   }
   

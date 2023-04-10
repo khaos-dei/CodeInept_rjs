@@ -1,40 +1,35 @@
 .Triage_Bubble {
-    display: flex;
     border-style:solid;
     border-radius: 1em;
-    justify-content: center;
-    align-items: center;
     font-size: 3vmin;
     background-color: rgb(101, 90, 148);
     position: relative;
     grid-area: 2/3/span 1/span 2;
   }
-  
+
+  .wrapper-parent{
+    height:100%;
+    width:100%;
+  }
+
   .Triage_Tag {
-    width: 25%;
-    height: 40%;
-    top: -3%;
-    left: -0.5%;
-    display: flex;
+    background-color: rgb(116, 203, 129);
+    width: min-content;
+    height: min-content;
+    margin-top: -0.5%;
+    margin-left: -0.5%;
+    float: left;
     border-style: solid;
     border-radius: 0.5em;
     justify-content: center;
-    position: absolute;
     align-items: center;
-    background-color: rgb(116, 203, 129);
-  }
-  
-.Triage_Text {
-    top:40%;
-    left:5%;
-    width: 90%;
-    height: 60%;
-    background-color: transparent;
-    border-style: solid;
-    resize:none;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    align-items: center;
+    padding:0.5% 2% 1.1% 2%;
   }
 
+  .Triage_Text {
+    height:100%;
+    background-color: rgb(154, 154, 35);
+    border: 2px solid blue;
+    font-size: 2.3vmin;
+    border-radius: 1em;
+  }
