@@ -10,6 +10,7 @@
   .wrapper-parent{
     height:100%;
     width:100%;
+    overflow: clip;
   }
 
   .Triage_Tag {
@@ -18,12 +19,12 @@
     height: min-content;
     margin-top: -0.5%;
     margin-left: -0.5%;
-    float: left;
     border-style: solid;
     border-radius: 0.5em;
+    padding:0.5% 2% 1.1% 2%;
+    float: left;
     justify-content: center;
     align-items: center;
-    padding:0.5% 2% 1.1% 2%;
   }
 
   .Triage_Text {
@@ -32,4 +33,5 @@
     border: 2px solid blue;
     font-size: 2.3vmin;
     border-radius: 1em;
+    text-overflow: ellipsis;
   }
