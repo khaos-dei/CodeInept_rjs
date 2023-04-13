@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './triage_bbl.css';
 
-//TODO: Add a warning label when user input more than 310
 
 function Triage_Bubble(props) {
     const [triageState, setTriageState] = useState(1);
@@ -34,17 +33,27 @@ function Triage_Bubble(props) {
         var repeatOff = 0;
         var delta = 0;
         while((diff<0.5*fontState)||(diff>1.5*fontState)){
+            if (repeatOff > 20) {
+                console.log('Overflow Prevented');
+                return;
+            }
             if(diff<0.5*fontState){//tis too big
                 delta = 0.9*(0.5*fontState-diff)/nLines;
-                setFontState(fontState+delta);
+                setFontState(fontState + delta);
+                event.currentTarget.style["fontSize"] = fontState + 'px';
+                event.currentTarget.style["lineHeight"] = fontState * 1 + 'px';
+                repeatOff+=1;
             }else{//tis too smol
                 delta = 0.9*(1.5*fontState-diff)/nLines;
                 setFontState(fontState+delta);
-
+                event.currentTarget.style["fontSize"] = fontState + 'px';
+                event.currentTarget.style["lineHeight"] = fontState*1 + 'px';
+                repeatOff += 1;
             }
+            nLines = event.currentTarget.childNodes.length;
+            ChildH = calculateChHeight(event);
+            diff = ParentH - ChildH;
         }
-        
-
         console.log(event.currentTarget.style["fontSize"]+')'+ChildH+'|'+ParentH);
     }   
     return (
