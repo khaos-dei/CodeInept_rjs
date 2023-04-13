@@ -1,27 +1,79 @@
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-Italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-BoldItalic.ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-Italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-BoldItalic.ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+
 .Triage_Bubble {
+    font-family: "CourierPrime";
     border-style:solid;
     border-radius: 2.8vmin;
     font-size: 3vmin;
     background-color: rgb(101, 90, 148);
     position: relative;
     grid-area: 2/3/span 1/span 2;
+    overflow: clip;
   }
 
   .wrapper-parent{
     height:100%;
     width:100%;
-    overflow: clip;
   }
 
   .Triage_Tag {
     background-color: rgb(116, 203, 129);
-    width: min-content;
+    width: content;
     height: min-content;
     margin-top: -0.5%;
     margin-left: -0.5%;
     border-style: solid;
     border-radius: 2.8vmin;
-    padding:0.5% 2% 1.1% 2%;
+    padding:0.1% 2% 0.3% 2%;
     float: left;
     justify-content: center;
     align-items: center;
@@ -34,5 +86,9 @@
     border: 2px solid blue;
     border-radius: 2.8vmin;
     text-overflow: ellipsis;
-    word-break: break-all;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    vertical-align: middle;
+    line-height: 1em;
   }
