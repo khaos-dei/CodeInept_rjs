@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import './triage_bbl.css';
 
-
 //TODO: Add a warning label when user input more than 310
 
 function Triage_Bubble(props) {
     const [triageState, setTriageState] = useState(1);
     const [triageTextState, setTriageTextState] = useState(['Priority High', 'Priority Mid', 'Priority eh']);
 
-    const [fontState, setFontState] = useState(5);
-    const delta=0.1;
+    const [fontState, setFontState] = useState(20);
 
-    function sizeUp(){
-        setFontState(fontState+delta);
-        return (fontState+'vmin');
-    }
-    function sizeDown(){
-        setFontState(fontState-delta);
-        return (fontState+'vmin');
-    }
     //event.currentTarget.textContent.length
     function textResponse(event){
         console.log('filler');
@@ -26,17 +16,44 @@ function Triage_Bubble(props) {
     function changeTriage(event){
         if(triageState==3){setTriageState(1);}else{setTriageState(triageState+1);}
     }
+    function calculateChHeight(event){
+        var nLines = event.currentTarget.childNodes.length;
+        var ChildH = 0;
+        for(let i=0; i<nLines; i++){
+            ChildH +=event.currentTarget.childNodes[i].offsetHeight;
+        }
+        return ChildH;
+    }
     function autoResize(event){
-        console.log(event.currentTarget.style["fontSize"]+')'+event.currentTarget.firstChild .offsetHeight+'_'+event.currentTarget.firstChild.clientWidth+'|'+event.currentTarget.clientHeight+'_'+event.currentTarget.clientWidth);
+        var nLines = event.currentTarget.childNodes.length;
+        var ChildH = calculateChHeight(event);
+        var ParentH = event.currentTarget.clientHeight;
+        var diff = ParentH-ChildH;
+        var prevBig = 'false';
+        var prevSmol = 'false';
+        var repeatOff = 0;
+        var delta = 0;
+        while((diff<0.5*fontState)||(diff>1.5*fontState)){
+            if(diff<0.5*fontState){//tis too big
+                delta = 0.9*(0.5*fontState-diff)/nLines;
+                setFontState(fontState+delta);
+            }else{//tis too smol
+                delta = 0.9*(1.5*fontState-diff)/nLines;
+                setFontState(fontState+delta);
+
+            }
+        }
         
+
+        console.log(event.currentTarget.style["fontSize"]+')'+ChildH+'|'+ParentH);
     }   
     return (
         <div className='Triage_Bubble'>
                 <div class="Triage_Tag_Bubble" onInputCapture={changeTriage}>
                 <div class="Triage_Tag_Text">Triage #{triageState}</div>
                 </div> 
-                <div class="Triage_Text" contentEditable="true" onCompositionEndCapture={textResponse} onClick={autoResize}> 
-                    <div class="Text_Holder" style={{fontSize:fontState+'vmin', lineHeight:fontState*1+'vmin'}} >{triageTextState[triageState-1]}</div>
+                <div class="Triage_Text" contentEditable="true" onCompositionEndCapture={textResponse} onClick={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px'}} >
+                    <div class="Text_Holder" >{triageTextState[triageState-1]}</div>
                 </div>
         </div>
         

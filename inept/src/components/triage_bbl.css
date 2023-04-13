@@ -105,6 +105,7 @@
   .Text_Holder{
     height:auto;
     width:100%;
+    word-wrap: normal;
     text-align: center;
     border: solid;
   }
