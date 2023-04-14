@@ -9,7 +9,6 @@ function Triage_Bubble(props) {
     
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
-    var prevDiff=[0,0];
 
     //event.currentTarget.textContent.length
     function textResponse(event){
@@ -26,47 +25,52 @@ function Triage_Bubble(props) {
         }
         return ChildH;
     }
-    function autoResize(event){
+    
+    function autoResize(event) {
+        var fontSZ = fontState;
+        var prevDiff = [0, 0];
+        var prevLines = [0, 0 ]
         var ChildH = calculateChHeight(event);
         var ParentH = event.currentTarget.clientHeight;
-        var nLines = Math.round(ChildH/fontState);
+        var nLines = Math.round(ChildH / fontSZ);
         var diff = ParentH - ChildH;
-        var preventionK=1.0;
         var repeatOff = 0;
         var delta = 0;
-        console.log(event.currentTarget.style.fontSize+')'+ChildH+'|'+ParentH+'|'+diff+'|'+(fontState));
-        while((diff<0.5*fontState)||(diff>1.5*fontState)){
+        console.log('>' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
+        while (diff < 0.5 * fontSZ || diff > 1.5 * fontSZ ){
             if(diff==prevDiff[1]){//if we stuck going back and forth
-                //preventionK=preventionK-0.5;//adjust less at a time
-                nLines+=2;
-            }else{//otherwise
-                preventionK = 1.0;
+                nLines = prevLines[0];//assume the lines of the forth(from the back)
+            }else{
+                prevLines[1] = prevLines[0];
+                prevLines[0] = nLines;//keep track of past lines-s
                 prevDiff[1]=prevDiff[0];
                 prevDiff[0]=diff;//keep track of past diff-s
             }
-            if (repeatOff > 50) {
+            if (repeatOff > 100) {
                 console.log('Overflow Prevented');
                 return;
             }
-            if(diff<0.5*fontState){//tis too big
-                delta = (preventionK)*(0.5*fontState-diff)/nLines;
-                flushSync(() => { setFontState(Math.round(fontState-delta)); });
+            if (diff < 0.5 * fontSZ){//tis too big
+                delta = (0.5 * fontSZ -diff)/nLines;
+                flushSync(() => { setFontState(Math.round(fontSZ -delta)); });
+                fontSZ = fontSZ - delta;
                 repeatOff+=1;
-                console.log('tis too big|'+diff+'?'+delta+' ; '+ChildH+':'+fontState+'  {'+Math.round(fontState-delta)+'}');
             }else{//tis too smol
-                delta = (preventionK)*(diff-1.5*fontState)/nLines;
-                flushSync(() => { setFontState(Math.round(fontState+delta)); });
+                delta = (diff - 1.5 * fontSZ)/nLines;
+                flushSync(() => { setFontState(Math.round(fontSZ +delta)); });
+                fontSZ = fontSZ + delta;
                 repeatOff += 1;
-                console.log('tis too smol|'+diff+'?'+delta+' ; '+fontState+'{'+Math.round(fontState+delta)+'}');
             }
             ChildH = calculateChHeight(event);
-            nLines = Math.round(ChildH/fontState);
-            console.log(diff+'_'+(Math.round((ParentH - ChildH)*100)/100)+'_'+paddState);
+            nLines = Math.round(ChildH / fontSZ);
+            console.log(fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
             diff =  ParentH - ChildH;
-            console.log(diff);
         }
         flushSync(() => { setPaddState(Math.round(diff*0.5)) });
+        setPaddState(Math.round(diff * 0.5));
+        console.log('<' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
     }   
+
     return (
         <div className='Triage_Bubble'>
                 <div class="Triage_Tag_Bubble" onClick={changeTriage} >
