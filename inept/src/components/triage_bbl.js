@@ -24,42 +24,44 @@ function Triage_Bubble(props) {
         return ChildH;
     }
     function autoResize(event){
-        var nLines = event.currentTarget.childNodes.length;
         var ChildH = calculateChHeight(event);
         var ParentH = event.currentTarget.clientHeight;
+        var nLines = (ChildH/fontState).toFixed(0);
         var diff = ParentH-ChildH;
-        var prevBig = 'false';
-        var prevSmol = 'false';
         var repeatOff = 0;
         var delta = 0;
+        console.log(event.currentTarget.style.fontSize+')'+ChildH+'/'+event.currentTarget.style.lineHeight+'|'+ParentH);
         while((diff<0.5*fontState)||(diff>1.5*fontState)){
             if (repeatOff > 20) {
                 console.log('Overflow Prevented');
                 return;
             }
             if(diff<0.5*fontState){//tis too big
-                delta = 0.9*(0.5*fontState-diff)/nLines;
-                setFontState(fontState + delta);
-                event.currentTarget.style["fontSize"] = fontState + 'px';
-                event.currentTarget.style["lineHeight"] = fontState * 1 + 'px';
+                console.log('tis too big');
+                delta = (0.5*fontState-diff)/nLines;
+                setFontState(fontState-delta);
+                event.currentTarget.style.fontSize =  (fontState + 'px');
+                event.currentTarget.style.lineHeight = fontState * 1.0 + 'px';
                 repeatOff+=1;
             }else{//tis too smol
-                delta = 0.9*(1.5*fontState-diff)/nLines;
+                console.log('tis too smol');
+                delta = (diff-1.5*fontState)/nLines;
                 setFontState(fontState+delta);
-                event.currentTarget.style["fontSize"] = fontState + 'px';
-                event.currentTarget.style["lineHeight"] = fontState*1 + 'px';
+                event.currentTarget.style.fontSize =  (fontState + 'px');
+                event.currentTarget.style.lineHeight = (fontState * 1.0 + 'px');
                 repeatOff += 1;
             }
-            nLines = event.currentTarget.childNodes.length;
+            nLines = (ChildH/fontState).toFixed(0);
             ChildH = calculateChHeight(event);
+            console.log(diff);
             diff = ParentH - ChildH;
+            console.log(diff);
         }
-        console.log(event.currentTarget.style["fontSize"]+')'+ChildH+'|'+ParentH);
     }   
     return (
         <div className='Triage_Bubble'>
-                <div class="Triage_Tag_Bubble" onInputCapture={changeTriage}>
-                <div class="Triage_Tag_Text">Triage #{triageState}</div>
+                <div class="Triage_Tag_Bubble" onClick={changeTriage} >
+                <div class="Triage_Tag_Text" >Triage #{triageState}</div>
                 </div> 
                 <div class="Triage_Text" contentEditable="true" onCompositionEndCapture={textResponse} onClick={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px'}} >
                     <div class="Text_Holder" >{triageTextState[triageState-1]}</div>
