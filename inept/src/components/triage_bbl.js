@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './triage_bbl.css';
+import { flushSync } from 'react-dom';
 
 
 function Triage_Bubble(props) {
     const [triageState, setTriageState] = useState(1);
     const [triageTextState, setTriageTextState] = useState(['Priority High', 'Priority Mid', 'Priority eh']);
-
+    
+    const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
+    var prevDiff=[0,0];
 
     //event.currentTarget.textContent.length
     function textResponse(event){
@@ -26,45 +29,51 @@ function Triage_Bubble(props) {
     function autoResize(event){
         var ChildH = calculateChHeight(event);
         var ParentH = event.currentTarget.clientHeight;
-        var nLines = (ChildH/fontState).toFixed(0);
-        var diff = ParentH-ChildH;
+        var nLines = Math.round(ChildH/fontState);
+        var diff = ParentH - ChildH;
+        var preventionK=1.0;
         var repeatOff = 0;
         var delta = 0;
-        console.log(event.currentTarget.style.fontSize+')'+ChildH+'/'+event.currentTarget.style.lineHeight+'|'+ParentH);
+        console.log(event.currentTarget.style.fontSize+')'+ChildH+'|'+ParentH+'|'+diff+'|'+(fontState));
         while((diff<0.5*fontState)||(diff>1.5*fontState)){
-            if (repeatOff > 20) {
+            if(diff==prevDiff[1]){//if we stuck going back and forth
+                //preventionK=preventionK-0.5;//adjust less at a time
+                nLines+=2;
+            }else{//otherwise
+                preventionK = 1.0;
+                prevDiff[1]=prevDiff[0];
+                prevDiff[0]=diff;//keep track of past diff-s
+            }
+            if (repeatOff > 50) {
                 console.log('Overflow Prevented');
                 return;
             }
             if(diff<0.5*fontState){//tis too big
-                console.log('tis too big');
-                delta = (0.5*fontState-diff)/nLines;
-                setFontState(fontState-delta);
-                event.currentTarget.style.fontSize =  (fontState + 'px');
-                event.currentTarget.style.lineHeight = fontState * 1.0 + 'px';
+                delta = (preventionK)*(0.5*fontState-diff)/nLines;
+                flushSync(() => { setFontState(Math.round(fontState-delta)); });
                 repeatOff+=1;
+                console.log('tis too big|'+diff+'?'+delta+' ; '+ChildH+':'+fontState+'  {'+Math.round(fontState-delta)+'}');
             }else{//tis too smol
-                console.log('tis too smol');
-                delta = (diff-1.5*fontState)/nLines;
-                setFontState(fontState+delta);
-                event.currentTarget.style.fontSize =  (fontState + 'px');
-                event.currentTarget.style.lineHeight = (fontState * 1.0 + 'px');
+                delta = (preventionK)*(diff-1.5*fontState)/nLines;
+                flushSync(() => { setFontState(Math.round(fontState+delta)); });
                 repeatOff += 1;
+                console.log('tis too smol|'+diff+'?'+delta+' ; '+fontState+'{'+Math.round(fontState+delta)+'}');
             }
-            nLines = (ChildH/fontState).toFixed(0);
             ChildH = calculateChHeight(event);
-            console.log(diff);
-            diff = ParentH - ChildH;
+            nLines = Math.round(ChildH/fontState);
+            console.log(diff+'_'+(Math.round((ParentH - ChildH)*100)/100)+'_'+paddState);
+            diff =  ParentH - ChildH;
             console.log(diff);
         }
+        flushSync(() => { setPaddState(Math.round(diff*0.5)) });
     }   
     return (
         <div className='Triage_Bubble'>
                 <div class="Triage_Tag_Bubble" onClick={changeTriage} >
                 <div class="Triage_Tag_Text" >Triage #{triageState}</div>
                 </div> 
-                <div class="Triage_Text" contentEditable="true" onCompositionEndCapture={textResponse} onClick={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px'}} >
-                    <div class="Text_Holder" >{triageTextState[triageState-1]}</div>
+                <div class="Triage_Text"  onCompositionEndCapture={textResponse} onClick={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
+                    <div class="Text_Holder" contentEditable="true">{triageTextState[triageState-1]}</div>
                 </div>
         </div>
         
