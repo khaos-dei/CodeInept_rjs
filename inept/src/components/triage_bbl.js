@@ -10,6 +10,16 @@ function Triage_Bubble(props) {
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
 
+    //helper functions 
+    function calculateChHeight(event) {
+        var nLines = event.currentTarget.childNodes.length;
+        var ChildH = 0;
+        for (let i = 0; i < nLines; i++) {
+            ChildH += event.currentTarget.childNodes[i].offsetHeight;
+        }
+        return ChildH;
+    }
+
     //event.currentTarget.textContent.length
     function textResponse(event){
         console.log('filler');
@@ -17,17 +27,10 @@ function Triage_Bubble(props) {
     function changeTriage(event){
         if(triageState==3){setTriageState(1);}else{setTriageState(triageState+1);}
     }
-    function calculateChHeight(event){
-        var nLines = event.currentTarget.childNodes.length;
-        var ChildH = 0;
-        for(let i=0; i<nLines; i++){
-            ChildH +=event.currentTarget.childNodes[i].offsetHeight;
-        }
-        return ChildH;
-    }
+
     
     function autoResize(event) {
-        var fontSZ = fontState;
+        var fontSZ = fontState; //states are asyncronous, cannot trust the values
         var prevDiff = [0, 0];
         var prevLines = [0, 0 ]
         var ChildH = calculateChHeight(event);
@@ -36,7 +39,7 @@ function Triage_Bubble(props) {
         var diff = ParentH - ChildH;
         var repeatOff = 0;
         var delta = 0;
-        console.log('>' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
+        // +++++++++ console.log('>' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
         while (diff < 0.5 * fontSZ || diff > 1.5 * fontSZ ){
             if(diff==prevDiff[1]){//if we stuck going back and forth
                 nLines = prevLines[0];//assume the lines of the forth(from the back)
@@ -53,22 +56,22 @@ function Triage_Bubble(props) {
             if (diff < 0.5 * fontSZ){//tis too big
                 delta = (0.5 * fontSZ -diff)/nLines;
                 flushSync(() => { setFontState(Math.round(fontSZ -delta)); });
-                fontSZ = fontSZ - delta;
+                fontSZ = Math.round(fontSZ - delta);//states are asyncronous, cannot trust the values
                 repeatOff+=1;
             }else{//tis too smol
                 delta = (diff - 1.5 * fontSZ)/nLines;
                 flushSync(() => { setFontState(Math.round(fontSZ +delta)); });
-                fontSZ = fontSZ + delta;
+                fontSZ = Math.round(fontSZ + delta);//states are asyncronous, cannot trust the values
                 repeatOff += 1;
             }
             ChildH = calculateChHeight(event);
             nLines = Math.round(ChildH / fontSZ);
-            console.log(fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
+            // +++++++++ console.log(fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
             diff =  ParentH - ChildH;
         }
         flushSync(() => { setPaddState(Math.round(diff*0.5)) });
         setPaddState(Math.round(diff * 0.5));
-        console.log('<' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
+        // +++++++++ console.log('<' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
     }   
 
     return (
@@ -76,7 +79,7 @@ function Triage_Bubble(props) {
                 <div class="Triage_Tag_Bubble" onClick={changeTriage} >
                 <div class="Triage_Tag_Text" >Triage #{triageState}</div>
                 </div> 
-                <div class="Triage_Text"  onCompositionEndCapture={textResponse} onClick={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
+            <div class="Triage_Text" onCompositionEndCapture={textResponse} onKeyDownCapture={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
                     <div class="Text_Holder" contentEditable="true">{triageTextState[triageState-1]}</div>
                 </div>
         </div>
