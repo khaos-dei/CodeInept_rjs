@@ -31,18 +31,26 @@ function Triage_Bubble(props) {
     
     function autoResize(event) {
         var fontSZ = fontState; //states are asyncronous, cannot trust the values
-        var prevDiff = [0, 0];
-        var prevLines = [0, 0 ]
+        var prevDiff = [NaN, NaN];
+        var prevLines = [NaN, NaN ]
         var ChildH = calculateChHeight(event);
         var ParentH = event.currentTarget.clientHeight;
         var nLines = Math.round(ChildH / fontSZ);
         var diff = ParentH - ChildH;
         var repeatOff = 0;
+        var lineart=false;
         var delta = 0;
-        // +++++++++ console.log('>' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
+        var bonusbuff=0;
+        console.log('>' + fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
         while (diff < 0.5 * fontSZ || diff > 1.5 * fontSZ ){
             if(diff==prevDiff[1]){//if we stuck going back and forth
-                nLines = prevLines[0];//assume the lines of the forth(from the back)
+                if(lineart){
+                    lineart=false;//apparently, it's not lines
+                    bonusbuff = 0.5;//bump the difference off it's convergent problematic value so it settles somewhere else
+                }else{
+                    nLines = prevLines[0];//assume the lines of the forth(from the back)
+                    lineart = true;//we've adjusted based on line amount
+                }
             }else{
                 prevLines[1] = prevLines[0];
                 prevLines[0] = nLines;//keep track of past lines-s
@@ -54,24 +62,32 @@ function Triage_Bubble(props) {
                 return;
             }
             if (diff < 0.5 * fontSZ){//tis too big
-                delta = (0.5 * fontSZ -diff)/nLines;
-                flushSync(() => { setFontState(Math.round(fontSZ -delta)); });
-                fontSZ = Math.round(fontSZ - delta);//states are asyncronous, cannot trust the values
+                //console.log('tis too big')
+                delta = (0.5 * fontSZ -diff)/nLines + bonusbuff;
+                //console.log('(0.5 * ', fontSZ,' - ', diff,')/',nLines,' = ',delta);
+                flushSync(() => { setFontState(fontSZ -delta); });
+                fontSZ = fontSZ - delta;
                 repeatOff+=1;
             }else{//tis too smol
-                delta = (diff - 1.5 * fontSZ)/nLines;
-                flushSync(() => { setFontState(Math.round(fontSZ +delta)); });
-                fontSZ = Math.round(fontSZ + delta);//states are asyncronous, cannot trust the values
+                //console.log('tis too smol')
+                delta = (diff - 1.5 * fontSZ)/nLines + bonusbuff;
+                //console.log('(0.5 * ', fontSZ,' - ', diff,')/',nLines,' = ',delta);
+                flushSync(() => { setFontState(fontSZ +delta); });
+                fontSZ = fontSZ + delta;
                 repeatOff += 1;
             }
             ChildH = calculateChHeight(event);
             nLines = Math.round(ChildH / fontSZ);
-            // +++++++++ console.log(fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
+            console.log(fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
             diff =  ParentH - ChildH;
+            if(bonusbuff>0){
+                bonusbuff=0;//we don't want this meddling anywhere else
+            }
         }
         flushSync(() => { setPaddState(Math.round(diff*0.5)) });
         setPaddState(Math.round(diff * 0.5));
-        // +++++++++ console.log('<' + fontSZ + ' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
+        //console.log("Padding: ",Math.round(diff * 0.5));
+        console.log('<' + fontSZ + ' _ '+ ParentH+' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
     }   
 
     return (
@@ -79,7 +95,7 @@ function Triage_Bubble(props) {
                 <div class="Triage_Tag_Bubble" onClick={changeTriage} >
                 <div class="Triage_Tag_Text" >Triage #{triageState}</div>
                 </div> 
-            <div class="Triage_Text" onCompositionEndCapture={textResponse} onKeyDownCapture={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
+            <div class="Triage_Text" onCompositionEndCapture={textResponse} onKeyUpCapture={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
                     <div class="Text_Holder" contentEditable="true">{triageTextState[triageState-1]}</div>
                 </div>
         </div>
