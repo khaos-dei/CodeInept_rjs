@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './triage_bbl.css';
 import { flushSync } from 'react-dom';
 
@@ -10,12 +10,18 @@ function Triage_Bubble(props) {
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
 
+    
+    React.useEffect(() => { autoResize();})//for the first load
+    React.useEffect(() => {
+        function handleResize() { autoResize();}
+        window.addEventListener('resize', handleResize)//for the window being resized
+      })
     //helper functions 
-    function calculateChHeight(event) {
-        var nLines = event.currentTarget.childNodes.length;
+    function calculateChHeight() {
+        var nLines = document.getElementById('parent').childNodes.length;
         var ChildH = 0;
         for (let i = 0; i < nLines; i++) {
-            ChildH += event.currentTarget.childNodes[i].offsetHeight;
+            ChildH += document.getElementById('parent').childNodes[i].offsetHeight;
         }
         return ChildH;
     }
@@ -29,12 +35,12 @@ function Triage_Bubble(props) {
     }
 
     
-    function autoResize(event) {
+    function autoResize() {
         var fontSZ = fontState; //states are asyncronous, cannot trust the values
         var prevDiff = [NaN, NaN];
         var prevLines = [NaN, NaN ]
-        var ChildH = calculateChHeight(event);
-        var ParentH = event.currentTarget.clientHeight;
+        var ChildH = calculateChHeight();
+        var ParentH = document.getElementById('parent').clientHeight;
         var nLines = Math.round(ChildH / fontSZ);
         var diff = ParentH - ChildH;
         var repeatOff = 0;
@@ -76,7 +82,7 @@ function Triage_Bubble(props) {
                 fontSZ = fontSZ + delta;
                 repeatOff += 1;
             }
-            ChildH = calculateChHeight(event);
+            ChildH = calculateChHeight();
             nLines = Math.round(ChildH / fontSZ);
             console.log(fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
             diff =  ParentH - ChildH;
@@ -95,7 +101,7 @@ function Triage_Bubble(props) {
                 <div class="Triage_Tag_Bubble" onClick={changeTriage} >
                 <div class="Triage_Tag_Text" >Triage #{triageState}</div>
                 </div> 
-            <div class="Triage_Text" onCompositionEndCapture={textResponse} onKeyUpCapture={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
+            <div id='parent' class="Triage_Text" onKeyUpCapture={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
                     <div class="Text_Holder" contentEditable="true">{triageTextState[triageState-1]}</div>
                 </div>
         </div>
@@ -104,3 +110,5 @@ function Triage_Bubble(props) {
   }
   
   export default Triage_Bubble;
+
+
