@@ -5,7 +5,7 @@ import { flushSync } from 'react-dom';
 
 function Triage_Bubble(props) {
     const [triageState, setTriageState] = useState(1);
-    const [triageTextState, setTriageTextState] = useState(['Priority High', 'Priority Mid', 'Priority eh']);
+    var triageTextState= ['Priority High', 'Priority Mid', 'Priority eh'];
     
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
@@ -28,7 +28,9 @@ function Triage_Bubble(props) {
 
     //event.currentTarget.textContent.length
     function textResponse(event){
+        triageTextState[triageState] = event.currentTarget.textContent;
         console.log('filler');
+        autoResize();
     }
     function changeTriage(event){
         if(triageState==3){setTriageState(1);}else{setTriageState(triageState+1);}
@@ -47,7 +49,7 @@ function Triage_Bubble(props) {
         var lineart=false;
         var delta = 0;
         var bonusbuff=0;
-        console.log('>' + fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
+        //++++++ console.log('>' + fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
         while (diff < 0.5 * fontSZ || diff > 1.5 * fontSZ ){
             if(diff==prevDiff[1]){//if we stuck going back and forth
                 if(lineart){
@@ -84,7 +86,7 @@ function Triage_Bubble(props) {
             }
             ChildH = calculateChHeight();
             nLines = Math.round(ChildH / fontSZ);
-            console.log(fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
+            //++++++ console.log(fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
             diff =  ParentH - ChildH;
             if(bonusbuff>0){
                 bonusbuff=0;//we don't want this meddling anywhere else
@@ -93,7 +95,7 @@ function Triage_Bubble(props) {
         flushSync(() => { setPaddState(Math.round(diff*0.5)) });
         setPaddState(Math.round(diff * 0.5));
         //console.log("Padding: ",Math.round(diff * 0.5));
-        console.log('<' + fontSZ + ' _ '+ ParentH+' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
+        //++++++ console.log('<' + fontSZ + ' _ '+ ParentH+' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
     }   
 
     return (
@@ -101,7 +103,7 @@ function Triage_Bubble(props) {
                 <div class="Triage_Tag_Bubble" onClick={changeTriage} >
                 <div class="Triage_Tag_Text" >Triage #{triageState}</div>
                 </div> 
-            <div id='parent' class="Triage_Text" onKeyUpCapture={autoResize} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
+            <div id='parent' class="Triage_Text" onKeyUpCapture={textResponse} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
                     <div class="Text_Holder" contentEditable="true">{triageTextState[triageState-1]}</div>
                 </div>
         </div>
