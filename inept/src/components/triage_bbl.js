@@ -38,64 +38,25 @@ function Triage_Bubble(props) {
 
     
     function autoResize() {
-        var fontSZ = fontState; //states are asyncronous, cannot trust the values
-        var prevDiff = [NaN, NaN];
-        var prevLines = [NaN, NaN ]
+        var fontSZ = fontState;
         var ChildH = calculateChHeight();
         var ParentH = document.getElementById('parent').clientHeight;
-        var nLines = Math.round(ChildH / fontSZ);
+        var nLines = Math.round(ChildH / fontState);
         var diff = ParentH - ChildH;
-        var repeatOff = 0;
-        var lineart=false;
         var delta = 0;
-        var bonusbuff=0;
-        //++++++ console.log('>' + fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
-        while (diff < 0.5 * fontSZ || diff > 1.5 * fontSZ ){
-            if(diff==prevDiff[1]){//if we stuck going back and forth
-                if(lineart){
-                    lineart=false;//apparently, it's not lines
-                    bonusbuff = 0.5;//bump the difference off it's convergent problematic value so it settles somewhere else
-                }else{
-                    nLines = prevLines[0];//assume the lines of the forth(from the back)
-                    lineart = true;//we've adjusted based on line amount
-                }
-            }else{
-                prevLines[1] = prevLines[0];
-                prevLines[0] = nLines;//keep track of past lines-s
-                prevDiff[1]=prevDiff[0];
-                prevDiff[0]=diff;//keep track of past diff-s
-            }
-            if (repeatOff > 100) {
-                console.log('Overflow Prevented');
-                return;
-            }
-            if (diff < 0.5 * fontSZ){//tis too big
-                //console.log('tis too big')
-                delta = (0.5 * fontSZ -diff)/nLines + bonusbuff;
-                //console.log('(0.5 * ', fontSZ,' - ', diff,')/',nLines,' = ',delta);
-                flushSync(() => { setFontState(fontSZ -delta); });
-                fontSZ = fontSZ - delta;
-                repeatOff+=1;
-            }else{//tis too smol
-                //console.log('tis too smol')
-                delta = (diff - 1.5 * fontSZ)/nLines + bonusbuff;
-                //console.log('(0.5 * ', fontSZ,' - ', diff,')/',nLines,' = ',delta);
-                flushSync(() => { setFontState(fontSZ +delta); });
-                fontSZ = fontSZ + delta;
-                repeatOff += 1;
-            }
-            ChildH = calculateChHeight();
-            nLines = Math.round(ChildH / fontSZ);
-            //++++++ console.log(fontSZ + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + (ParentH - ChildH) + ' < ' + 1.5 * fontSZ + ' | ' + Math.round((ParentH - ChildH) * 0.5) + '(' + ((ParentH - ChildH) < 0.5 * fontSZ) + '||' + ((ParentH - ChildH) > 1.5 * fontSZ) + ')');
-            diff =  ParentH - ChildH;
-            if(bonusbuff>0){
-                bonusbuff=0;//we don't want this meddling anywhere else
-            }
+        console.log('>' + fontState + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontState + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
+
+        if((diff < 0.5 * fontState)||(diff > 1.5 * fontState)){//it's too big or too small
+            delta = (diff - fontState)/nLines;//direct fontsize change
+            fontSZ=fontState+delta;//what new fontsize would be
+            nLines = nLines * fontSZ/fontState; //guesstimate the new amount of lines
+            delta = (diff - fontState)/nLines;//adjusted fontsize change
+            setFontState(fontState+delta);//apply
+            fontSZ=fontState+delta;//new adjusted fontsize
         }
-        flushSync(() => { setPaddState(Math.round(diff*0.5)) });
-        setPaddState(Math.round(diff * 0.5));
-        //console.log("Padding: ",Math.round(diff * 0.5));
-        //++++++ console.log('<' + fontSZ + ' _ '+ ParentH+' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
+        console.log("Padding: ",Math.round(0.5*fontSZ));
+        setPaddState(0.5*fontSZ)
+        console.log('<' + fontSZ + ' _ '+ ParentH+' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
     }   
 
     return (
