@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react'
 import './triage_bbl.css';
 import { flushSync } from 'react-dom';
 
+var prevLines = [NaN,NaN];
+var prevDiffs = [NaN,NaN];
 
 function Triage_Bubble(props) {
     const [triageState, setTriageState] = useState(1);
@@ -11,22 +13,13 @@ function Triage_Bubble(props) {
     const [fontState, setFontState] = useState(20);
 
     
+    
     React.useEffect(() => { autoResize();})//for the first load
     React.useEffect(() => {
         function handleResize() { autoResize();}
         window.addEventListener('resize', handleResize)//for the window being resized
       })
-    //helper functions 
-    function calculateChHeight() {
-        var nLines = document.getElementById('parent').childNodes.length;
-        var ChildH = 0;
-        for (let i = 0; i < nLines; i++) {
-            ChildH += document.getElementById('parent').childNodes[i].offsetHeight;
-        }
-        return ChildH;
-    }
 
-    //event.currentTarget.textContent.length
     function textResponse(event){
         triageTextState[triageState] = event.currentTarget.textContent;
         console.log('filler');
@@ -36,27 +29,40 @@ function Triage_Bubble(props) {
         if(triageState==3){setTriageState(1);}else{setTriageState(triageState+1);}
     }
 
-    
+    const autoSizerDebug = false;
+
+
     function autoResize() {
         var fontSZ = fontState;
-        var ChildH = calculateChHeight();
+        var ChildH = document.getElementById('parent').childNodes[0].offsetHeight;;
         var ParentH = document.getElementById('parent').clientHeight;
         var nLines = Math.round(ChildH / fontState);
         var diff = ParentH - ChildH;
         var delta = 0;
-        console.log('>' + fontState + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontState + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
 
-        if((diff < 0.5 * fontState)||(diff > 1.5 * fontState)){//it's too big or too small
-            delta = (diff - fontState)/nLines;//direct fontsize change
-            fontSZ=fontState+delta;//what new fontsize would be
-            nLines = nLines * fontSZ/fontState; //guesstimate the new amount of lines
-            delta = (diff - fontState)/nLines;//adjusted fontsize change
+        if(autoSizerDebug) console.log('>' + fontState + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontState + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
+        if((diff < 0.5 * fontState)|| (diff > 1.5 * fontState)){
+            if(((prevDiffs[1]<0)&&(diff-0.5*fontState<0))&&((prevDiffs[1]<0)!=(prevDiffs[0]<0))){
+                nLines+=2;
+                console.log('nLines Adjusted')
+            }else{
+                prevDiffs[1]=prevDiffs[0];
+                prevLines[1]=prevLines[0];
+                prevDiffs[0]=diff - 0.5 * fontState;
+                prevLines[0]=nLines;
+            }
+            delta = (diff - fontState)/nLines;//calculate the fontSize change
+            console.log(fontState,'+', delta)
             setFontState(fontState+delta);//apply
-            fontSZ=fontState+delta;//new adjusted fontsize
+            fontSZ=fontState+delta;//what new fontsize would be (cannot rely on fontState cause it's async)
+            setPaddState(Math.round(0.5*fontSZ)) //set ideal padding(will get fixed otherwise)
+            if(autoSizerDebug) console.log("Padding: ",Math.round(0.5*fontSZ));
+        }else{
+            prevLines = [NaN,NaN];
+            prevDiffs = [NaN,NaN];
+            setPaddState(0.5*diff)//set actual padding
         }
-        console.log("Padding: ",Math.round(0.5*fontSZ));
-        setPaddState(0.5*fontSZ)
-        console.log('<' + fontSZ + ' _ '+ ParentH+' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
+        if(autoSizerDebug) console.log('<' + fontSZ + ' _ '+ ParentH+' _ ' + ChildH + ' | ' + 0.5 * fontSZ + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ) + ')');
     }   
 
     return (
