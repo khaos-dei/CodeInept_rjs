@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState } from 'react'
 import './triage_bbl.css';
 
 var repeatOff = 0;
 var nL_adj = 0;
 
-function Triage_Bubble(props) {
+function TriageBubble(props) {
     const [triageState, setTriageState] = useState(0);
     var triageTextState= [localStorage.getItem('Priority1'), localStorage.getItem('Priority2'),localStorage.getItem('Priority3')];
     const [paddState, setPaddState] = useState(10);
@@ -68,6 +68,6 @@ function Triage_Bubble(props) {
     );
   }
   
-  export default Triage_Bubble;
+  export default TriageBubble;
 
 

@@ -41,7 +41,7 @@ function line_day(total, current){
         content.push(first_day(color))
     }
     for (let i = 1; i < total-1; i++) {
-        if(i==current){
+        if(i+1===current){
             content.push(middle_days(i*5,color_of))
             color = color_post;
         }else{

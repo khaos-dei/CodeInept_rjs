@@ -6,7 +6,7 @@ import MonthProgressLine from './components/m_prog_line.js';
 import AnaClock from './components/ana_clck.js';
 import DigiClock from './components/digi_clck.js';
 import DatePage from './components/date_page';
-import Triage_Bubble from './components/triage_bbl';
+import TriageBubble from './components/triage_bbl';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <MonthProgressLine datentime={dateState} />
         <AnaClock datentime={dateState} />
         <DatePage datentime={dateState} />
-        <Triage_Bubble  />
+        <TriageBubble  />
         <div className='nice-box' style={{ 'grid-area': '2/5/span 4/span 1' }}>Notepad</div>
         <div className='nice-box' style={{ 'grid-area': '3/3/span 5/span 2' }}>EMPTY</div>
         <DigiClock datentime={dateState} />
