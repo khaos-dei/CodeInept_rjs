@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import { render } from 'react-dom';
 import './ana_clck.css';
 
 function AnaClock(props) {

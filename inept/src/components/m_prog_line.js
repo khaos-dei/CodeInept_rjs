@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import { render } from 'react-dom';
 import {days} from '../constants/DateConsts';
 import './m_prog_line.css';
 
@@ -34,7 +32,7 @@ function line_day(total, current){
     let color_of = "magenta";
     let color_post = "pink";
     var color = color_pre;
-    if (current==1){
+    if (current===1){
         content.push(first_day(color_of))
         color = color_post;
     }else{
@@ -57,7 +55,7 @@ function MonthProgressLine(props) {
     var year = props.datentime.getYear();
     var month = props.datentime.getMonth();
     var date = props.datentime.getDate();
-    if((year % 4==0)&&(month==1)){month=12};//leap year
+    if((year % 4===0)&&(month===1)){month=12};//leap year
     var viewport = "-0.5 0 "+((days[month])*5)+" 4";
     return (
         <div className='Month_Progress_Line'>
