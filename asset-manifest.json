@@ -1,15 +1,24 @@
 {
   "files": {
-    "main.css": "/CodeInept_rjs/static/css/main.6af5921b.css",
-    "main.js": "/CodeInept_rjs/static/js/main.11d9584b.js",
+    "main.css": "/CodeInept_rjs/static/css/main.d20db459.css",
+    "main.js": "/CodeInept_rjs/static/js/main.b0b2ddc4.js",
     "static/js/787.9b3b8173.chunk.js": "/CodeInept_rjs/static/js/787.9b3b8173.chunk.js",
+    "static/media/AnonymousPro-Regular.ttf": "/CodeInept_rjs/static/media/AnonymousPro-Regular.7efadbba75e397dd6872.ttf",
+    "static/media/AnonymousPro-Bold.ttf": "/CodeInept_rjs/static/media/AnonymousPro-Bold.da577dfad40160891fdb.ttf",
+    "static/media/AnonymousPro-Italic.ttf": "/CodeInept_rjs/static/media/AnonymousPro-Italic.01bdd4a266bffde2a80d.ttf",
+    "static/media/AnonymousPro-BoldItalic.ttf": "/CodeInept_rjs/static/media/AnonymousPro-BoldItalic.3432fc4a4a4fff510a3d.ttf",
+    "static/media/CourierPrime-Regular.ttf": "/CodeInept_rjs/static/media/CourierPrime-Regular.96e7b592076d71a29dd8.ttf",
+    "static/media/CourierPrime-Italic.ttf": "/CodeInept_rjs/static/media/CourierPrime-Italic.e56d96233ea91b20da66.ttf",
+    "static/media/CourierPrime-BoldItalic.ttf": "/CodeInept_rjs/static/media/CourierPrime-BoldItalic.40cb412d658c743e4ea1.ttf",
+    "static/media/CourierPrime-Bold.ttf": "/CodeInept_rjs/static/media/CourierPrime-Bold.ac693e5aa250dab63415.ttf",
+    "static/media/TickingTimebombBB.ttf": "/CodeInept_rjs/static/media/TickingTimebombBB.73950a4698397f4efb30.ttf",
     "index.html": "/CodeInept_rjs/index.html",
-    "main.6af5921b.css.map": "/CodeInept_rjs/static/css/main.6af5921b.css.map",
-    "main.11d9584b.js.map": "/CodeInept_rjs/static/js/main.11d9584b.js.map",
+    "main.d20db459.css.map": "/CodeInept_rjs/static/css/main.d20db459.css.map",
+    "main.b0b2ddc4.js.map": "/CodeInept_rjs/static/js/main.b0b2ddc4.js.map",
     "787.9b3b8173.chunk.js.map": "/CodeInept_rjs/static/js/787.9b3b8173.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6af5921b.css",
-    "static/js/main.11d9584b.js"
+    "static/css/main.d20db459.css",
+    "static/js/main.b0b2ddc4.js"
   ]
 }
