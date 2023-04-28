@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-Italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src: url('../assets/AnonymousPro-BoldItalic.ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-Italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CourierPrime";
+  src: url('../assets/CourierPrime-BoldItalic.ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+.Triage_Bubble {
+    font-family: "CourierPrime";
+    border-style:solid;
+    border-radius: 2.8vmin;
+    font-size: 3vmin;
+    background-color: rgb(101, 90, 148);
+    position: relative;
+    overflow: clip;
+    grid-area: 2/3/span 1/span 2;
+  }
+
+  .wrapper-parent{
+    height:100%;
+    width:100%;
+  }
+
+  .Triage_Tag_Bubble {
+    background-color: rgb(116, 203, 129);
+    width: 12%;
+    height: 106%;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.5%;
+    margin-left: -0.5%;
+    border-style: solid;
+    padding-left: 0.5%;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+  }
+
+  .Triage_Tag_Text {
+    transform: rotate(-180deg);
+    font-size:2.7vmin;
+    line-height: 2.8vmin;
+  }
+
+  .Triage_Text {
+    position: absolute;
+    top:0%;
+    left:12%;
+    height:100%;
+    width:88%;
+    /* background-color: rgb(209, 189, 189);
+    border: 2px solid blue; */
+    border-top-right-radius: 2.8vmin;
+    border-bottom-right-radius: 2.8vmin;
+    word-wrap:normal;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center; 
+    overflow:hidden;
+  }
+
+  .Text_Holder{
+    height:auto;
+    width:100%;
+    word-wrap: normal;
+    text-align: center;
+    font-size: inherit;
+    line-height: inherit;
+    /* border: solid; */
+  }

@@ -1,0 +1,49 @@
+.Calendar_Page {
+    display: flex;
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(101, 90, 148);
+    position: relative;
+    grid-area: 2/2/span 2/span 1;
+  }
+.Decorative_Line {
+    position: absolute;
+    top:0%;
+    width: 101%;
+    height: 7%;
+    background-color: pink;
+  }
+    
+.Day {
+    font-size:3.8vmin; 
+    font-weight: 700;
+    position: absolute;
+    top:5%;
+    text-align: center;
+    color: cyan;
+  }
+.Month {
+    font-size:2.5vmin; 
+    font-weight: 700;
+    position: absolute;
+    top:33%;
+    text-align: center;
+    color: cyan;
+  }
+.Weekday {
+    font-size:2.65vmin; 
+    font-weight: 700;
+    position: absolute;
+    top:53%;
+    text-align: center;
+    color: cyan;
+  }
+.Year {
+    font-size:2.65vmin; 
+    font-weight: 700;
+    position: absolute;
+    top:73%;
+    text-align: center;
+    color: cyan;
+  }
