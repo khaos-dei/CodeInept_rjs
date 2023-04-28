@@ -10,7 +10,8 @@ function TriageBubble(props) {
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
 
-    React.useEffect(() => { autoResize();
+    React.useEffect(() => { 
+    autoResize();
     if(localStorage.getItem("Priority1") === null){ localStorage.setItem('Priority1','Highest Priority')}
     if(localStorage.getItem("Priority2") === null){ localStorage.setItem('Priority2','Mid Priority')}
     if(localStorage.getItem("Priority3") === null){ localStorage.setItem('Priority3','Eh Priority')}
@@ -22,9 +23,10 @@ function TriageBubble(props) {
       })
 
     function textResponse(event){
+        autoResize();
         JSON.parse(localStorage.setItem('Priority'+(triageState+1),document.getElementById('parent').childNodes[0].textContent))
         triageTextState[triageState] = document.getElementById('parent').childNodes[0].textContent;
-        console.log(triageTextState);
+        console.log(triageTextState); 
     }
     function changeTriage(event){
         if(triageState===2){setTriageState(0);}else{setTriageState(triageState+1);}
@@ -40,6 +42,7 @@ function TriageBubble(props) {
         var delta = 0;
         if(autoSizerDebug) console.log('>' + fontState + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontState + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
         if((diff < 0.5 * fontState)|| (diff > 1.5 * fontState)){
+            //if((fontSZ<=0)||(fontSZ==Infinity)||(fontSZ==NaN)){setFontState(10);}
             if(repeatOff>5){nL_adj+=1; if(autoSizerDebug)console.log("{",nL_adj,"}")}
             delta = (diff - fontState)/(nLines+nL_adj);//calculate the fontSize change
             if(autoSizerDebug) console.log(fontState,'+', delta)
