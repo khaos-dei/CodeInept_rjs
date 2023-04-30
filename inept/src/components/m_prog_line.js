@@ -46,7 +46,13 @@ function line_day(total, current){
             content.push(middle_days(i*5,color))
         }
     }
-    content.push(last_day((total-1)*5,color))
+    if (current === total) {
+        content.push(last_day((total - 1) * 5, color_of)) 
+    } else {
+        content.push(last_day((total - 1) * 5, color)) 
+
+    }
+    
     return (content);
 }
 
