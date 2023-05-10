@@ -2,19 +2,40 @@ import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from './theme/GlobalStyles';
+import { useTheme } from './theme/useTheme';
+
+
+
 import MonthProgressLine from './components/m_prog_line.js';
 import AnaClock from './components/ana_clck.js';
 import DigiClock from './components/digi_clck.js';
 import DatePage from './components/date_page';
 import TriageBubble from './components/triage_bbl';
 
-
 function App() {
+  //window.localStorage.setItem('theme', JSON.stringify(themes.defa));
+
+  const {theme, themeLoaded} = useTheme();
+  const [selectedTheme, setSelectedTheme] = useState(theme);
+
+  useEffect(() => {
+    setSelectedTheme(theme);
+  }, [themeLoaded, theme]);
+
+
+
+
   const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
         setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds, may lower for click fund 
     }, []);
   return (
+    <>
+    {
+      themeLoaded && <ThemeProvider theme={ selectedTheme }>
+    <GlobalStyles/>
     <div className="App">
       <body className="App-body">
         <MonthProgressLine datentime={dateState} />
@@ -34,6 +55,9 @@ function App() {
         <div className='nice-box' style={{}}>Youtube</div>
       </body>
     </div>
+    </ThemeProvider>
+  }
+  </>
   );
 }
 
