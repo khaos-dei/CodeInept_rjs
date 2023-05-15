@@ -7,32 +7,31 @@ const setToLS = (key, value) => {
 
 const getFromLS = key => {
     const value = window.localStorage.getItem(key);
-
     if (value) {
         return JSON.parse(value);
     }else{
-        setToLS(key, themeX)
-        return JSON.parse(themeX);
-        
+        return null;
     }
 }
 
 
 export const useTheme = () => {
     const themes = getFromLS('all-themes');
+    if (themes == null) setToLS('all-themes', themeX);
     const [theme, setTheme] = useState(themes.data.light);
     const [themeLoaded, setThemeLoaded] = useState(false);
 
-    const setMode = mode => {
-        setTheme(mode);
-    };
+    //const setMode = mode => {
+    //    setTheme(mode);
+    //};
 
-    console.log(themes.data.light);
+    //console.log(themes.data.light);
     useEffect(() => {
         const localTheme = getFromLS('theme');
         localTheme ? setTheme(localTheme) : setTheme(themes.data.light);
+        if (themes == null) setToLS('theme', themes.data.light);
         setThemeLoaded(true);
     }, [themes.data.light]);
     
-    return { theme, themeLoaded, setMode };
+    return { theme, themeLoaded };
 };

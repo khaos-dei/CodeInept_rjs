@@ -13,6 +13,7 @@ import AnaClock from './components/ana_clck.js';
 import DigiClock from './components/digi_clck.js';
 import DatePage from './components/date_page';
 import TriageBubble from './components/triage_bbl';
+import ThemeChoice from './components/theme_choice';
 
 function App() {
   //window.localStorage.setItem('theme', JSON.stringify(themes.defa));
@@ -43,7 +44,7 @@ function App() {
         <DatePage datentime={dateState} />
         <TriageBubble  />
         <div className='nice-box' style={{ 'grid-area': '2/5/span 4/span 1' }}>Notepad</div>
-        <div className='nice-box' style={{ 'grid-area': '3/3/span 5/span 2' }}>EMPTY</div>
+        <ThemeChoice datentime={dateState} />
         <DigiClock datentime={dateState} />
         <div className='nice-box' style={{}}>Buttons</div>
         <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div>

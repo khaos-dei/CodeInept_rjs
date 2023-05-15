@@ -1,0 +1,18 @@
+.Calesndar_Page1 {
+    display: flex;
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(101, 90, 148);
+    position: relative;
+    grid-area: 3/3/span 5/span 2;
+}
+
+.Year1 {
+    font-size: 2.65vmin;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    color: cyan;
+}
