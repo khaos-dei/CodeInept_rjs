@@ -28,7 +28,7 @@ export const useTheme = () => {
     //console.log(themes.data.light);
     useEffect(() => {
         const localTheme = getFromLS('theme');
-        localTheme ? setTheme(localTheme) : setTheme(themes.data.light);
+        /* localTheme ? setTheme(localTheme) : setTheme(themes.data.light);//rerender overflow */
         if (themes == null) setToLS('theme', themes.data.light);
         setThemeLoaded(true);
     }, [themes.data.light]);

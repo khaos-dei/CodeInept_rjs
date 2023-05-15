@@ -43,17 +43,15 @@ function App() {
         <AnaClock datentime={dateState} />
         <DatePage datentime={dateState} />
         <TriageBubble  />
-        <div className='nice-box' style={{ 'grid-area': '2/5/span 4/span 1' }}>Notepad</div>
+        <div className='nice-box' style={{ 'grid-area': '2/5/span 5/span 1' }}>Notepad</div>
         <ThemeChoice datentime={dateState} />
         <DigiClock datentime={dateState} />
-        <div className='nice-box' style={{}}>Buttons</div>
-        <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div>
-        <div className='nice-box' style={{}}>Zen Gif</div>
-        <div className='nice-box' style={{}}>Music</div>
-        <div className='nice-box' style={{ 'grid-column-start': 'span 2' }}>Projects</div>
-        <div className='nice-box' style={{}}>Icons</div>
-        <div className='nice-box' style={{}}>Spinwheel</div>
-        <div className='nice-box' style={{}}>Youtube</div>
+        <div className='nice-box' style={{ 'grid-area': '4/2/span 1/span 1' }}>Buttons</div>
+        {/* <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div> */}
+        <div className='nice-box' style={{ 'grid-area': '5/1/span 4/span 2' }}>Projects</div>
+        <div className='nice-box' style={{ 'grid-area': '8/3/span 1/span 1' }}>Zen Gif</div>
+        <div className='nice-box' style={{ 'grid-area': '8/4/span 1/span 1' }}>Funsies (Spinwheel)</div>
+        <div className='nice-box' style={{ 'grid-area': '7/5/span 2/span 1' }}>Youtube/Music</div>
       </body>
     </div>
     </ThemeProvider>

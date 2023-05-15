@@ -11,12 +11,12 @@ function ThemeChoice(props) {
     
     return (
         <div className='Calesndar_Page1'>
-            <button className="btn" onClick={manageDialog}>Create a Theme</button>
+            {/* <button className="btn" onClick={manageDialog}>Create a Theme</button>
             <Dialog
                 header="Choose a Theme"
                 body={<div className='Year1'>2023</div>}
                 open={showDialog}
-                callback={manageDialog} />
+                callback={manageDialog} /> */}
         </div>
     );
 }
