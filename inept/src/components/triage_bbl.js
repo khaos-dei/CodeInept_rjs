@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import './triage_bbl.css';
+import {setToLS, getFromLS} from './ls_component';
 
 var repeatOff = 0;
 var nL_adj = 0;
 
 function TriageBubble(props) {
     const [triageState, setTriageState] = useState(0);
-    var triageTextState= [localStorage.getItem('Priority1'), localStorage.getItem('Priority2'),localStorage.getItem('Priority3')];
+    var triageTextState= [getFromLS("Priority1"), getFromLS("Priority2"),getFromLS("Priority3")];
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
 
     React.useEffect(() => { 
     autoResize();
-    if(localStorage.getItem("Priority1") === null){ localStorage.setItem('Priority1','Highest Priority')}
-    if(localStorage.getItem("Priority2") === null){ localStorage.setItem('Priority2','Mid Priority')}
-    if(localStorage.getItem("Priority3") === null){ localStorage.setItem('Priority3','Eh Priority')}
     })//after each render
 
     React.useEffect(() => {
@@ -24,7 +22,7 @@ function TriageBubble(props) {
 
     function textResponse(event){
         autoResize();
-        JSON.parse(localStorage.setItem('Priority'+(triageState+1),document.getElementById('parent').childNodes[0].textContent))
+        setToLS('Priority'+(triageState+1),document.getElementById('parent').childNodes[0].textContent)
         triageTextState[triageState] = document.getElementById('parent').childNodes[0].textContent;
         console.log(triageTextState); 
     }

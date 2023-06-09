@@ -1,24 +1,13 @@
 import { useEffect, useState } from 'react';
 import * as themeX from './schema.json';
+import {setToLS, getFromLS} from '../components/ls_component';
 
-const setToLS = (key, value) => {
-    window.localStorage.setItem(key, JSON.stringify(value));
-}
-
-const getFromLS = key => {
-    const value = window.localStorage.getItem(key);
-    if (value) {
-        return JSON.parse(value);
-    }else{
-        return null;
-    }
-}
 
 
 export const useTheme = () => {
     const themes = getFromLS('all-themes');
     if (themes == null) setToLS('all-themes', themeX);
-    const [theme, setTheme] = useState(themes.data.light);
+    const [theme, setTheme] = useState(getFromLS('theme'));
     const [themeLoaded, setThemeLoaded] = useState(false);
 
     //const setMode = mode => {
