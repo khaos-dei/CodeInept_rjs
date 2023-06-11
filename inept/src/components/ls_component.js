@@ -22,4 +22,11 @@ const setDefaultToLS = (key) => {
     else{localStorage.setItem(key, ls_values[key]);}
 }
 
-export {setToLS, getFromLS};
+const restoreDefaults = () => {
+    for (var key in ls_values) {
+       setDefaultToLS(key);
+    }
+    window.location.reload(false)
+}
+
+export { setToLS, getFromLS, restoreDefaults };

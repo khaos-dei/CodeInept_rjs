@@ -14,6 +14,7 @@ import DigiClock from './components/digi_clck.js';
 import DatePage from './components/date_page';
 import TriageBubble from './components/triage_bbl';
 import ThemeChoice from './components/theme_choice';
+import ButtonsLine from './components/buttons';
 
 function App() {
   //window.localStorage.setItem('theme', JSON.stringify(themes.defa));
@@ -46,7 +47,7 @@ function App() {
         <div className='nice-box' style={{ 'grid-area': '2/5/span 5/span 1' }}>Notepad</div>
         <ThemeChoice datentime={dateState} />
         <DigiClock datentime={dateState} />
-        <div className='nice-box' style={{ 'grid-area': '4/2/span 1/span 1' }}>Buttons</div>
+        <ButtonsLine />
         {/* <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div> */}
         <div className='nice-box' style={{ 'grid-area': '5/1/span 4/span 2' }}>Projects</div>
         <div className='nice-box' style={{ 'grid-area': '8/3/span 1/span 1' }}>Zen Gif</div>
