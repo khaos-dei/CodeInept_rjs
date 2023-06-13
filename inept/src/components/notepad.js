@@ -1,20 +1,19 @@
 import './notepad.css';
+import React, { useRef} from 'react';
 
 function Notepad(props) {
-    //var year = props.datentime.getHours();//wlb func input
+    var the_text = useRef('Put your notes here')
     return (
-        <div className='Calendar_Page1'>
+        <div className='Notepad'>
+            <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text'>{the_text.current}</div>
             <div className='TabLine'>
-                <button className='Tab'>2023</button>
-                <button className='Tab'>2024</button>
-                <button className='Tab'>2025</button>
-                <button className='Tab'>2023</button>
-                <button className='Tab'>2024</button>
+                <button className='Tab'>Day</button>
+                <button className='Tab'>Week</button>
+                <button className='Tab'>Month</button>
             </div>
             <button className='TabUP' >V</button>
             <button className='TabDOWN'>V</button>
-            <div className='Year'>2023</div>
-        </div>
+             </div>
     );
   }
   

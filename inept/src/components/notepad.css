@@ -1,9 +1,9 @@
-.Calendar_Page1 {
+.Notepad {
     display: flex;
-    border-style: solid;
     justify-content: center;
     align-items: center;
-    background-color: rgb(101, 90, 148);
+    /* border-style: solid;
+    background-color: rgb(101, 90, 148); */
     position: relative;
     grid-area: 2/5/span 5/span 1;
     border-top: 0pt;
@@ -12,13 +12,13 @@
 .TabLine {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: 0.5vmin;
+    grid-gap: 0.4vmin;
     justify-content: left;
     align-items: center;
     padding:1%;
     position: absolute;
-    top:-1.5vmin;
-    left:2%;
+    top:0vmin;
+    left:0%;
     width: 88%;
     text-align: center;
 
@@ -31,6 +31,8 @@
 .Tab {
     padding:1%;
     margin-top: 0%;
+    width:9.5vmin;
+    overflow:hidden;
     font-size:2vmin; 
     font-weight: 700;
     text-align: center;
@@ -45,8 +47,8 @@
     left:94%;
     font-size:1vmin; 
     transform: scaleX(3); */
-    top:-1.5vmin;
-    left:93%;
+    top:0vmin;
+    left:96%;
     font-size:2vmin; 
     font-weight: 700;
     text-align: center;
@@ -61,8 +63,8 @@
     left:94%;
     font-size:1vmin; 
     transform: scaleX(3) rotate(180deg); */
-    top:-1.5vmin;
-    left:87%;
+    top:0vmin;
+    left:90%;
     transform:rotate(180deg); 
     font-size:2vmin; 
     font-weight: 700;
@@ -79,4 +81,19 @@
     top:73%;
     text-align: center;
     color: cyan;
+  }
+
+  .Notebook_Text {
+    position: absolute;
+    top:5%;
+    left:0%;
+    height:94%;
+    width:100%;
+     background-color: rgb(101, 90, 148);
+    border: 2px solid rgb(255, 255, 255); 
+    word-wrap:normal;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center; 
+    overflow:hidden;
   }
