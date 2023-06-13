@@ -1,0 +1,82 @@
+.Calendar_Page1 {
+    display: flex;
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(101, 90, 148);
+    position: relative;
+    grid-area: 2/5/span 5/span 1;
+    border-top: 0pt;
+  }
+
+.TabLine {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 0.5vmin;
+    justify-content: left;
+    align-items: center;
+    padding:1%;
+    position: absolute;
+    top:-1.5vmin;
+    left:2%;
+    width: 88%;
+    text-align: center;
+
+    
+    /* border-style: solid;
+    border-width: 1pt;
+    color: cyan; */
+  }
+
+.Tab {
+    padding:1%;
+    margin-top: 0%;
+    font-size:2vmin; 
+    font-weight: 700;
+    text-align: center;
+    color: cyan;
+  }
+
+  .TabUP {
+    margin-top: 0%;
+    padding:0.5%;
+    position:absolute;/* 
+    top:1%;
+    left:94%;
+    font-size:1vmin; 
+    transform: scaleX(3); */
+    top:-1.5vmin;
+    left:93%;
+    font-size:2vmin; 
+    font-weight: 700;
+    text-align: center;
+    background-color: rgb(59, 53, 145);
+    color: white;
+  }
+  .TabDOWN {
+    margin-top: 0%;
+    padding:0.5%;
+    position:absolute;/* 
+    top:-1.5%;
+    left:94%;
+    font-size:1vmin; 
+    transform: scaleX(3) rotate(180deg); */
+    top:-1.5vmin;
+    left:87%;
+    transform:rotate(180deg); 
+    font-size:2vmin; 
+    font-weight: 700;
+    text-align: center;
+    background-color: rgb(59, 53, 145);
+    color: white;
+  }
+
+
+.Year {
+    font-size:2.65vmin; 
+    font-weight: 700;
+    position: absolute;
+    top:73%;
+    text-align: center;
+    color: cyan;
+  }

@@ -4,8 +4,7 @@ import { restoreDefaults } from './ls_component';
 
 function BtnReDefault() {
     return (
-        <button className='Button' onClick={restoreDefaults}>Re
-        DFLT</button>
+        <button className='Button' onClick={restoreDefaults}>DFLT</button>
     );
 }
 

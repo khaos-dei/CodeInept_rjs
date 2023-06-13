@@ -8,13 +8,11 @@ var nL_adj = 0;
 
 function TriageBubble(props) {
     const [triageState, setTriageState] = useState(0);
-    var triageTextState= [getFromLS("Priority1"), getFromLS("Priority2"),getFromLS("Priority3")];
     var triageTextStateRef= [useRef(getFromLS("Priority1")), useRef(getFromLS("Priority2")), useRef(getFromLS("Priority3"))];
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
 
 
-    const initialValue = useRef("initial value");
     
     React.useEffect(() => { 
     autoResize();
@@ -28,12 +26,11 @@ function TriageBubble(props) {
     function textResponse(event){
         autoResize();
         setToLS('Priority'+(triageState+1),document.getElementById('parent').childNodes[0].textContent)
-        console.log(triageTextState); 
+        console.log(triageTextStateRef[triageState].current); 
     }
     function changeTriage(event){
         if(triageState===2){setTriageState(0);}else{setTriageState(triageState+1);}
         triageTextStateRef[triageState].current = document.getElementById('parent').childNodes[0].textContent;
-
     }
 
     const autoSizerDebug = false;
@@ -64,11 +61,11 @@ function TriageBubble(props) {
 
     return (
         <div className='Triage_Bubble'>
-                <div class="Triage_Tag_Bubble" onClick={changeTriage} >
-                <div class="Triage_Tag_Text" >Triage #{triageState+1}</div>
+                <div className="Triage_Tag_Bubble" onClick={changeTriage} >
+                <div className="Triage_Tag_Text" >Triage #{triageState+1}</div>
                 </div> 
-                <div id='parent' class="Triage_Text" onKeyUpCapture={textResponse} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
-                    <div  contentEditable="true" class="Text_Holder">{triageTextStateRef[triageState].current}</div>
+                <div id='parent' className="Triage_Text" onKeyUpCapture={textResponse} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
+                    <div contentEditable="true" suppressContentEditableWarning="true" className="Text_Holder" >{triageTextStateRef[triageState].current}</div>
                 </div>
         </div>
         
