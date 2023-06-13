@@ -1,0 +1,9 @@
+.ZenGifs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    background-color: rgb(101, 90, 148);
+    position: relative;
+    grid-area: 8/3/span 1/span 1;
+  }

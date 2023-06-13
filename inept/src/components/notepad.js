@@ -2,7 +2,7 @@ import './notepad.css';
 import React, { useRef} from 'react';
 
 function Notepad(props) {
-    var the_text = useRef('Put your notes here')
+    var the_text = useRef('Saving notes is not yet implemented')
     return (
         <div className='Notepad'>
             <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text'>{the_text.current}</div>

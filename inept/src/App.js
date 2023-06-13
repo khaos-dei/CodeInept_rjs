@@ -16,6 +16,7 @@ import TriageBubble from './components/triage_bbl';
 import ThemeChoice from './components/theme_choice';
 import ButtonsLine from './components/buttons';
 import Notepad from './components/notepad';
+import ZenGifs from './components/zen_gifs';
 
 function App() {
   //window.localStorage.setItem('theme', JSON.stringify(themes.defa));
@@ -49,9 +50,10 @@ function App() {
         <ThemeChoice datentime={dateState} />
         <DigiClock datentime={dateState} />
         <ButtonsLine />
+        <ZenGifs />
         {/* <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div> */}
         <div className='nice-box' style={{ 'gridArea': '5/1/span 4/span 2' }}>Projects</div>
-        <div className='nice-box' style={{ 'gridArea': '8/3/span 1/span 1' }}>Zen Gif</div>
+        {/* <div className='nice-box' style={{ 'gridArea': '8/3/span 1/span 1' }}>Zen Gif</div> */}
         <div className='nice-box' style={{ 'gridArea': '8/4/span 1/span 1' }}>Funsies (Spinwheel)</div>
         <div className='nice-box' style={{ 'gridArea': '7/5/span 2/span 1' }}>Youtube/Music</div>
       </div>
