@@ -1,4 +1,3 @@
-import { Button } from 'bootstrap';
 import './btn_redeflt.css';
 import { restoreDefaults } from './ls_component';
 
