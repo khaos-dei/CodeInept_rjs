@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import { ThemeProvider } from "styled-components";
@@ -17,6 +16,7 @@ import ThemeChoice from './components/theme_choice';
 import ButtonsLine from './components/buttons';
 import Notepad from './components/notepad';
 import ZenGifs from './components/zen_gifs';
+import ZeYouTube from './components/youtube';
 
 function App() {
   //window.localStorage.setItem('theme', JSON.stringify(themes.defa));
@@ -51,11 +51,12 @@ function App() {
         <DigiClock datentime={dateState} />
         <ButtonsLine />
         <ZenGifs />
+        <ZeYouTube />
         {/* <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div> */}
         <div className='nice-box' style={{ 'gridArea': '5/1/span 4/span 2' }}>Projects</div>
         {/* <div className='nice-box' style={{ 'gridArea': '8/3/span 1/span 1' }}>Zen Gif</div> */}
         <div className='nice-box' style={{ 'gridArea': '8/4/span 1/span 1' }}>Funsies (Spinwheel)</div>
-        <div className='nice-box' style={{ 'gridArea': '7/5/span 2/span 1' }}>Youtube/Music</div>
+        {/* <div className='nice-box' style={{ 'gridArea': '7/5/span 2/span 1' }}>Youtube/Music</div> */}
       </div>
     </div>
     </ThemeProvider>
