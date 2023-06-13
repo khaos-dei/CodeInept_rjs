@@ -5,7 +5,8 @@ import { restoreDefaults } from './ls_component';
 
 function BtnReDefault() {
     return (
-        <div className='Button' onClick={restoreDefaults}>Re/DFLT</div>
+        <button className='Button' onClick={restoreDefaults}>Re
+        DFLT</button>
     );
 }
 
