@@ -1,0 +1,9 @@
+.Projects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    background-color: rgb(101, 90, 148);
+    position: relative;
+    grid-area: 5/1/span 4/span 2;
+  }

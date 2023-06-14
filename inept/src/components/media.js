@@ -1,10 +1,8 @@
-import './youtube.css';
-import gif1 from '../assets/424-breathing.gif'
-import gif2 from '../assets/Zen_Garden.gif'
+import './media.css';
 import React from 'react';
 import YouTube from 'react-youtube';
 
-function ZeYouTube(props) {
+function Media(props) {
     const opts = {
         height: '200',
         width: '200',
@@ -14,10 +12,10 @@ function ZeYouTube(props) {
         },
       };
     return(
-        <div className='Youtubes'>
+        <div className='Media'>
            <YouTube videoId="2g811Eo7K8U" opts={opts} />
         </div>
     );
   }
   
-  export default ZeYouTube;
+  export default Media;

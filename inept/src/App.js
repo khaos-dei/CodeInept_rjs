@@ -5,8 +5,6 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from './theme/GlobalStyles';
 import { useTheme } from './theme/useTheme';
 
-
-
 import MonthProgressLine from './components/month_prog_line.js';
 import AnaClock from './components/ana_clck.js';
 import DigiClock from './components/digi_clck.js';
@@ -15,8 +13,9 @@ import TriageBubble from './components/triage_bbl';
 import ThemeChoice from './components/theme_choice';
 import ButtonsLine from './components/buttons';
 import Notepad from './components/notepad';
-import ZenGifs from './components/zen_gifs';
-import ZeYouTube from './components/youtube';
+import Media from './components/media';
+import Projects from './components/projects';
+import LowerLine from './components/lower_line';
 
 function App() {
   //window.localStorage.setItem('theme', JSON.stringify(themes.defa));
@@ -29,18 +28,15 @@ function App() {
   }, [themeLoaded, theme]);
 
 
-
-
   const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
         setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds, may lower for click fund 
     }, []);
   return (
-    <>
+    <div className="App">
     {
       themeLoaded && <ThemeProvider theme={ selectedTheme }>
     <GlobalStyles/>
-    <div className="App">
       <div className="App-body">
         <MonthProgressLine datentime={dateState} />
         <AnaClock datentime={dateState} />
@@ -50,18 +46,15 @@ function App() {
         <ThemeChoice datentime={dateState} />
         <DigiClock datentime={dateState} />
         <ButtonsLine />
-        <ZenGifs />
-        <ZeYouTube />
-        {/* <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div> */}
-        <div className='nice-box' style={{ 'gridArea': '5/1/span 4/span 2' }}>Projects</div>
-        {/* <div className='nice-box' style={{ 'gridArea': '8/3/span 1/span 1' }}>Zen Gif</div> */}
-        <div className='nice-box' style={{ 'gridArea': '8/4/span 1/span 1' }}>Funsies (Spinwheel)</div>
-        {/* <div className='nice-box' style={{ 'gridArea': '7/5/span 2/span 1' }}>Youtube/Music</div> */}
+        <Media />
+        <Projects />
+        <LowerLine />
+        {/* <div className='nice-box' style={{ 'gridArea': '5/1/span 4/span 2' }}>Projects</div> */}
+        {/* <div className='nice-box' style={{ 'gridArea': '8/4/span 1/span 1' }}>Funsies (Spinwheel)</div> */}
       </div>
-    </div>
     </ThemeProvider>
   }
-  </>
+    </div>
   );
 }
 
