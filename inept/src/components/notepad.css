@@ -12,26 +12,21 @@
 .TabLine {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: 0.4vmin;
+    grid-gap: 2%;
+    grid-template-columns: 29% 29% 29% 4.5% 4.5%;
     justify-content: left;
     align-items: center;
-    padding:1%;
+    padding:2%;
     position: absolute;
-    top:0vmin;
-    left:0%;
-    width: 88%;
+    top:-1.9%;
+    left:-1%;
+    width: 98%;
     text-align: center;
 
-    
-    /* border-style: solid;
-    border-width: 1pt;
-    color: cyan; */
   }
 
 .Tab {
-    padding:1%;
-    margin-top: 0%;
-    width:9.5vmin;
+    padding:0.5%;
     overflow:hidden;
     font-size:2vmin; 
     font-weight: 700;
@@ -40,39 +35,46 @@
   }
 
   .TabUP {
-    margin-top: 0%;
     padding:0.5%;
-    position:absolute;/* 
-    top:1%;
-    left:94%;
-    font-size:1vmin; 
-    transform: scaleX(3); */
-    top:0vmin;
-    left:96%;
     font-size:2vmin; 
     font-weight: 700;
     text-align: center;
-    background-color: rgb(59, 53, 145);
-    color: white;
+    color: cyan;
   }
   .TabDOWN {
-    margin-top: 0%;
     padding:0.5%;
-    position:absolute;/* 
-    top:-1.5%;
-    left:94%;
-    font-size:1vmin; 
-    transform: scaleX(3) rotate(180deg); */
-    top:0vmin;
-    left:90%;
     transform:rotate(180deg); 
     font-size:2vmin; 
     font-weight: 700;
     text-align: center;
+    color: cyan;
+  }
+  .FontDOWN {
+    margin-top: 18%;
+    padding:0.5%;
+    position:absolute;
+    top:0vmin;
+    left:89%;
+    width:10%;
+    font-size:65%; 
+    font-weight: 700;
+    text-align: center;
     background-color: rgb(59, 53, 145);
     color: white;
   }
-
+  .FontUP {
+    margin-top: 10%;
+    padding:0.5%;
+    position:absolute;
+    top:0vmin;
+    left:89%;
+    width:10%;
+    font-size:65%; 
+    font-weight: 700;
+    text-align: center;
+    background-color: rgb(59, 53, 145);
+    color: white;
+  }
 
 .Year {
     font-size:2.65vmin; 
@@ -88,7 +90,7 @@
     top:5%;
     left:0%;
     height:94%;
-    width:100%;
+    width:88%;
      background-color: rgb(101, 90, 148);
     border: 2px solid rgb(255, 255, 255); 
     word-wrap:normal;
@@ -96,4 +98,36 @@
     flex-direction: row;
     align-items: center; 
     overflow:hidden;
+  }
+  .Notebook_Edge {
+    position: absolute;
+    top:5%;
+    left:0%;
+    height:94%;
+    width:100%;
+    word-wrap:normal;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center; 
+    overflow:hidden;
+    background-color: rgb(74, 74, 77);
+
+   /*  border-style: solid;
+    border: 2px solid rgb(255, 255, 255);  */
+  }
+  .Notebook_TopLine {
+    position: absolute;
+    top:0%;
+    left:0%;
+    height:99%;
+    width:100%;
+    background-color: rgb(74, 74, 77);
+    word-wrap:normal;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center; 
+    overflow:hidden;
+
+    /* border-style: solid;
+    border: 2px solid rgb(255, 255, 255);  */
   }

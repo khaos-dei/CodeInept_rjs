@@ -44,7 +44,7 @@ function TriageBubble(props) {
         if(autoSizerDebug) console.log('>' + fontState + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontState + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
         if((diff < 0.5 * fontState)|| (diff > 1.5 * fontState)){
             //if((fontSZ<=0)||(fontSZ==Infinity)||(fontSZ==NaN)){setFontState(10);}
-            if(repeatOff>5){nL_adj+=1; if(autoSizerDebug)console.log("{",nL_adj,"}")}
+            if(repeatOff>10){nL_adj+=1; if(autoSizerDebug)console.log("{",nL_adj,"}")}
             delta = (diff - fontState)/(nLines+nL_adj);//calculate the fontSize change
             if(autoSizerDebug) console.log(fontState,'+', delta)
             setFontState(fontState+delta);//apply
