@@ -8,6 +8,23 @@
     grid-area: 2/5/span 5/span 1;
     border-top: 0pt;
   }
+  .ButtonLine {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 2%;
+    grid-template-rows: 5% 5% 5% 5%;
+    justify-content: center;
+    align-items: center;
+    padding:1%;
+    position: absolute;
+    top:5%;
+    left:88.5%;
+    width:10%;
+    height:93%;
+    text-align: center;
+ /*    border-color: wheat;
+    border-style: solid; */
+  }
 
 .TabLine {
     display: grid;
@@ -22,7 +39,6 @@
     left:-1%;
     width: 98%;
     text-align: center;
-
   }
 
 .Tab {
@@ -49,41 +65,16 @@
     text-align: center;
     color: cyan;
   }
-  .FontDOWN {
-    margin-top: 18%;
-    padding:0.5%;
-    position:absolute;
-    top:0vmin;
-    left:89%;
-    width:10%;
+  .SideButn {
+    padding:10%;
     font-size:65%; 
     font-weight: 700;
-    text-align: center;
-    background-color: rgb(59, 53, 145);
-    color: white;
-  }
-  .FontUP {
-    margin-top: 10%;
-    padding:0.5%;
-    position:absolute;
-    top:0vmin;
-    left:89%;
-    width:10%;
-    font-size:65%; 
-    font-weight: 700;
+    width:115%;
     text-align: center;
     background-color: rgb(59, 53, 145);
     color: white;
   }
 
-.Year {
-    font-size:2.65vmin; 
-    font-weight: 700;
-    position: absolute;
-    top:73%;
-    text-align: center;
-    color: cyan;
-  }
 
   .Notebook_Text {
     position: absolute;
@@ -91,7 +82,7 @@
     left:0%;
     height:94%;
     width:88%;
-     background-color: rgb(101, 90, 148);
+    background-color: rgb(101, 90, 148);
     border: 2px solid rgb(255, 255, 255); 
     word-wrap:normal;
     justify-content: center;

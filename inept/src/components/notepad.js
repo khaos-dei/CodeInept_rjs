@@ -23,9 +23,12 @@ function Notepad(props) {
 
             <div className='Notebook_Edge' />
             <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text' style={{fontSize:fontSize+'px'}}>{the_text.current}</div>
-            
-            <button className='FontDOWN' onClick={SmallerFont}>Oo</button>
-            <button className='FontUP' onClick={BiggerFont}>oO</button>
+            <div className='ButtonLine'>
+            <button className='SideButn' >+</button>
+            <button className='SideButn' >≣</button>
+            <button className='SideButn' onClick={SmallerFont}>Oo</button>
+            <button className='SideButn' onClick={BiggerFont}>oO</button>
+            </div>
              </div>
     );
   }
