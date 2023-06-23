@@ -1,8 +1,15 @@
 import './notepad.css';
-import React, { useRef} from 'react';
+import React, { useRef, useState} from 'react';
 
 function Notepad(props) {
     var the_text = useRef('Saving notes is not yet implemented')
+    const [fontSize, setfontSize] = useState(12);
+    function BiggerFont() {
+        setfontSize(fontSize+2);
+    }
+    function SmallerFont() {
+        setfontSize(fontSize-2);
+    }
     return (
         <div className='Notepad'>
             <div className='Notebook_TopLine' />
@@ -15,10 +22,10 @@ function Notepad(props) {
             </div>
 
             <div className='Notebook_Edge' />
-            <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text'>{the_text.current}</div>
+            <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text' style={{fontSize:fontSize+'px'}}>{the_text.current}</div>
             
-            <button className='FontDOWN'>Oo</button>
-            <button className='FontUP'>oO</button>
+            <button className='FontDOWN' onClick={SmallerFont}>Oo</button>
+            <button className='FontUP' onClick={BiggerFont}>oO</button>
              </div>
     );
   }
