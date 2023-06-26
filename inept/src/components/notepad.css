@@ -100,9 +100,10 @@
     background-color: rgb(101, 90, 148);
     border: 2px solid rgb(255, 255, 255); 
     word-wrap:normal;
-    justify-content: center;
+    justify-content: left;
     flex-direction: row;
-    align-items: center; 
+    align-items: left;
+    text-align: left; 
     overflow:hidden;
   }
   .Notebook_TopLine {

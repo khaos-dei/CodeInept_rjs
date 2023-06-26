@@ -1,6 +1,10 @@
 import './notepad.css';
 import React, { useRef, useState} from 'react';
-
+import { Color } from '@tiptap/extension-color'
+import ListItem from '@tiptap/extension-list-item'
+import TextStyle from '@tiptap/extension-text-style'
+import { EditorContent, useEditor } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
 
 import FontSize_icn from '../assets/icn_FontSize.png'
 import AddNote_icn from '../assets/icn_AddNote.png'
@@ -20,7 +24,40 @@ function Notepad(props) {
     const [fontSize, setfontSize] = useState(12);
     const [showDialog, setShowDialog] = useState(false);
     const [showMiniDialog, setShowMiniDialog] = useState(false);
+
     
+    const editor = useEditor({
+        extensions: [
+          Color.configure({ types: [TextStyle.name, ListItem.name] }),
+          TextStyle.configure({ types: [ListItem.name] }),
+          StarterKit.configure({
+            bulletList: {
+              keepMarks: true,
+              keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+            },
+            orderedList: {
+              keepMarks: true,
+              keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+            },
+          }),
+        ],
+        content: `
+          <h2>
+            Hi there,
+          </h2>
+          <p>
+            this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
+          </p>
+          <ul>
+            <li>
+              That’s a bullet list with one …
+            </li>
+            <li>
+              … or two list items.
+            </li>
+          </ul>
+        `,
+      })
     
     const manageMiniDialog = () => {
         setShowMiniDialog(!showMiniDialog);
@@ -67,7 +104,12 @@ function Notepad(props) {
                 <button className='Tab'>Week</button>
                 <button className='Tab'>Month</button>
             </div>
-            <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text' style={{fontSize:fontSize+'px'}}>{the_text.current}</div>
+            {/* <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
+                {the_text.current}
+            </div> */}
+            <div className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
+            <EditorContent editor={editor} />
+            </div>
             
             <div className='SideButtonLine'>
             <button className='SideButn' onClick={BiggerFont}><img src={AlgLeft_icn} alt=">>" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
