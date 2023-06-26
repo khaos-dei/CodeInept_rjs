@@ -74,6 +74,9 @@ function Notepad(props) {
     }
 
 
+    function Icon(img, alt, size, deg=0){
+       return(<img src={img} alt={alt} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
+    }
     return (
         <div className='Notepad'>
             <Dialog
@@ -90,23 +93,21 @@ function Notepad(props) {
 
             <div className='Notebook_TopLine' />
             <div className='TabArr'> 
-                <button className='ArrButn'> <img src={FlippingArrows_icn} alt="<<" style={{width:"4vmin", filter:'invert(1)', transform:'rotate(180deg)'}}/> </button>
-                <button className='ArrButn'> <img src={OnesArrow_icn} alt="<" style={{width:"2vmin", filter:'invert(1)', transform:'rotate(180deg)'}}/> </button>
-                <button className='ArrButn' ><img src={AddNote_icn} alt="+" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
-                <button className='ArrButn' onClick={manageDialog}><img src={NoteList_icn} alt="=" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
-                <button className='ArrButn' ><img src={Delete_icn} alt="del" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
-                <button className='ArrButn' ><img src={Colors_icn} alt="col" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
-                <button className='ArrButn'> <img src={OnesArrow_icn} alt=">" style={{width:"2vmin", filter:'invert(1)'}}/> </button>
-                <button className='ArrButn'> <img src={FlippingArrows_icn} alt=">>" style={{width:"4vmin", filter:'invert(1)'}}/> </button>
+                <button className='h1Butn'> {Icon(FlippingArrows_icn,"<<","4vmin",180)} </button>
+                <button className='h1Butn'> {Icon(OnesArrow_icn,"<","2vmin",180)} </button>
+                <button className='h1Butn' >{Icon(AddNote_icn,"+","2.5vmin")}</button>
+                <button className='h1Butn' onClick={manageDialog}>
+                                            {Icon(NoteList_icn,"=","2.5vmin")}</button>
+                <button className='h1Butn' >{Icon(Delete_icn,"del","2.5vmin")}</button>
+                <button className='h1Butn' >{Icon(Colors_icn,"col", "2.5vmin")}</button>
+                <button className='h1Butn'> {Icon(OnesArrow_icn,">","2vmin")} </button>
+                <button className='h1Butn'> {Icon(FlippingArrows_icn,">>","4vmin")} </button>
             </div>
             <div className='TabLine'>
                 <button className='Tab'>Day</button>
                 <button className='Tab'>Week</button>
                 <button className='Tab'>Month</button>
             </div>
-            {/* <div contentEditable="true" suppressContentEditableWarning="true" className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
-                {the_text.current}
-            </div> */}
             <div className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
             <EditorContent editor={editor} />
             </div>
