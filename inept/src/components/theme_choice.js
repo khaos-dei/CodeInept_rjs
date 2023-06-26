@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+/* import React, { useEffect, useState } from 'react' */
 import './theme_choice.css';
-import Dialog from './dialogue'
+/*  import Dialog from './dialogue' */
 
 function ThemeChoice(props) {
-    const [showDialog, setShowDialog] = useState(false);
+/*     const [showDialog, setShowDialog] = useState(false); */
 
-    const manageDialog = () => {
+/*     const manageDialog = () => {
         setShowDialog(!showDialog);
-    }
+    } */
     
     return (
         <div className='Calesndar_Page1'>
