@@ -8,29 +8,16 @@
     grid-area: 2/5/span 5/span 1;
     border-top: 0pt;
   }
-  .ButtonLine {
-    display: grid;
-    grid-auto-flow: row;
-    grid-row-gap: 2%;
-    grid-template-rows: 5% 5% 5% 5%;
-    justify-content: center;
-    align-items: center;
-    padding:1%;
-    position: absolute;
-    top:5%;
-    left:88.5%;
-    width:10%;
-    height:93%;
-    text-align: center;
- /*    border-color: wheat;
-    border-style: solid; */
-  }
+
+
+
+
 
 .TabLine {
     display: grid;
     grid-auto-flow: column;
     grid-gap: 2%;
-    grid-template-columns: 29% 29% 29% 4.5% 4.5%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     justify-content: left;
     align-items: center;
     padding:2%;
@@ -50,21 +37,49 @@
     color: cyan;
   }
 
-  .TabUP {
-    padding:0.5%;
-    font-size:2vmin; 
-    font-weight: 700;
+
+
+  .TabArr {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 5%;
+    grid-template-columns: 45% 45%;
+    width:120%;
+    justify-content: left;
+    align-items: center;
+    padding:2%;
     text-align: center;
-    color: cyan;
   }
-  .TabDOWN {
-    padding:0.5%;
-    transform:rotate(180deg); 
-    font-size:2vmin; 
+
+  .ArrButn {
+    padding:1%;
+    padding-top:0%;
+    padding-left: 4%;
+    font-size:65%; 
     font-weight: 700;
+    width:100%;
     text-align: center;
-    color: cyan;
   }
+
+.SideButtonLine {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 2%;
+    grid-template-rows: 5% 5% 5% 5% 5%;
+    justify-content: center;
+    align-items: center;
+    padding:1%;
+    position: absolute;
+    top:5%;
+    left:88.5%;
+    width:10%;
+    height:93%;
+    text-align: center;
+ /*    border-color: wheat;
+    border-style: solid; */
+  }
+
+
   .SideButn {
     padding:10%;
     font-size:65%; 
