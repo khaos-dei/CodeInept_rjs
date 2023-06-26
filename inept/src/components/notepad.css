@@ -10,6 +10,31 @@
   }
 
 
+  .TabArr {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 2%;
+    grid-template-columns: 15% 10% 10% 10% 10% 10% 10% 15%;
+    justify-content: left;
+    align-items: center;
+    padding:2%;
+    position: absolute;
+    top:-2.5%;
+    left:-1%;
+    height:10%;
+    width: 98%;
+    text-align: center;
+  }
+  .ArrButn {
+    padding:1%;
+    padding-top:0%;
+    padding-left: 4%;
+    font-size:65%; 
+    font-weight: 700;
+    width:100%;
+    text-align: center;
+    background-color: transparent;
+  }
 
 
 
@@ -22,12 +47,12 @@
     align-items: center;
     padding:2%;
     position: absolute;
-    top:-1.9%;
+    top:3.5%;
     left:-1%;
+    height:7%;
     width: 98%;
     text-align: center;
   }
-
 .Tab {
     padding:0.5%;
     overflow:hidden;
@@ -39,46 +64,21 @@
 
 
 
-  .TabArr {
-    display: grid;
-    grid-auto-flow: column;
-    grid-column-gap: 5%;
-    grid-template-columns: 45% 45%;
-    width:120%;
-    justify-content: left;
-    align-items: center;
-    padding:2%;
-    text-align: center;
-  }
-
-  .ArrButn {
-    padding:1%;
-    padding-top:0%;
-    padding-left: 4%;
-    font-size:65%; 
-    font-weight: 700;
-    width:100%;
-    text-align: center;
-  }
-
 .SideButtonLine {
-    display: grid;
-    grid-auto-flow: row;
-    grid-row-gap: 2%;
-    grid-template-rows: 5% 5% 5% 5% 5%;
-    justify-content: center;
-    align-items: center;
-    padding:1%;
-    position: absolute;
-    top:5%;
-    left:88.5%;
-    width:10%;
-    height:93%;
-    text-align: center;
- /*    border-color: wheat;
-    border-style: solid; */
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 2%;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 15%;
+  justify-content: left;
+  align-items: center;
+  padding:2%;
+  position: absolute;
+  top:90.8%;
+  left:-1%;
+  height:10%;
+  width: 98%;
+  text-align: center;
   }
-
 
   .SideButn {
     padding:10%;
@@ -86,17 +86,17 @@
     font-weight: 700;
     width:115%;
     text-align: center;
-    background-color: rgb(59, 53, 145);
+    background-color: transparent;
     color: white;
   }
 
 
   .Notebook_Text {
     position: absolute;
-    top:5%;
+    top:9.6%;
     left:0%;
-    height:94%;
-    width:88%;
+    height:83%;
+    width:100%;
     background-color: rgb(101, 90, 148);
     border: 2px solid rgb(255, 255, 255); 
     word-wrap:normal;
@@ -104,22 +104,6 @@
     flex-direction: row;
     align-items: center; 
     overflow:hidden;
-  }
-  .Notebook_Edge {
-    position: absolute;
-    top:5%;
-    left:0%;
-    height:94%;
-    width:100%;
-    word-wrap:normal;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center; 
-    overflow:hidden;
-    background-color: rgb(74, 74, 77);
-
-   /*  border-style: solid;
-    border: 2px solid rgb(255, 255, 255);  */
   }
   .Notebook_TopLine {
     position: absolute;
@@ -137,3 +121,5 @@
     /* border-style: solid;
     border: 2px solid rgb(255, 255, 255);  */
   }
+
+  
