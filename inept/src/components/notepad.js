@@ -3,7 +3,7 @@ import React, { useRef, useState} from 'react';
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
-import { EditorContent, useEditor } from '@tiptap/react'
+import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
 import FontSize_icn from '../assets/icn_FontSize.png'
@@ -79,6 +79,26 @@ function Notepad(props) {
     }
     return (
         <div className='Notepad'>
+          {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
+            <button
+              onClick={() => editor.chain().focus().toggleBold().run()}
+              className={editor.isActive('bold') ? 'is-active' : ''}
+            >
+              Bold
+            </button>
+            <button
+              onClick={() => editor.chain().focus().toggleItalic().run()}
+              className={editor.isActive('italic') ? 'is-active' : ''}
+            >
+              Italic
+            </button>
+            <button
+              onClick={() => editor.chain().focus().toggleStrike().run()}
+              className={editor.isActive('strike') ? 'is-active' : ''}
+            >
+              Strike
+            </button>
+          </BubbleMenu>}
             <Dialog
                 header="Choose a Theme"
                 body={<div>2023</div>}
