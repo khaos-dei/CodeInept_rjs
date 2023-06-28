@@ -3,7 +3,7 @@ import React, { useRef, useState} from 'react';
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
-import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from '@tiptap/react'
+import { BubbleMenu, EditorContent, FloatingMenu, fromString, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
 import FontSize_icn from '../assets/icn_FontSize.png'
@@ -69,10 +69,10 @@ function Notepad(props) {
     }
 
     function BiggerFont() {
-        setfontSize(fontSize+2);
+        setfontSize(fromString(fontSize)+2);
     }
     function SmallerFont() {
-        setfontSize(fontSize-2);
+        setfontSize(fromString(fontSize)-2);
     }
 
 
