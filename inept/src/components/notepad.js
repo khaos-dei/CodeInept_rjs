@@ -11,11 +11,22 @@ import {Icons,Alts} from '../constants/Icons'
 import Dialog from './dialogue'
 import MiniDialog from './mini_dialogue'
 
+
+
+
+
+
+
+
+
+
 function Notepad(props) {
     var the_text = useRef('Saving notes is not yet implemented')
     const [fontSize, setfontSize] = useState(12);
     const [showDialog, setShowDialog] = useState(false);
+    const [showMiniDialogAlign, setShowMiniDialogAlign] = useState(false);
     const [showMiniDialogFnt, setShowMiniDialogFnt] = useState(false);
+    const [showMiniDialogLst, setShowMiniDialogLst] = useState(false);
     const [showMiniDialogH0, setShowMiniDialogH0] = useState(false);
 
     
@@ -51,10 +62,17 @@ function Notepad(props) {
           </ul>
         `,
       })
-    
+
+
+    const manageMiniDialogAlign = () => {
+      setShowMiniDialogAlign(!showMiniDialogAlign);
+  }
     const manageMiniDialogFnt = () => {
       setShowMiniDialogFnt(!showMiniDialogFnt);
-    }
+  }
+    const manageMiniDialogLst = () => {
+      setShowMiniDialogLst(!showMiniDialogLst);
+  }
     const manageMiniDialogH0 = () => {
       setShowMiniDialogH0(!showMiniDialogH0);
   }
@@ -75,6 +93,7 @@ function Notepad(props) {
     }
     return (
         <div className='Notepad'>
+         
           {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
             <button
               onClick={() => editor.chain().focus().toggleBold().run()}
@@ -95,12 +114,21 @@ function Notepad(props) {
               Strike
             </button>
           </BubbleMenu>}
-            <Dialog
-                header="Choose a Theme"
-                body={<div>2023</div>}
-                open={showDialog}
-                callback={manageDialog} />
-            <MiniDialog
+
+            <Dialog header="Choose a Theme" body={<div>2023</div>} open={showDialog} callback={manageDialog}/>
+      
+            <MiniDialog /* Align Buttons */
+                body={
+                  <div className='ThreeButtonLine'>
+                  <button className='h1Butn' > {Icon("AlignL","3vmin",0)}</button>
+                  <button className='h1Butn' > {Icon("AlignC","3vmin",0)}</button>
+                  <button className='h1Butn' > {Icon("AlignR","3vmin",0)}</button>
+                  </div>
+                }
+                open={showMiniDialogAlign} callback={manageMiniDialogAlign} 
+                top={580} left={650} height={"4.5vmin"} width={"11vmin"}
+                background_color="gray"/>
+            <MiniDialog /* Font Size Buttons */
                 body={
                   <div className='FontButtonLine'>
                   <input name="FontSizeInpt" style={{height:"3vmin", width:"100%", margin:"0%"}}  value={fontSize} type="number" onInput={e => setfontSize(e.target.value)}></input>
@@ -109,14 +137,21 @@ function Notepad(props) {
                   <button className='h1Butn' onClick={SmallerFont}> {Icon("FontS","3vmin",0)}</button>
                   </div>
                 }
-                open={showMiniDialogFnt}
-                top={580}
-                left={800}
-                height={"5vmin"}
-                width={"18vmin"}
-                background_color="gray"
-                callback={manageMiniDialogFnt} />
-            <MiniDialog
+                open={showMiniDialogFnt} callback={manageMiniDialogFnt} 
+                top={580} left={800} height={"5vmin"} width={"18vmin"}
+                background_color="gray"/>
+            <MiniDialog /* List Types Buttons */
+                body={
+                  <div className='ThreeButtonLine'>
+                  <button className='h1Butn' > {Icon("Bullet","3vmin",0)}</button>
+                  <button className='h1Butn' > {Icon("Enum","3vmin",0)}</button>
+                  <button className='h1Butn' > {Icon("Todo","3vmin",0)}</button>
+                  </div>
+                }
+                open={showMiniDialogLst} callback={manageMiniDialogLst}
+                top={580} left={800} height={"4.5vmin"} width={"11vmin"}
+                background_color="gray"/>
+            <MiniDialog /* Heading types Buttons */
                 body={
                   <div className='HeadingButtonLine'>
                   <button className='h1Butn'> {Icon("P","3vmin",0)}</button>
@@ -128,13 +163,10 @@ function Notepad(props) {
                   <button className='h1Butn'> {Icon("H6","3vmin",0)}</button>
                   </div>
                 }
-                open={showMiniDialogH0}
-                top={580}
-                left={800}
-                height={"9vmin"}
-                width={"14vmin"}
-                background_color="gray"
-                callback={manageMiniDialogH0} />
+                open={showMiniDialogH0} callback={manageMiniDialogH0} 
+                top={580} left={800} height={"9vmin"} width={"14vmin"}
+                background_color="gray"/>
+
 
             <div className='Notebook_TopLine' />
             <div className='TabArr'> 
@@ -158,10 +190,15 @@ function Notepad(props) {
             </div>
             
             <div className='SideButtonLine'>
-            <button className='SideButn' onClick={BiggerFont}>{Icon("AlignL","2.5vmin")}</button>
+            <button className='SideButn' >{Icon("Undo","2.5vmin")}</button>
+            <button className='SideButn' >{Icon("Redo","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={manageMiniDialogAlign}>{Icon("AlignL","2.5vmin")}</button>
             <button className='SideButn' onMouseDown={manageMiniDialogFnt}>{Icon("Font","2.5vmin")}</button>
-            <button className='SideButn'>{Icon("AddList","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={manageMiniDialogLst}>{Icon("AddList","2.5vmin")}</button>
             <button className='SideButn' onMouseDown={manageMiniDialogH0}>{Icon("H0","2.5vmin")}</button>
+            <button className='SideButn' >{Icon("TextColor","2.5vmin")}</button>
+            <button className='SideButn' >{Icon("Code","2.5vmin")}</button>
+            <button className='SideButn' >{Icon("Line","2.5vmin")}</button>
             </div>
             
             </div>
