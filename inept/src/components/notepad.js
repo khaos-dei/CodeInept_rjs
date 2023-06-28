@@ -14,6 +14,8 @@ import OnesArrow_icn from '../assets/icn_OnesArrow.png'
 import Delete_icn from '../assets/icn_Delete.png'
 import Colors_icn from '../assets/icn_Colors.png'
 import AlgLeft_icn from '../assets/icn_AlgLeft.png'
+import BiggerFont_icn from '../assets/icn_BiggerFont.png'
+import SmallerFont_icn from '../assets/icn_SmallerFont.png'
 
 
 import Dialog from './dialogue'
@@ -106,8 +108,20 @@ function Notepad(props) {
                 callback={manageDialog} />
             <MiniDialog
                 header="Choose a font"
-                body={<div>2022</div>}
+                body={
+                  <div className='FontButtonLine'>
+                  <input name="FontSizeInpt" style={{height:"3vmin", width:"100%"}}  value={fontSize} type="number" onInput={e => setfontSize(e.target.value)}></input>
+                  <p>px</p>
+                  <button className='h1Butn' onClick={BiggerFont}> {Icon(BiggerFont_icn,"Up","3vmin",0)}</button>
+                  <button className='h1Butn' onClick={SmallerFont}> {Icon(SmallerFont_icn,"Down","3vmin",0)}</button>
+                  </div>
+                }
                 open={showMiniDialog}
+                top={580}
+                left={800}
+                height={"5vmin"}
+                width={"18vmin"}
+                background_color="gray"
                 callback={manageMiniDialog} />
 
 
@@ -134,7 +148,7 @@ function Notepad(props) {
             
             <div className='SideButtonLine'>
             <button className='SideButn' onClick={BiggerFont}><img src={AlgLeft_icn} alt=">>" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
-            <button className='SideButn' onClick={manageMiniDialog}><img src={FontSize_icn} alt="Oo" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
+            <button className='SideButn' onMouseEnter={manageMiniDialog}><img src={FontSize_icn} alt="Oo" style={{width:"2.5vmin", filter:'invert(1)'}}/></button>
             </div>
             
             </div>

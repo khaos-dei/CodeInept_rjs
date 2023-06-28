@@ -63,6 +63,17 @@
   }
 
 
+.FontButtonLine {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 6%;
+    grid-template-columns: 30% 10% 20% 20%;
+    justify-content: left;
+    align-items: center;
+    padding:2%;
+    text-align: center;
+    }
+  
 
 .SideButtonLine {
   display: grid;
@@ -106,6 +117,7 @@
     text-align: left; 
     overflow:hidden;
   }
+  
   .Notebook_TopLine {
     position: absolute;
     top:0%;

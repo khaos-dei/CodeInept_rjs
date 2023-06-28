@@ -8,17 +8,9 @@ const MiniDialog = props => {
         setShow(props.open);
     }, [props.open]);
 
-    const closeDialog = () => {
-        setShow(false);
-        props.callback()
-    }
 
     return (
-            <dialog className='MiniPopupItself' open={show}>
-                <div className='MiniPopupHeader'>
-                    <span className='MiniCloseCross' onClick={closeDialog}>&times;</span>
-                    {props.header}
-                </div>
+            <dialog className='MiniPopupItself' style={{top:props.top, left:props.left, width:props.width, height:props.height, backgroundColor:props.background_color}} open={show}>
                 <div className="MiniPopupBody">
                     {props.body}
                 </div>
