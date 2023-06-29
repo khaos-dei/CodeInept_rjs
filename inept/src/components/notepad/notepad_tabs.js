@@ -38,9 +38,9 @@ function NotepadTabs(props) {
         </div>
 
         <div className='TabLine'>
-            <button className='Tab'>{noteList[Number(firstTab)]}</button>
-            <button className='Tab'>{noteList[Number(firstTab)+1]}</button>
-            <button className='Tab'>{noteList[Number(firstTab)+2]}</button>
+            <button className={Number(activeTab) === Number(firstTab) ? 'TabActive' : 'Tab'}    onClick={()=>setactiveTab(Number(firstTab))} >{noteList[Number(firstTab)]}</button>
+            <button className={Number(activeTab) === Number(firstTab)+1 ? 'TabActive' : 'Tab'}  onClick={()=>setactiveTab(Number(firstTab)+1)} >{noteList[Number(firstTab)+1]}</button>
+            <button className={Number(activeTab) === Number(firstTab)+2 ? 'TabActive' : 'Tab'}  onClick={()=>setactiveTab(Number(firstTab)+2)} >{noteList[Number(firstTab)+2]}</button>
         </div>
       </>
     );

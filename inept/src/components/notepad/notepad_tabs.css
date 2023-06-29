@@ -54,11 +54,25 @@
     width: 98%;
     text-align: center;
   }
+
+
+
 .Tab {
     padding:0.5%;
     overflow:hidden;
     font-size:2vmin; 
     font-weight: 700;
     text-align: center;
-    color: cyan;
+    background-color: #005d7c;
+    color: #fff7d6;
+  }
+
+.TabActive {
+    padding:0.5%;
+    overflow:hidden;
+    font-size:2vmin; 
+    font-weight: 700;
+    text-align: center;
+    background-color: #00b39c;
+    color: #fff7d6;
   }
