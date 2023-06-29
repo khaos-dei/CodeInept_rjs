@@ -1,0 +1,26 @@
+.NotepadToolbar {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 2%;
+    grid-template-columns: 9% 9% 10% 10% 10% 10% 10% 10% 10%;
+    justify-content: left;
+    align-items: center;
+    padding:2%;
+    position: absolute;
+    top:90.8%;
+    left:-1%;
+    height:10%;
+    width: 98%;
+    text-align: center;
+    }
+  
+    .TButton {
+      padding:10%;
+      font-size:65%; 
+      font-weight: 700;
+      width:115%;
+      text-align: center;
+      background-color: transparent;
+      color: white;
+    }
+  

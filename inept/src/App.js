@@ -12,14 +12,14 @@ import DatePage from './components/date_page';
 import TriageBubble from './components/triage_bubble';
 import ThemeChoice from './components/theme_choice';
 import ButtonsLine from './components/buttons';
-import Notepad from './components/notepad';
+import Notepad from './components/notepad/notepad';
 import Media from './components/media';
 import Projects from './components/projects';
 import LowerLine from './components/lower_line';
 
-function App() {
-  //window.localStorage.setItem('theme', JSON.stringify(themes.defa));
 
+
+function App() {
   const {theme, themeLoaded} = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
 
@@ -27,11 +27,11 @@ function App() {
     setSelectedTheme(theme);
   }, [themeLoaded, theme]);
 
-
   const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
-        setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds, may lower for click fund 
+        setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds 
     }, []);
+
   return (
     <div className="App">
     {
