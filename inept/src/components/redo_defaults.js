@@ -1,5 +1,5 @@
-import './btn_redeflt.css';
-import { restoreDefaults } from './ls_component';
+import './redo_defaults.css';
+import { restoreDefaults } from './localstorage_component';
 
 
 function BtnReDefault() {

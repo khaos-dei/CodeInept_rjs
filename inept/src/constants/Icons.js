@@ -29,6 +29,9 @@ import Line_icn from '../assets/icn/Line.png'
 import TextColor_icn from '../assets/icn/TextColor.png'
 
 
+function Icon( key, size, deg=0){
+  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
+}
 
 const Icons  = {
     "Font":FontSize_icn,
@@ -107,4 +110,4 @@ const Alts  = {
 
 
 
-export {Icons,Alts}
+export {Icons,Icon}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as themeX from './schema.json';
-import {setToLS, getFromLS} from '../components/ls_component';
+import {setToLS, getFromLS} from '../components/localstorage_component';
 
 
 

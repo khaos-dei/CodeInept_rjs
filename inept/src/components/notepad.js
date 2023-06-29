@@ -1,5 +1,5 @@
 import './notepad.css';
-import React, { useRef, useState} from 'react';
+import React, { useState} from 'react';
 
 
 import StarterKit from '@tiptap/starter-kit'
@@ -11,25 +11,20 @@ import TextStyle from '@tiptap/extension-text-style'
 import TextAlign from '@tiptap/extension-text-align'
 import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
-import { BubbleMenu, EditorContent, fromString, useEditor} from '@tiptap/react'
+import { BubbleMenu, EditorContent, useEditor} from '@tiptap/react'
 
 import Dialog from './dialogue'
-import MiniDialog from './mini_dialogue'
+import NotepadPopups from './notebook_popups'
 
-import {Icons,Alts} from '../constants/Icons'
+import {Icon} from '../constants/Icons'
 
 
 
 function Notepad(props) {
     const [fontSize, setfontSize] = useState(12);
     const [showDialog, setShowDialog] = useState(false);
-    const [showMiniDialogAlign, setShowMiniDialogAlign] = useState(false);
-    const [showMiniDialogFnt, setShowMiniDialogFnt] = useState(false);
-    const [showMiniDialogLst, setShowMiniDialogLst] = useState(false);
-    const [showMiniDialogH0, setShowMiniDialogH0] = useState(false);
-    const [showMiniDialogColor, setShowMiniDialogColor] = useState(false);
-    
- 
+    const [showPopup, setShowPopup] = useState('none');
+
     const editor = useEditor({
         extensions: [
           Document,
@@ -62,60 +57,9 @@ function Notepad(props) {
         `,
       })
 
-    const manageMiniDialogAlign = () => {
-      setShowMiniDialogAlign(!showMiniDialogAlign);
-      setShowMiniDialogFnt(false);
-      setShowMiniDialogLst(false);
-      setShowMiniDialogH0(false);
-      setShowMiniDialogColor(false);
-
-    }
-    const manageMiniDialogFnt = () => {
-      setShowMiniDialogAlign(false);
-      setShowMiniDialogFnt(!showMiniDialogFnt);
-      setShowMiniDialogLst(false);
-      setShowMiniDialogH0(false);
-      setShowMiniDialogColor(false);
-    }
-    const manageMiniDialogLst = () => {
-      setShowMiniDialogAlign(false);
-      setShowMiniDialogFnt(false);
-      setShowMiniDialogLst(false);
-      setShowMiniDialogLst(!showMiniDialogLst);
-      setShowMiniDialogH0(false);
-      setShowMiniDialogColor(false);
-    }
-    const manageMiniDialogH0 = () => {
-      setShowMiniDialogAlign(false);
-      setShowMiniDialogFnt(false);
-      setShowMiniDialogLst(false);
-      setShowMiniDialogLst(false);
-      setShowMiniDialogH0(!showMiniDialogH0);
-      setShowMiniDialogColor(false);
-    }
-    const manageMiniDialogColor = () => {
-    setShowMiniDialogAlign(false);
-    setShowMiniDialogFnt(false);
-    setShowMiniDialogLst(false);
-    setShowMiniDialogH0(false);
-    setShowMiniDialogColor(!showMiniDialogColor);
-    }
-  
     const manageDialog = () => {
         setShowDialog(!showDialog);
     }
-
-    function BiggerFont() {
-        setfontSize(fromString(fontSize)+2);
-    }
-    function SmallerFont() {
-        setfontSize(fromString(fontSize)-2);
-    }
-
-    function Icon( key, size, deg=0){
-       return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
-    }
-
 
     return (
         <div className='Notepad'>
@@ -141,66 +85,19 @@ function Notepad(props) {
             </button>
           </BubbleMenu>}
 
-            <Dialog header="Choose a Theme" body={<div>2023</div>} open={showDialog} callback={manageDialog}/>
+            <Dialog 
+            header="Notes List" 
+            body={<div>2023</div>} 
+            open={showDialog} callback={manageDialog}/>
       
-            <MiniDialog /* Align Buttons Working! */
-                body={
-                  <div className='ThreeButtonLine'>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().setTextAlign('left').run()}> {Icon("AlignL","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().setTextAlign('center').run()}> {Icon("AlignC","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().setTextAlign('right').run()}> {Icon("AlignR","3vmin",0)}</button>
-                  </div>
-                }
-                open={showMiniDialogAlign} callback={manageMiniDialogAlign} 
-                position={["66.5%","60%","4.5vmin","11vmin"]}
-                background_color="gray"/>
-            <MiniDialog /* Font Size Buttons Working! */
-                body={
-                  <div className='FontButtonLine'>
-                  <input name="FontSizeInpt" style={{height:"3vmin", width:"100%", margin:"0%"}}  value={fontSize} type="number" onInput={e => setfontSize(e.target.value)}></input>
-                  <div style={{padding:"0%"}}>px</div>
-                  <button className='IcnBtn' onClick={BiggerFont}> {Icon("FontL","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={SmallerFont}> {Icon("FontS","3vmin",0)}</button>
-                  </div>
-                }
-                open={showMiniDialogFnt} callback={manageMiniDialogFnt} 
-                position={["66.5%","65%","5vmin","18vmin"]}
-                background_color="gray"/>
-            <MiniDialog /* List Types Buttons */
-                body={
-                  <div className='ThreeButtonLine'>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleBulletList().run()}> {Icon("Bullet","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleOrderedList().run()}> {Icon("Enum","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleTaskList().run()}> {Icon("Todo","3vmin",0)}</button>
-                  </div>
-                }
-                open={showMiniDialogLst} callback={manageMiniDialogLst}
-                position={["66.5%","70.5%","4.5vmin","11vmin"]}
-                background_color="gray"/>
-            <MiniDialog /* Heading types Buttons Working! */
-                body={
-                  <div className='HeadingButtonLine'>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().setParagraph().run()}> {Icon("P","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}> {Icon("H1","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}> {Icon("H2","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}> {Icon("H3","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}> {Icon("H4","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}> {Icon("H5","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}> {Icon("H6","3vmin",0)}</button>
-                  </div>
-                }
-                open={showMiniDialogH0} callback={manageMiniDialogH0} 
-                position={["66.5%","75.5%","9vmin","14vmin"]}
-                background_color="gray"/>
-            <MiniDialog /* Color text even buttons are not present yet! */
-                body={
-                  <div className='HeadingButtonLine'>
-                  color_options  (will_be) here
-                  </div>
-                }
-                open={showMiniDialogColor} callback={manageMiniDialogColor} 
-                position={["66.5%","80%","9vmin","14vmin"]}
-                background_color="gray"/>
+
+          <NotepadPopups 
+            editor={editor}
+            fontSize={fontSize}
+            setfontSize={setfontSize}
+            show={showPopup}
+            setShow={setShowPopup}
+          />
 
             <div className='Notebook_TopLine' />
             <div className='TabArr'> 
@@ -225,11 +122,11 @@ function Notepad(props) {
             <div className='SideButtonLine'>
             <button className='SideButn' onClick={() => editor.chain().focus().undo().run()}>{Icon("Undo","2.5vmin")}</button>
             <button className='SideButn' onClick={() => editor.chain().focus().redo().run()}>{Icon("Redo","2.5vmin")}</button>
-            <button className='SideButn' onMouseDown={manageMiniDialogAlign}>{Icon("AlignL","2.5vmin")}</button>
-            <button className='SideButn' onMouseDown={manageMiniDialogFnt}>{Icon("Font","2.5vmin")}</button>
-            <button className='SideButn' onMouseDown={manageMiniDialogLst}>{Icon("AddList","2.5vmin")}</button>
-            <button className='SideButn' onMouseDown={manageMiniDialogH0}>{Icon("H0","2.5vmin")}</button>
-            <button className='SideButn' onMouseDown={manageMiniDialogColor}>{Icon("TextColor","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={() =>setShowPopup("Align")}>{Icon("AlignL","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={() =>setShowPopup("Font")}>{Icon("Font","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={() =>setShowPopup("List")}>{Icon("AddList","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={() =>setShowPopup("Header")}>{Icon("H0","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={() =>setShowPopup("Color")}>{Icon("TextColor","2.5vmin")}</button> 
             <button className='SideButn' onClick={() => editor.chain().focus().toggleCodeBlock().run()}>{Icon("Code","2.5vmin")}</button>
             <button className='SideButn' onClick={() => editor.chain().focus().setHorizontalRule().run()}>{Icon("Line","2.5vmin")}</button>
             </div>

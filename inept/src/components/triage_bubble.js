@@ -1,6 +1,6 @@
 import React, { useState, useRef} from 'react'
-import './triage_bbl.css';
-import {setToLS, getFromLS} from './ls_component';
+import './triage_bubble.css';
+import {setToLS, getFromLS} from './localstorage_component';
 
 
 var repeatOff = 0;

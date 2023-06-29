@@ -1,5 +1,5 @@
 import {days} from '../constants/DateConsts';
-import './month_prog_line.css';
+import './month_progress_line.css';
 
 function first_day(color){
     let content = [];

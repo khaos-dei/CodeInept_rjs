@@ -5,11 +5,11 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from './theme/GlobalStyles';
 import { useTheme } from './theme/useTheme';
 
-import MonthProgressLine from './components/month_prog_line.js';
+import MonthProgressLine from './components/month_progress_line.js';
 import AnaClock from './components/ana_clck.js';
 import DigiClock from './components/digi_clck.js';
 import DatePage from './components/date_page';
-import TriageBubble from './components/triage_bbl';
+import TriageBubble from './components/triage_bubble';
 import ThemeChoice from './components/theme_choice';
 import ButtonsLine from './components/buttons';
 import Notepad from './components/notepad';
@@ -49,8 +49,6 @@ function App() {
         <Media />
         <Projects />
         <LowerLine />
-        {/* <div className='nice-box' style={{ 'gridArea': '5/1/span 4/span 2' }}>Projects</div> */}
-        {/* <div className='nice-box' style={{ 'gridArea': '8/4/span 1/span 1' }}>Funsies (Spinwheel)</div> */}
       </div>
     </ThemeProvider>
   }

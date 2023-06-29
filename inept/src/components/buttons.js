@@ -1,6 +1,6 @@
 import './buttons.css';
 
-import BtnReDefault from './btn_redeflt';
+import BtnReDefault from './redo_defaults';
 
 function ButtonsLine() {
     return (
