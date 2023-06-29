@@ -27,6 +27,7 @@ function Notepad(props) {
     const [showMiniDialogFnt, setShowMiniDialogFnt] = useState(false);
     const [showMiniDialogLst, setShowMiniDialogLst] = useState(false);
     const [showMiniDialogH0, setShowMiniDialogH0] = useState(false);
+    const [showMiniDialogColor, setShowMiniDialogColor] = useState(false);
     
  
     const editor = useEditor({
@@ -64,16 +65,43 @@ function Notepad(props) {
 
     const manageMiniDialogAlign = () => {
       setShowMiniDialogAlign(!showMiniDialogAlign);
+      setShowMiniDialogFnt(false);
+      setShowMiniDialogLst(false);
+      setShowMiniDialogH0(false);
+      setShowMiniDialogColor(false);
+
   }
     const manageMiniDialogFnt = () => {
+      setShowMiniDialogAlign(false);
       setShowMiniDialogFnt(!showMiniDialogFnt);
+      setShowMiniDialogLst(false);
+      setShowMiniDialogH0(false);
+      setShowMiniDialogColor(false);
   }
     const manageMiniDialogLst = () => {
+      setShowMiniDialogAlign(false);
+      setShowMiniDialogFnt(false);
+      setShowMiniDialogLst(false);
       setShowMiniDialogLst(!showMiniDialogLst);
+      setShowMiniDialogH0(false);
+      setShowMiniDialogColor(false);
   }
     const manageMiniDialogH0 = () => {
+      setShowMiniDialogAlign(false);
+      setShowMiniDialogFnt(false);
+      setShowMiniDialogLst(false);
+      setShowMiniDialogLst(false);
       setShowMiniDialogH0(!showMiniDialogH0);
+      setShowMiniDialogColor(false);
   }
+  const manageMiniDialogColor = () => {
+    setShowMiniDialogAlign(false);
+    setShowMiniDialogFnt(false);
+    setShowMiniDialogLst(false);
+    setShowMiniDialogH0(false);
+    setShowMiniDialogColor(!showMiniDialogColor);
+}
+  
     const manageDialog = () => {
         setShowDialog(!showDialog);
     }
@@ -164,7 +192,15 @@ function Notepad(props) {
                 open={showMiniDialogH0} callback={manageMiniDialogH0} 
                 top={580} left={800} height={"9vmin"} width={"14vmin"}
                 background_color="gray"/>
-
+          <MiniDialog /* Color text even buttons are not present yet! */
+                body={
+                  <div className='HeadingButtonLine'>
+                  color_options  (will_be) here
+                  </div>
+                }
+                open={showMiniDialogColor} callback={manageMiniDialogColor} 
+                top={580} left={800} height={"9vmin"} width={"14vmin"}
+                background_color="gray"/>
 
             <div className='Notebook_TopLine' />
             <div className='TabArr'> 
@@ -188,13 +224,13 @@ function Notepad(props) {
             </div>
             
             <div className='SideButtonLine'>
-            <button className='SideButn' >{Icon("Undo","2.5vmin")}</button>
-            <button className='SideButn' >{Icon("Redo","2.5vmin")}</button>
+            <button className='SideButn' onClick={() => editor.chain().focus().undo().run()}>{Icon("Undo","2.5vmin")}</button>
+            <button className='SideButn' onClick={() => editor.chain().focus().redo().run()}>{Icon("Redo","2.5vmin")}</button>
             <button className='SideButn' onMouseDown={manageMiniDialogAlign}>{Icon("AlignL","2.5vmin")}</button>
             <button className='SideButn' onMouseDown={manageMiniDialogFnt}>{Icon("Font","2.5vmin")}</button>
             <button className='SideButn' onMouseDown={manageMiniDialogLst}>{Icon("AddList","2.5vmin")}</button>
             <button className='SideButn' onMouseDown={manageMiniDialogH0}>{Icon("H0","2.5vmin")}</button>
-            <button className='SideButn' >{Icon("TextColor","2.5vmin")}</button>
+            <button className='SideButn' onMouseDown={manageMiniDialogColor}>{Icon("TextColor","2.5vmin")}</button>
             <button className='SideButn' onClick={() => editor.chain().focus().toggleCodeBlock().run()}>{Icon("Code","2.5vmin")}</button>
             <button className='SideButn' onClick={() => editor.chain().focus().setHorizontalRule().run()}>{Icon("Line","2.5vmin")}</button>
             </div>
