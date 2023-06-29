@@ -10,7 +10,7 @@ const MiniDialog = props => {
 
 
     return (
-            <dialog className='MiniPopupItself' style={{top:props.top, left:props.left, width:props.width, height:props.height, backgroundColor:props.background_color}} open={show}>
+            <dialog className='MiniPopupItself' style={{top:props.position[0], left:props.position[1], width:props.position[2], height:props.position[2], backgroundColor:props.background_color}} open={show}>
                 <div className="MiniPopupBody">
                     {props.body}
                 </div>
