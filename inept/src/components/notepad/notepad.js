@@ -17,9 +17,6 @@ import NotepadToolbar from './notepad_toolbar'
 import NotepadTabs from './notepad_tabs'
 import NotepadBubblePopup from './notepad_bubble_popup'
 
-
-
-
 function Notepad(props) {
     const [fontSize, setfontSize] = useState(26);
     const [showPopup, setShowPopup] = useState('none');

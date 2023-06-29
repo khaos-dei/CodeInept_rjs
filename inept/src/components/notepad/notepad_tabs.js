@@ -2,13 +2,19 @@ import './notepad_tabs.css';
 import React, { useState} from 'react';
 import Dialog from '../dialogue'
 import {Icon} from '../../constants/Icons'
+import {setToLS, getFromLS} from '../localstorage_component';
 
 
 function NotepadTabs(props) {
     const [showDialog, setShowDialog] = useState(false);
+    const [activeTab, setactiveTab]= useState(getFromLS("active-Tab"));
+    const [firstTab, setfirstTab]= useState(getFromLS("first-Tab"));
+    const [noteList, setnoteList]= useState(getFromLS("note-List"));
+    
 
     const manageDialog = () => {
         setShowDialog(!showDialog);
+        console.log(firstTab+1);
     }
 
     return (
@@ -21,20 +27,20 @@ function NotepadTabs(props) {
         <div className='Notebook_TopLine' />
           
         <div className='TabArr'> 
-            <button className='IcnBtn'> {Icon("Arrows","4vmin",180)} </button>
-            <button className='IcnBtn'> {Icon("Arrow","2vmin",180)} </button>
+            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)-3)}> {Icon("Arrows","4vmin",180)} </button>
+            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)-1)}> {Icon("Arrow","2vmin",180)} </button>
             <button className='IcnBtn' >{Icon("Add","2.5vmin")}</button>
             <button className='IcnBtn' onClick={manageDialog}> {Icon("List","2.5vmin")}</button>
             <button className='IcnBtn' >{Icon("Delete","2.5vmin")}</button>
             <button className='IcnBtn' >{Icon("Color", "2.5vmin")}</button>
-            <button className='IcnBtn'> {Icon("Arrow","2vmin")} </button>
-            <button className='IcnBtn'> {Icon("Arrows","4vmin")} </button>
+            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)+1)}> {Icon("Arrow","2vmin")} </button>
+            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)+3)}> {Icon("Arrows","4vmin")} </button>
         </div>
 
         <div className='TabLine'>
-            <button className='Tab'>Day</button>
-            <button className='Tab'>Week</button>
-            <button className='Tab'>Month</button>
+            <button className='Tab'>{noteList[Number(firstTab)]}</button>
+            <button className='Tab'>{noteList[Number(firstTab)+1]}</button>
+            <button className='Tab'>{noteList[Number(firstTab)+2]}</button>
         </div>
       </>
     );
