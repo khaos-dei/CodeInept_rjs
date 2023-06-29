@@ -26,11 +26,11 @@ function NotepadPopups(props) {
     
     return (
       <>
-        <NotepadAlignPopup showMiniDialogAlign={showMiniDialogAlign}/>
+        <NotepadAlignPopup editor={props.editor} showMiniDialogAlign={showMiniDialogAlign}/>
         <NotepadFontPopup setfontSize={props.setfontSize} fontSize={props.fontSize} showMiniDialogFnt={showMiniDialogFnt} />
-        <NotepadListPopup showMiniDialogLst={showMiniDialogLst}/>
-        <NotepadHeadingPopup showMiniDialogH0={showMiniDialogH0}/>
-        <NotepadColorPopup showMiniDialogColor={showMiniDialogColor}/>
+        <NotepadListPopup editor={props.editor} showMiniDialogLst={showMiniDialogLst}/>
+        <NotepadHeadingPopup editor={props.editor} showMiniDialogH0={showMiniDialogH0}/>
+        <NotepadColorPopup editor={props.editor} showMiniDialogColor={showMiniDialogColor}/>
       </>
     )
 }

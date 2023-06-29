@@ -1,6 +1,5 @@
 import MiniDialog from '../mini_dialogue'
-/* import {Icon} from '../../constants/Icons'
-import editor from '../../utils/notepad_editor' */
+import {Icon} from '../../constants/Icons'
 
 function NotepadColorPopup(props) {
 return(
