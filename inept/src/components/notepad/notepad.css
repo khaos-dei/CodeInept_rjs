@@ -2,93 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-style: solid;
-    background-color: rgb(101, 90, 148); */
     position: relative;
     grid-area: 2/5/span 5/span 1;
     border-top: 0pt;
   }
-
-
-  .TabArr {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 2%;
-    grid-template-columns: 15% 10% 10% 10% 10% 10% 10% 15%;
-    justify-content: left;
-    align-items: center;
-    padding:2%;
-    position: absolute;
-    top:-2.5%;
-    left:-1%;
-    height:10%;
-    width: 98%;
-    text-align: center;
-  }
-  .IcnBtn {
-    padding:1%;
-    padding-top:0%;
-    padding-left: 4%;
-    font-size:65%; 
-    font-weight: 700;
-    width:100%;
-    text-align: center;
-    background-color: transparent;
-  }
-
-
-
-.TabLine {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 2%;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-    justify-content: left;
-    align-items: center;
-    padding:2%;
-    position: absolute;
-    top:3.5%;
-    left:-1%;
-    height:7%;
-    width: 98%;
-    text-align: center;
-  }
-.Tab {
-    padding:0.5%;
-    overflow:hidden;
-    font-size:2vmin; 
-    font-weight: 700;
-    text-align: center;
-    color: cyan;
-  }
-
-
-.SideButtonLine {
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: 2%;
-  grid-template-columns: 9% 9% 10% 10% 10% 10% 10% 10% 10%;
-  justify-content: left;
-  align-items: center;
-  padding:2%;
-  position: absolute;
-  top:90.8%;
-  left:-1%;
-  height:10%;
-  width: 98%;
-  text-align: center;
-  }
-
-  .SideButn {
-    padding:10%;
-    font-size:65%; 
-    font-weight: 700;
-    width:115%;
-    text-align: center;
-    background-color: transparent;
-    color: white;
-  }
-
 
   .Notebook_Text {
     position: absolute;
@@ -107,43 +24,6 @@
     text-align: left; 
     overflow:hidden;
   }
-  
-  .Notebook_TopLine {
-    position: absolute;
-    top:0%;
-    left:0%;
-    height:99%;
-    width:100%;
-    background-color: rgb(74, 74, 77);
-    word-wrap:normal;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center; 
-    overflow:hidden;
 
-    /* border-style: solid;
-    border: 2px solid rgb(255, 255, 255);  */
-  }
 
-  
-
-    ul[data-type="taskList"] {
-      list-style: none;
-      padding: 0;
-   }
-    ul[data-type="taskList"] p {
-      margin: 0;
-   }
-    ul[data-type="taskList"] li {
-      display: flex;
-   }
-    ul[data-type="taskList"] li > label {
-      flex: 0 0 auto;
-      margin-right: 0.5rem;
-      user-select: none;
-   }
-    ul[data-type="taskList"] li > div {
-      flex: 1 1 auto;
-   }
-    
     

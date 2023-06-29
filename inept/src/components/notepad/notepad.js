@@ -10,116 +10,47 @@ import TextStyle from '@tiptap/extension-text-style'
 import TextAlign from '@tiptap/extension-text-align'
 import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
-import { BubbleMenu, EditorContent, useEditor} from '@tiptap/react'
+import { EditorContent, useEditor} from '@tiptap/react'
 
-import Dialog from '../dialogue'
 import NotepadPopups from './notepad_popups'
 import NotepadToolbar from './notepad_toolbar'
+import NotepadTabs from './notepad_tabs'
+import NotepadBubblePopup from './notepad_bubble_popup'
 
-import {Icon} from '../../constants/Icons'
+
+
 
 function Notepad(props) {
-    const [fontSize, setfontSize] = useState(12);
-    const [showDialog, setShowDialog] = useState(false);
+    const [fontSize, setfontSize] = useState(26);
     const [showPopup, setShowPopup] = useState('none');
 
     const editor = useEditor({
         extensions: [
-          Document,
-          Paragraph,
-          Text,
-          TaskList.configure({
-            itemTypeName: 'taskItem',
-          }),
-          TaskItem,
-          Color,
-          TextStyle,
-          TextAlign.configure({
-            types: ['heading', 'paragraph'],
-          }),
-          StarterKit,
+          Document,Paragraph,Text,TaskList.configure({itemTypeName: 'taskItem',}),TaskItem,
+          Color,TextStyle,TextAlign.configure({types: ['heading', 'paragraph'],}),StarterKit,
         ],
         content: `
           <h2>
             Hi there,
           </h2>
-          <p>
-            this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-          </p>
           <ul data-type="taskList">
             <li data-type="taskItem" data-checked="true">flour</li>
-            <li data-type="taskItem" data-checked="true">baking powder</li>
-            <li data-type="taskItem" data-checked="true">salt</li>
-            <li data-type="taskItem" data-checked="false">sugar</li>
           </ul> 
         `,
     })
-
-    const manageDialog = () => {
-        setShowDialog(!showDialog);
-    }
-
     return (
-      <div className='Notepad'>
-         
-          {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
-            <button
-              onClick={() => editor.chain().focus().toggleBold().run()}
-              className={editor.isActive('bold') ? 'is-active' : ''}
-            >
-              Bold
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleItalic().run()}
-              className={editor.isActive('italic') ? 'is-active' : ''}
-            >
-              Italic
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleStrike().run()}
-              className={editor.isActive('strike') ? 'is-active' : ''}
-            >
-              Strike
-            </button>
-          </BubbleMenu>}
+      <div className='Notepad'> 
+        {editor&&<NotepadBubblePopup editor={editor}/>}
 
-          <Dialog 
-            header="Notes List" 
-            body={<div>2023</div>} 
-            open={showDialog} callback={manageDialog}/>
-      
+        <NotepadTabs />
 
-          <NotepadPopups editor={editor}
-            fontSize={fontSize}
-            setfontSize={setfontSize}
-            show={showPopup}
-            setShow={setShowPopup}
-          />
+        <NotepadPopups editor={editor} font={[fontSize, setfontSize]} show={[showPopup, setShowPopup]}/>
 
-          <div className='Notebook_TopLine' />
-          
-          <div className='TabArr'> 
-              <button className='IcnBtn'> {Icon("Arrows","4vmin",180)} </button>
-              <button className='IcnBtn'> {Icon("Arrow","2vmin",180)} </button>
-              <button className='IcnBtn' >{Icon("Add","2.5vmin")}</button>
-              <button className='IcnBtn' onClick={manageDialog}> {Icon("List","2.5vmin")}</button>
-              <button className='IcnBtn' >{Icon("Delete","2.5vmin")}</button>
-              <button className='IcnBtn' >{Icon("Color", "2.5vmin")}</button>
-              <button className='IcnBtn'> {Icon("Arrow","2vmin")} </button>
-              <button className='IcnBtn'> {Icon("Arrows","4vmin")} </button>
-          </div>
-
-          <div className='TabLine'>
-             <button className='Tab'>Day</button>
-              <button className='Tab'>Week</button>
-              <button className='Tab'>Month</button>
-          </div>
-
-          <div className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
+        <div className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
           <EditorContent editor={editor}/>
-          </div>
+        </div>
 
-          <NotepadToolbar editor={editor} setShow={setShowPopup}/>
+        <NotepadToolbar editor={editor} setShow={setShowPopup}/>
       </div>
     );
   }
