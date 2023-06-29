@@ -92,6 +92,8 @@
 
   .Notebook_Text {
     position: absolute;
+    padding: 1vmin;
+    padding-top:0%;
     top:9.6%;
     left:0%;
     height:83%;

@@ -3,7 +3,8 @@ import React, { useRef, useState} from 'react';
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
-import { BubbleMenu, EditorContent, FloatingMenu, fromString, useEditor } from '@tiptap/react'
+import TextAlign from '@tiptap/extension-text-align'
+import { BubbleMenu, EditorContent, FloatingMenu, fromString, useEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
 import {Icons,Alts} from '../constants/Icons'
@@ -34,6 +35,9 @@ function Notepad(props) {
         extensions: [
           Color.configure({ types: [TextStyle.name, ListItem.name] }),
           TextStyle.configure({ types: [ListItem.name] }),
+          TextAlign.configure({
+            types: ['heading', 'paragraph'],
+          }),
           StarterKit.configure({
             bulletList: {
               keepMarks: true,
@@ -120,9 +124,9 @@ function Notepad(props) {
             <MiniDialog /* Align Buttons */
                 body={
                   <div className='ThreeButtonLine'>
-                  <button className='h1Butn' > {Icon("AlignL","3vmin",0)}</button>
-                  <button className='h1Butn' > {Icon("AlignC","3vmin",0)}</button>
-                  <button className='h1Butn' > {Icon("AlignR","3vmin",0)}</button>
+                  <button className='h1Butn' onClick={() => editor.chain().focus().setTextAlign('left').run()}> {Icon("AlignL","3vmin",0)}</button>
+                  <button className='h1Butn' onClick={() => editor.chain().focus().setTextAlign('center').run()}> {Icon("AlignC","3vmin",0)}</button>
+                  <button className='h1Butn' onClick={() => editor.chain().focus().setTextAlign('right').run()}> {Icon("AlignR","3vmin",0)}</button>
                   </div>
                 }
                 open={showMiniDialogAlign} callback={manageMiniDialogAlign} 
@@ -186,7 +190,7 @@ function Notepad(props) {
                 <button className='Tab'>Month</button>
             </div>
             <div className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
-            <EditorContent editor={editor} />
+            <EditorContent editor={editor}/>
             </div>
             
             <div className='SideButtonLine'>
@@ -197,8 +201,8 @@ function Notepad(props) {
             <button className='SideButn' onMouseDown={manageMiniDialogLst}>{Icon("AddList","2.5vmin")}</button>
             <button className='SideButn' onMouseDown={manageMiniDialogH0}>{Icon("H0","2.5vmin")}</button>
             <button className='SideButn' >{Icon("TextColor","2.5vmin")}</button>
-            <button className='SideButn' >{Icon("Code","2.5vmin")}</button>
-            <button className='SideButn' >{Icon("Line","2.5vmin")}</button>
+            <button className='SideButn' onClick={() => editor.chain().focus().toggleCodeBlock().run()}>{Icon("Code","2.5vmin")}</button>
+            <button className='SideButn' onClick={() => editor.chain().focus().setHorizontalRule().run()}>{Icon("Line","2.5vmin")}</button>
             </div>
             
             </div>
