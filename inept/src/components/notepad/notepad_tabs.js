@@ -32,10 +32,10 @@ function NotepadTabs(props) {
       <>
         <Dialog 
             header="Notes List" 
-            body={<NotepadTabMenu Tabs={noteList}/>} 
+            body={<NotepadTabMenu Tabs={noteList} notes={[noteList, setnoteList]}/>} 
             width={50}
             open={showDialog} callback={manageDialog}
-            newName={[newName, setnewName]}
+            
             />
         <MiniDialog /* Font Size Buttons Working! */
           body={

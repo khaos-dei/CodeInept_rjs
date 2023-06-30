@@ -30,6 +30,8 @@ import TextColor_icn from '../assets/icn/TextColor.png'
 import Seek_icn from '../assets/icn/Seek.png'
 import Rename_icn from '../assets/icn/Rename.png'
 import Rearrange_icn from '../assets/icn/Rearrange.png'
+import Yes_icn from '../assets/icn/yes.png'
+import No_icn from '../assets/icn/no.png'
 
 
 function Icon( key, size, deg=0){
@@ -79,6 +81,10 @@ const Icons  = {
 
     "Rename":Rename_icn,
     "Rearrange":Rearrange_icn,
+
+    "Yes":Yes_icn,
+    "No":No_icn,
+    
   };
 
 const Alts  = {
@@ -121,6 +127,9 @@ const Alts  = {
 
     "Rename":"rename",
     "Rearrange":"move",
+    
+    "Yes":"yes",
+    "No":"no",
   };
 
 
