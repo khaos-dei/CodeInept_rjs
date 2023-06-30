@@ -27,3 +27,17 @@
     text-align: left;
     background-color: transparent;
   }
+
+  
+.FontButtonLine {
+    margin: 0%;
+    padding:2%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 6%;
+    grid-template-columns: 70% 10% 10%;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    }
+      
