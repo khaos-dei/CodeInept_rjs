@@ -15,10 +15,10 @@ const Dialog = props => {
 
     return (
         <dialog className='PopupBacking' open={show}>
-            <div className='PopupItself'>
+            <div className='PopupItself' style={{width:props.width+"%"}}>
                 <div className='PopupHeader'>
                     <span className='CloseCross' onClick={closeDialog}>&times;</span>
-                    <h2>{props.header}</h2>
+                    <div>{props.header}</div>
                 </div>
                 <div className="PopupBody">
                     {props.body}

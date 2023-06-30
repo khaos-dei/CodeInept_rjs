@@ -27,10 +27,17 @@ import Redo_icn from '../assets/icn/Redo.png'
 import Code_icn from '../assets/icn/Code.png'
 import Line_icn from '../assets/icn/Line.png'
 import TextColor_icn from '../assets/icn/TextColor.png'
+import Seek_icn from '../assets/icn/Seek.png'
+import Rename_icn from '../assets/icn/Rename.png'
+import Rearrange_icn from '../assets/icn/Rearrange.png'
 
 
 function Icon( key, size, deg=0){
   return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
+}
+
+function IconO( key, size, deg=0){
+  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, transform:'rotate('+deg+'deg)'}}/>)
 }
 
 const Icons  = {
@@ -42,6 +49,7 @@ const Icons  = {
     "Arrow": OnesArrow_icn,
     "Delete":Delete_icn,
     "Color":Colors_icn,
+    "Seek":Seek_icn,
     "AlignL": AlgLeft_icn,
     "AlignC": AlgCenter_icn,
     "AlignR": AlgRight_icn,
@@ -68,6 +76,9 @@ const Icons  = {
 
     "Code":Code_icn,
     "Line":Line_icn,
+
+    "Rename":Rename_icn,
+    "Rearrange":Rearrange_icn,
   };
 
 const Alts  = {
@@ -79,6 +90,7 @@ const Alts  = {
     "Arrow": ">",
     "Delete":"del",
     "Color":"col",
+    "Seek":"seek",
     "AlignL": "left",
     "AlignC": "center",
     "AlignR": "right",
@@ -106,8 +118,11 @@ const Alts  = {
     
     "Code":"</>",
     "Line":"---",
+
+    "Rename":"rename",
+    "Rearrange":"move",
   };
 
 
 
-export {Icons,Icon}
+export {Icons,Icon, IconO}

@@ -20,27 +20,30 @@
 .PopupItself{
     position: relative;
     background-color: #fefefe;
-    margin: auto;
+    margin: auto auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .PopupHeader{
-    padding: 2px 16px;
+    height:10%;
+    padding: 3%;
+    font-size: 32px;
+    font-weight: bold;
     background-color:white;
     color: black;
 }
 
 .PopupBody{
-    padding: 2px 16px;
+    padding: 0% 5%;
 }
 
 .CloseCross{
+    position:absolute;
+    top:0%;
+    left:95%;
     color: black;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
     cursor: pointer;
 }

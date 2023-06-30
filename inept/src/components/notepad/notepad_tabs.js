@@ -4,6 +4,8 @@ import Dialog from '../dialogue'
 import {Icon} from '../../constants/Icons'
 import {setToLS, getFromLS} from '../localstorage_component';
 
+import NotepadTabMenu from './notepad_tab_menu'
+
 
 function NotepadTabs(props) {
     const [showDialog, setShowDialog] = useState(false);
@@ -21,7 +23,8 @@ function NotepadTabs(props) {
       <>
         <Dialog 
             header="Notes List" 
-            body={<div>2023</div>} 
+            body={<NotepadTabMenu Tabs={noteList}/>} 
+            width={50}
             open={showDialog} callback={manageDialog}/>
 
         <div className='Notebook_TopLine' />
@@ -32,7 +35,7 @@ function NotepadTabs(props) {
             <button className='IcnBtn' >{Icon("Add","2.5vmin")}</button>
             <button className='IcnBtn' onClick={manageDialog}> {Icon("List","2.5vmin")}</button>
             <button className='IcnBtn' >{Icon("Delete","2.5vmin")}</button>
-            <button className='IcnBtn' >{Icon("Color", "2.5vmin")}</button>
+            <button className='IcnBtn' onClick={()=>setfirstTab(Number(activeTab)-1)} >{Icon("Seek", "2.5vmin")}</button>
             <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)+1)}> {Icon("Arrow","2vmin")} </button>
             <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)+3)}> {Icon("Arrows","4vmin")} </button>
         </div>
