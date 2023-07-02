@@ -34,12 +34,16 @@ import Yes_icn from '../assets/icn/yes.png'
 import No_icn from '../assets/icn/no.png'
 
 
-function Icon( key, size, deg=0){
+function Icon( key, size, deg=0){//icon, but made white
   return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
 }
 
-function IconO( key, size, deg=0){
+function IconO( key, size, deg=0){//icon original
   return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, transform:'rotate('+deg+'deg)'}}/>)
+}
+
+function IconRed(key, size, deg = 0) {//icon colored Red
+  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: 'invert(1) grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8)', transform: 'rotate(' + deg + 'deg)' }} />)
 }
 
 const Icons  = {
@@ -134,4 +138,4 @@ const Alts  = {
 
 
 
-export {Icons,Icon, IconO}
+export { Icons, Icon, IconO, IconRed }
