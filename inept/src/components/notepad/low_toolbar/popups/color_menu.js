@@ -1,18 +1,28 @@
+import {Sketch } from '@uiw/react-color';
+
+import React, { useState } from 'react';
 import MiniDialog from '../../../../utils/mini_dialogue'
-import { Icon } from '../../../../constants/Icons'
 
 function NotepadColorPopup(props) {
-return(
-<MiniDialog /* Color text even buttons are not present yet! */
-                body={
-                  <div className='HeadingButtonLine'>
-                  color_options  (will_be) here
-                  </div>
-                }
-                open={props.showMiniDialogColor}
-                position={["66.5%","80%","9vmin","14vmin"]}
-                background_color="gray"/>
-)
+  const [hex, setHex] = useState("#fff");
+
+  return(
+  <MiniDialog /* Color text even buttons are not present yet! */
+                  body={
+                    <Sketch
+                      style={{width:"25vmin", height:"32vmin"}}
+                      color={hex}
+                      disableAlpha={true}
+                      onChange={(color) => {
+                      setHex(color.hex);
+                      props.editor.chain().focus().setColor(hex).run()
+                      }}
+                    />
+                  }
+                  open={props.showMiniDialogColor}
+                  position={["66.5%","75%","32.5vmin","25.5vmin"]}
+                  background_color="gray"/>
+  )
 }
 
 export default NotepadColorPopup;

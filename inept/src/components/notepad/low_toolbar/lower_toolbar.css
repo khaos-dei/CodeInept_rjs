@@ -23,4 +23,7 @@
       background-color: transparent;
       color: white;
     }
-  
+    .w-color-sketch {
+      --sketch-background: #323232 !important;
+      --sketch-swatch-border-top: 1px solid #525252 !important;    
+    }
