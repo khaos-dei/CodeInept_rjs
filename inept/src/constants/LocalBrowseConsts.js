@@ -2,13 +2,14 @@ import themeX from '../theme/schema.json';
 
 const def_theme = themeX.data.light;
 
+const NewNoteContent = "<p>Note text goes here</p>";
+
 const ls_values  = {
   "all-themes": themeX,
   "theme":def_theme,
 
   "note-List": ["Note"],
-  "note-Contents": [
-    { "type": "doc", "content": [{ "type": "paragraph", "attrs": { "textAlign": "left" }, "content": [{ "type": "text", "text": "Note text goes here!" }] }] }],
+  "note-Contents": ["<p>Note text goes here</p>"],
 
   "active-Tab": 0,
   "first-Tab": 0,
@@ -33,4 +34,4 @@ const ls_stringify  = {
   "Priority3":false
 };
 
-  export {ls_values,ls_stringify};
+export { ls_values, ls_stringify, NewNoteContent };

@@ -1,7 +1,8 @@
 import './tabs.css';
 import React, { useState} from 'react';
 import {Icon} from 'constants/Icons'
-import {setToLS, getFromLS} from 'utils/localstorage_component';
+import { setToLS, getFromLS } from 'utils/localstorage_component';
+import { NewNoteContent } from 'constants/LocalBrowseConsts';
 import MiniDialog from 'utils/mini_dialogue'
 import Dialog from 'utils/dialogue'
 import NotepadTabMenu from './tab_menu'
@@ -12,23 +13,25 @@ function NotepadTabs(props) {
     const [showAddDialog, setShowAddDialog] = useState(false);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
     const [cancelDeleteInMenu, setcancelDeleteInMenu] = useState(false);
-    
-    const [activeTab, setactiveTab]= useState(getFromLS("active-Tab"));
-    const [firstTab, setfirstTab]= useState(getFromLS("first-Tab"));
-    const [noteList, setnoteList]= useState(getFromLS("note-List"));
+  
     const [newName, setnewName] = useState('New Note');
 
     function deleteNote() {
-      const theId = activeTab;
-      let listWithDeletedNote = noteList.filter((_, index) => index != theId)
-      setnoteList(listWithDeletedNote);
+      const theId = props.activeTab[0];
+      let listWithDeletedNote = props.noteList[0].filter((_, index) => index != theId)
+      let contentsWithDeletedNote = props.noteContent[0].filter((_, index) => index != theId)
+      props.noteList[1](listWithDeletedNote);
+      props.noteContent[1](contentsWithDeletedNote);
       setToLS("note-List", listWithDeletedNote);
+      setToLS("note-Contents", contentsWithDeletedNote);
+      setShowDeleteDialog(!showDeleteDialog);
     }
 
     function SaveNewNote(){
-      setToLS("note-List",[...noteList, newName]);
-      setnoteList(noteList => [...noteList, newName]);
-      /* setnoteList(noteList.push(newName));  */
+      setToLS("note-List", [...props.noteList[0], newName]);
+      setToLS("note-Contents", [...props.noteContent[0], NewNoteContent]);
+      props.noteList[1]([...props.noteList[0], newName]);
+      props.noteContent[1]([...props.noteContent[0], NewNoteContent]);
       setShowAddDialog(!showAddDialog)
     } 
 
@@ -40,7 +43,7 @@ function NotepadTabs(props) {
       <>
         <Dialog /* Note Menu */
             header="Notes List" 
-            body={<NotepadTabMenu Tabs={noteList} outSideCancelDelete={cancelDeleteInMenu} notes={[noteList, setnoteList]}/>} 
+          body={<NotepadTabMenu Tabs={props.noteList[0]} outSideCancelDelete={cancelDeleteInMenu} noteList={props.noteList} noteContent={props.noteContent} />} 
             width={50}
             open={showDialog} 
             callback={manageDialog}
@@ -73,20 +76,20 @@ function NotepadTabs(props) {
         <div className='Notebook_TopLine' />
           
         <div className='TabArr'> 
-            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)-3)}> {Icon("Arrows","4vmin",180)} </button>
-            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)-1)}> {Icon("Arrow","2vmin",180)} </button>
+          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])-3)}> {Icon("Arrows","4vmin",180)} </button>
+          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])-1)}> {Icon("Arrow","2vmin",180)} </button>
             <button className='IcnBtn' onClick={()=>setShowAddDialog(!showAddDialog)}>{Icon("Add","2.5vmin")}</button>
             <button className='IcnBtn' onClick={manageDialog}> {Icon("List","2.5vmin")}</button>
             <button className='IcnBtn' onClick={()=>setShowDeleteDialog(!showDeleteDialog)}>{Icon("Delete","2.5vmin")}</button>
-            <button className='IcnBtn' onClick={()=>setfirstTab(Number(activeTab)-1)} >{Icon("Seek", "2.5vmin")}</button>
-            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)+1)}> {Icon("Arrow","2vmin")} </button>
-            <button className='IcnBtn' onClick={()=>setfirstTab(Number(firstTab)+3)}> {Icon("Arrows","4vmin")} </button>
+          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.activeTab[0])-1)} >{Icon("Seek", "2.5vmin")}</button>
+          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])+1)}> {Icon("Arrow","2vmin")} </button>
+          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])+3)}> {Icon("Arrows","4vmin")} </button>
         </div>
 
         <div className='TabLine'>
-            <button className={Number(activeTab) === Number(firstTab) ? 'TabActive' : 'Tab'}    onClick={()=>setactiveTab(Number(firstTab))} >{noteList[Number(firstTab)]}</button>
-            <button className={Number(activeTab) === Number(firstTab)+1 ? 'TabActive' : 'Tab'}  onClick={()=>setactiveTab(Number(firstTab)+1)} >{noteList[Number(firstTab)+1]}</button>
-            <button className={Number(activeTab) === Number(firstTab)+2 ? 'TabActive' : 'Tab'}  onClick={()=>setactiveTab(Number(firstTab)+2)} >{noteList[Number(firstTab)+2]}</button>
+          <button className={Number(props.activeTab[0]) === Number(props.firstTab[0]) ? 'TabActive' : 'Tab'} onClick={() => props.activeTab[1](Number(props.firstTab[0]))} >{props.noteList[0][Number(props.firstTab[0])]}</button>
+          <button className={Number(props.activeTab[0]) === Number(props.firstTab[0]) + 1 ? 'TabActive' : 'Tab'} onClick={() => props.activeTab[1](Number(props.firstTab[0]) + 1)} >{props.noteList[0][Number(props.firstTab[0])+1]}</button>
+          <button className={Number(props.activeTab[0]) === Number(props.firstTab[0]) + 2 ? 'TabActive' : 'Tab'} onClick={() => props.activeTab[1](Number(props.firstTab[0]) + 2)} >{props.noteList[0][Number(props.firstTab[0])+2]}</button>
         </div>
       </>
     );

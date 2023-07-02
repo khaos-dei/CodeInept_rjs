@@ -1,5 +1,5 @@
 import './notepad.css';
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 
 import StarterKit from '@tiptap/starter-kit'
 import { Color } from '@tiptap/extension-color'
@@ -22,27 +22,37 @@ import NotepadBubblePopup from './editor_bubble'
 function Notepad(props) {
   const [fontSize, setfontSize] = useState(26);
 
+  const [activeTab, setactiveTab] = useState(getFromLS("active-Tab"));
+  const [firstTab, setfirstTab] = useState(getFromLS("first-Tab"));
+  const [noteList, setnoteList] = useState(getFromLS("note-List"));
+  const [noteContent, setnoteContent] = useState(getFromLS("note-Contents"));
+
     const editor = useEditor({
         extensions: [
           Document,Paragraph,Text,TaskList.configure({itemTypeName: 'taskItem',}),TaskItem,
           Color,TextStyle,TextAlign.configure({types: ['heading', 'paragraph'],}),StarterKit,
         ],
-        content: `
-          <p>
-            Note text goes here
-          </p>
-        `,
+      content: noteContent[activeTab],
       onUpdate: ({ editor }) => {
-        const json = editor.getJSON();
-        console.log(JSON.stringify(json));
-        setToLS('testmeow', JSON.stringify(json));
+        const theId = activeTab;
+        const theNewContent = editor.getHTML();
+        let newContentList = [...noteContent];
+        newContentList[theId] = theNewContent;
+        setnoteContent(newContentList);
+        setToLS('note-Contents', newContentList);
       },
     })
+
+    useEffect(() => {
+      {editor && editor.commands.setContent(noteContent[activeTab])};
+    }, [noteList, activeTab])
+
+
     return (
       <div className='Notepad'> 
         {editor&&<NotepadBubblePopup editor={editor}/>}
 
-        <NotepadTabs />
+        <NotepadTabs activeTab={[activeTab, setactiveTab]} firstTab={[firstTab, setfirstTab]} noteList={[noteList, setnoteList]} noteContent={[noteContent, setnoteContent]}/>
 
         <div className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
           <EditorContent editor={editor}/>

@@ -14,16 +14,21 @@ function TabMenu_Line(props) {
     function RenameNote(event) {
         const theId = Number(event.currentTarget.value);
         const theNewName = document.getElementById("Rename" + theId).value;
-        let listWithRenamedNote = [...props.notes[0]];
+        let listWithRenamedNote = [...props.noteList[0]];
         listWithRenamedNote[theId] = theNewName;
-        props.notes[1](listWithRenamedNote);
+        props.noteList[1](listWithRenamedNote);
         setToLS("note-List", listWithRenamedNote);
+        setRename(!showRename);
     }
     function deleteNote(event) {
         const theId = Number(event.currentTarget.value);
-        let listWithDeletedNote = props.notes[0].filter((_, index) => index != theId)
-        props.notes[1](listWithDeletedNote);
+        let listWithDeletedNote = props.noteList[0].filter((_, index) => index != theId)
+        let contentsWithDeletedNote = props.noteContent[0].filter((_, index) => index != theId)
+        props.noteList[1](listWithDeletedNote);
+        props.noteContent[1](contentsWithDeletedNote);
         setToLS("note-List", listWithDeletedNote);
+        setToLS("note-Contents", contentsWithDeletedNote);
+        setDelete(!showDelete);
     }
 
     return (
@@ -35,7 +40,7 @@ function TabMenu_Line(props) {
             {showDelete && !props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={() => setDelete(false)}> {IconO("No", "3vmin", 0)}</button>}
             {/* Move specific buttons */}
             {!showDelete && props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={props.up} disabled={(props.ind == 0)} > {(props.ind > 0) && IconO("Up", "3vmin", 0)} </button>}
-            {!showDelete && props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={props.down} disabled={(props.ind == props.notes[0].length - 1)} > {(props.ind < props.notes[0].length - 1) && IconO("Down", "3vmin", 0)} </button>}
+            {!showDelete && props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={props.down} disabled={(props.ind == props.noteList[0].length - 1)} > {(props.ind < props.noteList[0].length - 1) && IconO("Down", "3vmin", 0)} </button>}
             {/* Rename specific buttons */}
             {!showDelete && !props.move[0] && showRename && <button className='IcnBtn' value={props.ind} onClick={RenameNote}> {IconO("Yes", "3vmin", 0)}</button>}
             {!showDelete && !props.move[0] && showRename && <button className='IcnBtn' value={props.ind} onClick={() => { setRename(false)}}> {IconO("No", "3vmin", 0)}</button>}
