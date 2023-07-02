@@ -25,7 +25,23 @@ function NotepadTabMenu(props) {
         const theNewName = document.getElementById("Rename" + theId).value;
         let listWithRenamedNote = [...props.notes[0]];
         listWithRenamedNote[theId] = theNewName;
-        console.log(listWithRenamedNote);
+        props.notes[1](listWithRenamedNote);
+        setToLS("note-List", listWithRenamedNote);
+    }
+    function MoveNoteUp(event) {
+        const theId = Number(event.currentTarget.value);
+        let listWithRenamedNote = [...props.notes[0]];
+        listWithRenamedNote[theId] = props.notes[0][theId - 1];
+        listWithRenamedNote[theId - 1] = props.notes[0][theId];
+        props.notes[1](listWithRenamedNote);
+        setToLS("note-List", listWithRenamedNote);
+        
+    }
+    function MoveNoteDown(event) {
+        const theId = Number(event.currentTarget.value);
+        let listWithRenamedNote = [...props.notes[0]];
+        listWithRenamedNote[theId] = props.notes[0][theId + 1];
+        listWithRenamedNote[theId + 1] = props.notes[0][theId];
         props.notes[1](listWithRenamedNote);
         setToLS("note-List", listWithRenamedNote);
     }
@@ -37,7 +53,7 @@ function NotepadTabMenu(props) {
         setToLS("note-List", listWithDeletedNote);
     }
 
-    function doLine(Name, ind){
+    function doLine(Name, ind, indMax){
         return(
             <div className='TabGridLine'>
                 {showRename && <input id={"Rename" + ind} name="NoteName" defaultValue={Name}></input>}
@@ -46,8 +62,8 @@ function NotepadTabMenu(props) {
                 {showDelete && !showMove && !showRename && <button className='IcnBtn' value={ind} onClick={deleteNote}> {IconO("Yes", "3vmin", 0)}</button>}
                 {showDelete && !showMove && !showRename && <button className='IcnBtn' value={ind} onClick={() => setDelete(false)}> {IconO("No", "3vmin", 0)}</button>}
                 {/* Move specific buttons */}
-                {!showDelete && showMove && !showRename && <button className='IcnBtn' value={ind}> {IconO("Up", "3vmin", 0)}</button>}
-                {!showDelete && showMove && !showRename && <button className='IcnBtn' value={ind}> {IconO("Down", "3vmin", 0)}</button>}
+                {!showDelete && showMove && !showRename && <button className='IcnBtn' value={ind} onClick={MoveNoteUp} disabled={(ind==0)} > {(ind>0) && IconO("Up", "3vmin", 0)} </button>}
+                {!showDelete && showMove && !showRename && <button className='IcnBtn' value={ind} onClick={MoveNoteDown} disabled={(ind==indMax-1)} > {(ind<indMax-1) && IconO("Down", "3vmin", 0)} </button>}
                 {/* Rename specific buttons */}
                 {!showDelete && !showMove && showRename && <button className='IcnBtn' value={ind} onClick={RenameNote}> {IconO("Yes", "3vmin", 0)}</button>}
                 {!showDelete && !showMove && showRename && <button className='IcnBtn' value={ind}> {IconO("No", "3vmin", 0)}</button>}
@@ -65,7 +81,7 @@ function NotepadTabMenu(props) {
 
     <div className='TabsGrid'>
 
-        {props.Tabs.map((currentElement, index) => {return(doLine(currentElement, index))})}
+        {props.Tabs.map((currentElement, index) => {return(doLine(currentElement, index, props.notes[0].length))})}
         <div className='TabGridLine'>
         <div className='NoteName'><input name="NewNameInpt" hidden={showNewName} style={{height:"100%", fontSize:"3vmin", width:"100%", margin:"0%"}} value={newName} onInput={e => setnewName(e.target.value)}></input></div>
         {!showNewName&&<button className='IcnBtn' onClick={saveNote}> {IconO("Yes","3vmin",0)}</button>}
