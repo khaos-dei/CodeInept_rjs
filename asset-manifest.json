@@ -1,8 +1,10 @@
 {
   "files": {
-    "main.css": "/CodeInept_rjs/static/css/main.d20db459.css",
-    "main.js": "/CodeInept_rjs/static/js/main.b0b2ddc4.js",
+    "main.css": "/CodeInept_rjs/static/css/main.580e29f6.css",
+    "main.js": "/CodeInept_rjs/static/js/main.2cb6f548.js",
     "static/js/787.9b3b8173.chunk.js": "/CodeInept_rjs/static/js/787.9b3b8173.chunk.js",
+    "static/media/424-breathing.gif": "/CodeInept_rjs/static/media/424-breathing.715839febfbbe275215c.gif",
+    "static/media/Zen_Garden.gif": "/CodeInept_rjs/static/media/Zen_Garden.261c9be1f149ec9a26c0.gif",
     "static/media/AnonymousPro-Regular.ttf": "/CodeInept_rjs/static/media/AnonymousPro-Regular.7efadbba75e397dd6872.ttf",
     "static/media/AnonymousPro-Bold.ttf": "/CodeInept_rjs/static/media/AnonymousPro-Bold.da577dfad40160891fdb.ttf",
     "static/media/AnonymousPro-Italic.ttf": "/CodeInept_rjs/static/media/AnonymousPro-Italic.01bdd4a266bffde2a80d.ttf",
@@ -12,13 +14,19 @@
     "static/media/CourierPrime-BoldItalic.ttf": "/CodeInept_rjs/static/media/CourierPrime-BoldItalic.40cb412d658c743e4ea1.ttf",
     "static/media/CourierPrime-Bold.ttf": "/CodeInept_rjs/static/media/CourierPrime-Bold.ac693e5aa250dab63415.ttf",
     "static/media/TickingTimebombBB.ttf": "/CodeInept_rjs/static/media/TickingTimebombBB.73950a4698397f4efb30.ttf",
+    "static/media/AddList.png": "/CodeInept_rjs/static/media/AddList.42966461048ad6a75411.png",
+    "static/media/ListNum.png": "/CodeInept_rjs/static/media/ListNum.3932a79dbff705d2d1b0.png",
+    "static/media/ListCheck.png": "/CodeInept_rjs/static/media/ListCheck.a052adfeb718d6dbd30d.png",
+    "static/media/Heading6.png": "/CodeInept_rjs/static/media/Heading6.a3ece563856668d2bea4.png",
+    "static/media/Heading3.png": "/CodeInept_rjs/static/media/Heading3.e96841b4957e6d8adb09.png",
+    "static/media/Heading2.png": "/CodeInept_rjs/static/media/Heading2.3b6e4d52ae713788d653.png",
     "index.html": "/CodeInept_rjs/index.html",
-    "main.d20db459.css.map": "/CodeInept_rjs/static/css/main.d20db459.css.map",
-    "main.b0b2ddc4.js.map": "/CodeInept_rjs/static/js/main.b0b2ddc4.js.map",
+    "main.580e29f6.css.map": "/CodeInept_rjs/static/css/main.580e29f6.css.map",
+    "main.2cb6f548.js.map": "/CodeInept_rjs/static/js/main.2cb6f548.js.map",
     "787.9b3b8173.chunk.js.map": "/CodeInept_rjs/static/js/787.9b3b8173.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d20db459.css",
-    "static/js/main.b0b2ddc4.js"
+    "static/css/main.580e29f6.css",
+    "static/js/main.2cb6f548.js"
   ]
 }
