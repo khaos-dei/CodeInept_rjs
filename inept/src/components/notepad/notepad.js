@@ -12,14 +12,12 @@ import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import { EditorContent, useEditor} from '@tiptap/react'
 
-import NotepadPopups from './low_toolbar/popups/popup_manager'
 import NotepadToolbar from './low_toolbar/lower_toolbar'
 import NotepadTabs from './top_toolbar/tabs'
 import NotepadBubblePopup from './editor_bubble'
 
 function Notepad(props) {
-    const [fontSize, setfontSize] = useState(26);
-    const [showPopup, setShowPopup] = useState('none');
+  const [fontSize, setfontSize] = useState(26);
 
     const editor = useEditor({
         extensions: [
@@ -41,13 +39,11 @@ function Notepad(props) {
 
         <NotepadTabs />
 
-        <NotepadPopups editor={editor} font={[fontSize, setfontSize]} show={[showPopup, setShowPopup]}/>
-
         <div className='Notebook_Text' style={{fontSize:fontSize+'px'}}>
           <EditorContent editor={editor}/>
         </div>
 
-        <NotepadToolbar editor={editor} setShow={setShowPopup}/>
+        <NotepadToolbar editor={editor} font={[fontSize, setfontSize]}/>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import "./tab_menu.css"
-import React, { useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IconO,IconRed} from '../../../constants/Icons'
 import {setToLS, getFromLS} from '../../../utils/localstorage_component';
 
@@ -7,6 +7,10 @@ function NotepadTabMenu(props) {
     const [showNewName, setshowNewName] = useState(true);
     const [newName, setnewName] = useState('New Note');
     const [showDelete, setDelete] = useState(false);
+
+    useEffect(() => {
+        setDelete(false);
+    }, [props.outSideCancelDelete])
 
     function saveNote(){
         setToLS("note-List",[...props.notes[0], newName]);

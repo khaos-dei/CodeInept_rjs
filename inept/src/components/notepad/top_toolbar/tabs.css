@@ -76,3 +76,20 @@
     background-color: #00b39c;
     color: #fff7d6;
   }
+
+  .Popup_Dialog_Add {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: 60% 15% 15%;
+      grid-gap: 2%;
+      width: 17vmin;
+      height: 5.5vmin;
+    }
+  .Popup_Dialog_Delete{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 40% 28% 28%;
+    grid-gap: 2%;
+    width:17vmin;
+    height:5.5vmin;
+  }
