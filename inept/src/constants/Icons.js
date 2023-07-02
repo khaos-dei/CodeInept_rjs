@@ -47,6 +47,12 @@ function IconO( key, size, deg=0){//icon original
 function IconRed(key, size, deg = 0) {//icon colored Red
   return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: 'invert(1) grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8)', transform: 'rotate(' + deg + 'deg)' }} />)
 }
+function IconBlue(key, size, deg = 0) {//icon colored Red
+  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: 'invert(1) grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8)', transform: 'rotate(' + deg + 'deg)' }} />)
+}
+function IconGreen(key, size, deg = 0) {//icon colored Red
+  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: 'invert(1) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg) saturate(1000%) contrast(0.8)', transform: 'rotate(' + deg + 'deg)' }} />)
+}
 
 const Icons  = {
     "Font":FontSize_icn,
@@ -146,4 +152,4 @@ const Alts  = {
 
 
 
-export { Icons, Icon, IconO, IconRed }
+export { Icons, Icon, IconO, IconRed, IconBlue, IconGreen}

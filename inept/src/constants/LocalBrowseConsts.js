@@ -6,8 +6,10 @@ const ls_values  = {
   "all-themes": themeX,
   "theme":def_theme,
 
-  "note-List": ["Day","Week","Month", "Hello", "Second", "Last"],
-  "note-Amount": 6,
+  "note-List": ["Note"],
+  "note-Contents": [
+    { "type": "doc", "content": [{ "type": "paragraph", "attrs": { "textAlign": "left" }, "content": [{ "type": "text", "text": "Note text goes here!" }] }] }],
+
   "active-Tab": 0,
   "first-Tab": 0,
 
@@ -21,7 +23,8 @@ const ls_stringify  = {
   "theme": true,
 
   "note-List": true,
-  "note-Amount": false,
+  "note-Contents": true,
+
   "active-Tab": false,
   "first-Tab":false,
 

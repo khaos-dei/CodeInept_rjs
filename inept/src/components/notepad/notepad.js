@@ -12,6 +12,9 @@ import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import { EditorContent, useEditor} from '@tiptap/react'
 
+
+import { getFromLS,setToLS } from 'utils/localstorage_component';
+
 import NotepadToolbar from './low_toolbar/lower_toolbar'
 import NotepadTabs from './top_toolbar/tabs'
 import NotepadBubblePopup from './editor_bubble'
@@ -25,13 +28,15 @@ function Notepad(props) {
           Color,TextStyle,TextAlign.configure({types: ['heading', 'paragraph'],}),StarterKit,
         ],
         content: `
-          <h2>
-            Hi there,
-          </h2>
-          <ul data-type="taskList">
-            <li data-type="taskItem" data-checked="true">flour</li>
-          </ul> 
+          <p>
+            Note text goes here
+          </p>
         `,
+      onUpdate: ({ editor }) => {
+        const json = editor.getJSON();
+        console.log(JSON.stringify(json));
+        setToLS('testmeow', JSON.stringify(json));
+      },
     })
     return (
       <div className='Notepad'> 
