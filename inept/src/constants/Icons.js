@@ -32,6 +32,8 @@ import Rename_icn from '../assets/icn/Rename.png'
 import Rearrange_icn from '../assets/icn/Rearrange.png'
 import Yes_icn from '../assets/icn/yes.png'
 import No_icn from '../assets/icn/no.png'
+import Up_icn from '../assets/icn/Up.png'
+import Down_icn from '../assets/icn/Down.png'
 
 
 function Icon( key, size, deg=0){//icon, but made white
@@ -88,6 +90,9 @@ const Icons  = {
 
     "Yes":Yes_icn,
     "No":No_icn,
+
+    "Up": Up_icn,
+    "Down": Down_icn,
     
   };
 
@@ -134,6 +139,9 @@ const Alts  = {
     
     "Yes":"yes",
     "No":"no",
+
+    "Up": "up",
+    "Down": "down",
   };
 
 
