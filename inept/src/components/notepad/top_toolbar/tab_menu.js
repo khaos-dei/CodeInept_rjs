@@ -1,9 +1,10 @@
 import "./tab_menu.css"
-import React, {useEffect, useState} from 'react';
+import React, {useEffect,useRef, useState} from 'react';
 import {IconO,IconRed} from '../../../constants/Icons'
 import {setToLS, getFromLS} from '../../../utils/localstorage_component';
 
 function NotepadTabMenu(props) {
+    const ref = useRef(null);
     const [showNewName, setshowNewName] = useState(true);
     const [newName, setnewName] = useState('New Note');
     const [showDelete, setDelete] = useState(false);
@@ -19,6 +20,15 @@ function NotepadTabMenu(props) {
         props.notes[1](noteList => [...props.notes[0], newName]);
         setshowNewName(!showNewName)
     }
+    function RenameNote(event) {
+        const theId = Number(event.currentTarget.value);
+        const theNewName = document.getElementById("Rename" + theId).value;
+        let listWithRenamedNote = [...props.notes[0]];
+        listWithRenamedNote[theId] = theNewName;
+        console.log(listWithRenamedNote);
+        props.notes[1](listWithRenamedNote);
+        setToLS("note-List", listWithRenamedNote);
+    }
 
     function deleteNote(event) {
         const theId = Number(event.currentTarget.value);
@@ -30,7 +40,7 @@ function NotepadTabMenu(props) {
     function doLine(Name, ind){
         return(
             <div className='TabGridLine'>
-                {showRename &&<input name="NoteName" value={Name}></input>}
+                {showRename && <input id={"Rename" + ind} name="NoteName" defaultValue={Name}></input>}
                 {!showRename &&<div className='NoteName'>{Name}</div>}
                 {/* Delete specific buttons */}
                 {showDelete && !showMove && !showRename && <button className='IcnBtn' value={ind} onClick={deleteNote}> {IconO("Yes", "3vmin", 0)}</button>}
@@ -39,11 +49,11 @@ function NotepadTabMenu(props) {
                 {!showDelete && showMove && !showRename && <button className='IcnBtn' value={ind}> {IconO("Up", "3vmin", 0)}</button>}
                 {!showDelete && showMove && !showRename && <button className='IcnBtn' value={ind}> {IconO("Down", "3vmin", 0)}</button>}
                 {/* Rename specific buttons */}
-                {!showDelete && !showMove && showRename && <button className='IcnBtn' value={ind}> {IconO("Yes", "3vmin", 0)}</button>}
+                {!showDelete && !showMove && showRename && <button className='IcnBtn' value={ind} onClick={RenameNote}> {IconO("Yes", "3vmin", 0)}</button>}
                 {!showDelete && !showMove && showRename && <button className='IcnBtn' value={ind}> {IconO("No", "3vmin", 0)}</button>}
                 {/* Main buttons */}
-                {!showDelete && !showRename && <button className='IcnBtn' value={ind}> {IconO("Rearrange", "3vmin", 0)}</button>}
-                {!showDelete && !showMove && <button className='IcnBtn' value={ind}> {IconO("Rename", "3vmin", 0)}</button>}
+                {!showDelete && !showRename && <button className='IcnBtn' value={ind} onClick={() => setMove(!showMove)}> {IconO("Rearrange", "3vmin", 0)}</button>}
+                {!showDelete && !showMove && <button className='IcnBtn' value={ind} onClick={() => setRename(!showRename)}> {IconO("Rename", "3vmin", 0)}</button>}
                 {!showMove && !showRename && <button className='IcnBtn' value={ind} onClick={() => setDelete(!showDelete)}>{(showDelete ? IconRed("Delete", "3vmin", 0) : IconO("Delete", "3vmin", 0))}</button>}
                 
             </div>
