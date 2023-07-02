@@ -1,0 +1,44 @@
+.TabsGrid {
+    display: grid;
+    margin: auto;
+    grid-auto-flow: row;
+    margin-bottom: 6%;
+  }
+.TabGridLine {
+    display: grid;
+    margin: 1.5% 20%;
+    grid-auto-flow: row;
+    grid-template-columns: 70% 10% 10% 10%;
+    grid-gap: 2%;
+  }
+
+.NoteName {
+    color: black;
+    text-align:left;
+    font-size: 3vmin;
+  }
+
+.IcnBtn {
+    padding:1%;
+    padding-top:0%;
+    padding-left: 4%;
+    font-size:65%; 
+    font-weight: 700;
+    width:100%;
+    text-align: left;
+    background-color: transparent;
+  }
+
+  
+.FontButtonLine {
+    margin: 0%;
+    padding:2%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 6%;
+    grid-template-columns: 70% 10% 10%;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    }
+      

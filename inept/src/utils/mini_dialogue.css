@@ -1,0 +1,16 @@
+.MiniPopupItself{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+.MiniPopupBody{
+    position: absolute;
+    font-size: 1.7vmin;
+    padding: 1%;
+}

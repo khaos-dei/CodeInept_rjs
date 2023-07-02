@@ -1,0 +1,95 @@
+.Notebook_TopLine {
+    position: absolute;
+    top:0%;
+    left:0%;
+    height:99%;
+    width:100%;
+    background-color: rgb(74, 74, 77);
+    word-wrap:normal;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center; 
+    overflow:hidden;
+  }
+
+.TabArr {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 2%;
+    grid-template-columns: 15% 10% 10% 10% 10% 10% 10% 15%;
+    justify-content: left;
+    align-items: center;
+    padding:2%;
+    position: absolute;
+    top:-2.5%;
+    left:-1%;
+    height:10%;
+    width: 98%;
+    text-align: center;
+  }
+  .IcnBtn {
+    padding:1%;
+    padding-top:0%;
+    padding-left: 4%;
+    font-size:65%; 
+    font-weight: 700;
+    width:100%;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  
+.TabLine {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 2%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    justify-content: left;
+    align-items: center;
+    padding:2%;
+    position: absolute;
+    top:3.5%;
+    left:-1%;
+    height:7%;
+    width: 98%;
+    text-align: center;
+  }
+
+
+
+.Tab {
+    padding:0.5%;
+    overflow:hidden;
+    font-size:2vmin; 
+    font-weight: 700;
+    text-align: center;
+    background-color: #005d7c;
+    color: #fff7d6;
+  }
+
+.TabActive {
+    padding:0.5%;
+    overflow:hidden;
+    font-size:2vmin; 
+    font-weight: 700;
+    text-align: center;
+    background-color: #00b39c;
+    color: #fff7d6;
+  }
+
+  .Popup_Dialog_Add {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: 60% 15% 15%;
+      grid-gap: 2%;
+      width: 17vmin;
+      height: 5.5vmin;
+    }
+  .Popup_Dialog_Delete{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 40% 28% 28%;
+    grid-gap: 2%;
+    width:17vmin;
+    height:5.5vmin;
+  }

@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
-import './triage_bbl.css';
+import React, { useState, useRef} from 'react'
+import './triage.css';
+import {setToLS, getFromLS} from '../utils/localstorage_component';
+
 
 var repeatOff = 0;
 var nL_adj = 0;
 
 function TriageBubble(props) {
     const [triageState, setTriageState] = useState(0);
-    var triageTextState= [localStorage.getItem('Priority1'), localStorage.getItem('Priority2'),localStorage.getItem('Priority3')];
+    var triageTextStateRef= [useRef(getFromLS("Priority1")), useRef(getFromLS("Priority2")), useRef(getFromLS("Priority3"))];
     const [paddState, setPaddState] = useState(10);
     const [fontState, setFontState] = useState(20);
 
+
+    
     React.useEffect(() => { 
     autoResize();
-    if(localStorage.getItem("Priority1") === null){ localStorage.setItem('Priority1','Highest Priority')}
-    if(localStorage.getItem("Priority2") === null){ localStorage.setItem('Priority2','Mid Priority')}
-    if(localStorage.getItem("Priority3") === null){ localStorage.setItem('Priority3','Eh Priority')}
     })//after each render
 
     React.useEffect(() => {
@@ -24,12 +25,12 @@ function TriageBubble(props) {
 
     function textResponse(event){
         autoResize();
-        JSON.parse(localStorage.setItem('Priority'+(triageState+1),document.getElementById('parent').childNodes[0].textContent))
-        triageTextState[triageState] = document.getElementById('parent').childNodes[0].textContent;
-        console.log(triageTextState); 
+        setToLS('Priority'+(triageState+1),document.getElementById('parent').childNodes[0].textContent)
+        console.log(triageTextStateRef[triageState].current); 
     }
     function changeTriage(event){
         if(triageState===2){setTriageState(0);}else{setTriageState(triageState+1);}
+        triageTextStateRef[triageState].current = document.getElementById('parent').childNodes[0].textContent;
     }
 
     const autoSizerDebug = false;
@@ -43,7 +44,7 @@ function TriageBubble(props) {
         if(autoSizerDebug) console.log('>' + fontState + ' _ '+ ParentH+' _ '  + ChildH + ' | ' + 0.5 * fontState + ' < ' + diff + ' < ' + 1.5 * fontSZ + ' | ' + paddState + '(' + (diff < 0.5 * fontSZ) + '||' + (diff > 1.5 * fontSZ)+')');
         if((diff < 0.5 * fontState)|| (diff > 1.5 * fontState)){
             //if((fontSZ<=0)||(fontSZ==Infinity)||(fontSZ==NaN)){setFontState(10);}
-            if(repeatOff>5){nL_adj+=1; if(autoSizerDebug)console.log("{",nL_adj,"}")}
+            if(repeatOff>10){nL_adj+=1; if(autoSizerDebug)console.log("{",nL_adj,"}")}
             delta = (diff - fontState)/(nLines+nL_adj);//calculate the fontSize change
             if(autoSizerDebug) console.log(fontState,'+', delta)
             setFontState(fontState+delta);//apply
@@ -60,11 +61,11 @@ function TriageBubble(props) {
 
     return (
         <div className='Triage_Bubble'>
-                <div class="Triage_Tag_Bubble" onClick={changeTriage} >
-                <div class="Triage_Tag_Text" >Triage #{triageState+1}</div>
+                <div className="Triage_Tag_Bubble" onClick={changeTriage} >
+                <div className="Triage_Tag_Text" >Triage #{triageState+1}</div>
                 </div> 
-            <div id='parent' class="Triage_Text" onKeyUpCapture={textResponse} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
-                    <div class="Text_Holder" contentEditable="true">{triageTextState[triageState]}</div>
+                <div id='parent' className="Triage_Text" onKeyUpCapture={textResponse} style={{fontSize:fontState+'px', lineHeight:fontState*1+'px', paddingTop:paddState+'px'}} >
+                    <div contentEditable="true" suppressContentEditableWarning="true" className="Text_Holder" >{triageTextStateRef[triageState].current}</div>
                 </div>
         </div>
         

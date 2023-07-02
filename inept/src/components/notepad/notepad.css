@@ -1,0 +1,29 @@
+.Notepad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    grid-area: 2/5/span 5/span 1;
+    border-top: 0pt;
+  }
+
+  .Notebook_Text {
+    position: absolute;
+    padding: 1vmin;
+    padding-top:0%;
+    top:9.6%;
+    left:0%;
+    height:83%;
+    width:100%;
+    background-color: rgb(101, 90, 148);
+    border: 2px solid rgb(255, 255, 255); 
+    word-wrap:normal;
+    justify-content: left;
+    flex-direction: row;
+    align-items: left;
+    text-align: left; 
+    overflow:hidden;
+  }
+
+
+    

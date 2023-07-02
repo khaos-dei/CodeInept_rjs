@@ -1,38 +1,55 @@
 import React, { useEffect, useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import MonthProgressLine from './components/m_prog_line.js';
-import AnaClock from './components/ana_clck.js';
-import DigiClock from './components/digi_clck.js';
-import DatePage from './components/date_page';
-import TriageBubble from './components/triage_bbl';
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from 'theme/GlobalStyles';
+import { useTheme } from 'theme/useTheme';
 
+import MonthProgressLine from 'components/top_line.js';
+import AnaClock from 'components/ana_clck.js';
+import DigiClock from 'components/digi_clck.js';
+import DatePage from 'components/date_page';
+import TriageBubble from 'components/triage';
+import ThemeChoice from 'components/theme_choice';
+import ButtonsLine from 'components/buttons';
+import Notepad from 'components/notepad/notepad';
+import Media from 'components/media';
+import Projects from 'components/projects';
+import LowerLine from 'components/lower_line';
 
 function App() {
+  const {theme, themeLoaded} = useTheme();
+  const [selectedTheme, setSelectedTheme] = useState(theme);
+
+  useEffect(() => {
+    setSelectedTheme(theme);
+  }, [themeLoaded, theme]);
+
   const [dateState, setDateState] = useState(new Date());
     useEffect(() => {
-        setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds, may lower for click fund 
+        setInterval(() => setDateState(new Date()), 10000);//new state every 10 seconds 
     }, []);
+
   return (
     <div className="App">
-      <body className="App-body">
+    {
+      themeLoaded && <ThemeProvider theme={ selectedTheme }>
+    <GlobalStyles/>
+      <div className="App-body">
         <MonthProgressLine datentime={dateState} />
         <AnaClock datentime={dateState} />
         <DatePage datentime={dateState} />
         <TriageBubble  />
-        <div className='nice-box' style={{ 'grid-area': '2/5/span 4/span 1' }}>Notepad</div>
-        <div className='nice-box' style={{ 'grid-area': '3/3/span 5/span 2' }}>EMPTY</div>
+        <Notepad />
+        <ThemeChoice datentime={dateState} />
         <DigiClock datentime={dateState} />
-        <div className='nice-box' style={{}}>Buttons</div>
-        <div className='nice-box' style={{ 'grid-area': '5/1/span 3/span 2' }}>Click Fund</div>
-        <div className='nice-box' style={{}}>Zen Gif</div>
-        <div className='nice-box' style={{}}>Music</div>
-        <div className='nice-box' style={{ 'grid-column-start': 'span 2' }}>Projects</div>
-        <div className='nice-box' style={{}}>Icons</div>
-        <div className='nice-box' style={{}}>Spinwheel</div>
-        <div className='nice-box' style={{}}>Youtube</div>
-      </body>
+        <ButtonsLine />
+        <Media /> 
+        <Projects />
+        <LowerLine />
+      </div>
+    </ThemeProvider>
+  }
     </div>
   );
 }

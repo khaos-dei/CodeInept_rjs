@@ -1,0 +1,47 @@
+.ThreeButtonLine {
+    padding: 0% 2%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 6%;
+    grid-template-columns: 33% 33% 33%;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    }
+
+.FontButtonLine {
+    margin: 0%;
+    padding:2%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 6%;
+    grid-template-columns: 30% 10% 20% 20%;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    }
+      
+.HeadingButtonLine {
+    padding: 0% 2%;
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 6%;
+    grid-template-columns: 23% 23% 23% 23%;
+    grid-template-rows: 40% 40%;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    }
+        
+
+.IcnBtn {
+    padding:1%;
+    padding-top:0%;
+    padding-left: 4%;
+    font-size:65%; 
+    font-weight: 700;
+    width:100%;
+    text-align: center;
+    background-color: transparent;
+}
+    

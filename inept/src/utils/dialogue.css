@@ -1,0 +1,49 @@
+.PopupBacking{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background: repeating-linear-gradient(
+        60deg,
+        rgba(24, 194, 236, 0.2),
+        rgba(24, 194, 236, 0.2) 1px,
+        rgba(24, 194, 236, 0.3) 1px,
+        rgba(24, 194, 236, 0.3) 20px
+    );
+    backdrop-filter: blur(1px);
+}
+
+.PopupItself{
+    position: relative;
+    background-color: #fefefe;
+    margin: auto auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.PopupHeader{
+    height:10%;
+    padding: 3%;
+    font-size: 32px;
+    font-weight: bold;
+    background-color:white;
+    color: black;
+}
+
+.PopupBody{
+    padding: 0% 5%;
+}
+
+.CloseCross{
+    position:absolute;
+    top:0%;
+    left:95%;
+    color: black;
+    float: right;
+    cursor: pointer;
+}
