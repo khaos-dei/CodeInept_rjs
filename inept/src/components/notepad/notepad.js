@@ -12,10 +12,10 @@ import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import { EditorContent, useEditor} from '@tiptap/react'
 
-import NotepadPopups from './notepad_popups'
-import NotepadToolbar from './notepad_toolbar'
-import NotepadTabs from './notepad_tabs'
-import NotepadBubblePopup from './notepad_bubble_popup'
+import NotepadPopups from './low_toolbar/popups/popup_manager'
+import NotepadToolbar from './low_toolbar/lower_toolbar'
+import NotepadTabs from './top_toolbar/tabs'
+import NotepadBubblePopup from './editor_bubble'
 
 function Notepad(props) {
     const [fontSize, setfontSize] = useState(26);

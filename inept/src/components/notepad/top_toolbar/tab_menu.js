@@ -1,7 +1,7 @@
-import "./notepad_tab_menu.css"
+import "./tab_menu.css"
 import React, { useState} from 'react';
-import {IconO,IconRed} from '../../constants/Icons'
-import {setToLS, getFromLS} from '../localstorage_component';
+import {IconO,IconRed} from '../../../constants/Icons'
+import {setToLS, getFromLS} from '../../../utils/localstorage_component';
 
 function NotepadTabMenu(props) {
     const [showNewName, setshowNewName] = useState(true);

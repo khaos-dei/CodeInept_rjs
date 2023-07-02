@@ -12,16 +12,6 @@
     grid-gap: 2%;
   }
 
-.YesNoGridLine {
-      display: grid;
-      width:18vmin;
-      grid-auto-flow: row;
-      grid-template-columns: 50% 50%;
-      grid-gap: 2%;
-      border:solid;
-      align-items: center;
-}
-
 .NoteName {
     color: black;
     text-align:left;

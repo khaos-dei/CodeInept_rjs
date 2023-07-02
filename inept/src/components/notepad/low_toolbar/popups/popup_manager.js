@@ -1,11 +1,11 @@
-import './notepad_popups.css';
+import './popup_manager.css';
 import React, { useEffect, useState} from 'react';
 
-import NotepadAlignPopup from './notepad_align_popup'
-import NotepadFontPopup from './notepad_font_popup'
-import NotepadHeadingPopup from './notepad_heading_popup'
-import NotepadListPopup from './notepad_list_popup'
-import NotepadColorPopup from './notepad_color_popup'
+import NotepadAlignPopup from './align_menu'
+import NotepadFontPopup from './font_menu'
+import NotepadHeadingPopup from './heading_menu'
+import NotepadListPopup from './lists_menu'
+import NotepadColorPopup from './color_menu'
 
 function NotepadPopups(props) {
     const [showMiniDialogAlign, setShowMiniDialogAlign] = useState(false);

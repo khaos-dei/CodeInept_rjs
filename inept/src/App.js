@@ -2,22 +2,20 @@ import React, { useEffect, useState } from 'react'
 import './App.css';
 
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from './theme/GlobalStyles';
-import { useTheme } from './theme/useTheme';
+import { GlobalStyles } from 'theme/GlobalStyles';
+import { useTheme } from 'theme/useTheme';
 
-import MonthProgressLine from './components/month_progress_line.js';
-import AnaClock from './components/ana_clck.js';
-import DigiClock from './components/digi_clck.js';
-import DatePage from './components/date_page';
-import TriageBubble from './components/triage_bubble';
-import ThemeChoice from './components/theme_choice';
-import ButtonsLine from './components/buttons';
-import Notepad from './components/notepad/notepad';
-import Media from './components/media';
-import Projects from './components/projects';
-import LowerLine from './components/lower_line';
-
-
+import MonthProgressLine from 'components/top_line.js';
+import AnaClock from 'components/ana_clck.js';
+import DigiClock from 'components/digi_clck.js';
+import DatePage from 'components/date_page';
+import TriageBubble from 'components/triage';
+import ThemeChoice from 'components/theme_choice';
+import ButtonsLine from 'components/buttons';
+import Notepad from 'components/notepad/notepad';
+import Media from 'components/media';
+import Projects from 'components/projects';
+import LowerLine from 'components/lower_line';
 
 function App() {
   const {theme, themeLoaded} = useTheme();

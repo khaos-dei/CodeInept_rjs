@@ -1,5 +1,5 @@
-import './notepad_toolbar.css';
-import {Icon} from '../../constants/Icons'
+import './lower_toolbar.css';
+import {Icon} from '../../../constants/Icons'
 
 
 function NotepadToolbar(props) {

@@ -1,5 +1,5 @@
-import MiniDialog from '../mini_dialogue'
-import {Icon} from '../../constants/Icons'
+import MiniDialog from '../../../../utils/mini_dialogue'
+import {Icon} from '../../../../constants/Icons'
 
 function NotepadAlignPopup(props) {
 return(

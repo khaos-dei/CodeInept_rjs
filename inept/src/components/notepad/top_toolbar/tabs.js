@@ -1,10 +1,10 @@
-import './notepad_tabs.css';
+import './tabs.css';
 import React, { useState} from 'react';
-import {Icon} from '../../constants/Icons'
-import {setToLS, getFromLS} from '../localstorage_component';
-import MiniDialog from '../mini_dialogue'
-import Dialog from '../dialogue'
-import NotepadTabMenu from './notepad_tab_menu'
+import {Icon} from 'constants/Icons'
+import {setToLS, getFromLS} from 'utils/localstorage_component';
+import MiniDialog from 'utils/mini_dialogue'
+import Dialog from 'utils/dialogue'
+import NotepadTabMenu from './tab_menu'
 
 
 function NotepadTabs(props) {
@@ -35,8 +35,8 @@ function NotepadTabs(props) {
             body={<NotepadTabMenu Tabs={noteList} notes={[noteList, setnoteList]}/>} 
             width={50}
             open={showDialog} callback={manageDialog}
-            
             />
+
         <MiniDialog /* Font Size Buttons Working! */
           body={
             <div className='FontButtonLine'>
