@@ -1,7 +1,7 @@
 import {Sketch } from '@uiw/react-color';
 
 import React, { useState } from 'react';
-import MiniDialog from '../../../../utils/mini_dialogue'
+import MiniDialog from 'utils/mini_dialogue'
 
 function NotepadColorPopup(props) {
   const [hex, setHex] = useState("#fff");

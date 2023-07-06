@@ -14,7 +14,7 @@
     text-align: center;
     }
   
-    .TButton {
+.TButton {
       padding:10%;
       font-size:65%; 
       font-weight: 700;
@@ -22,6 +22,7 @@
       text-align: center;
       background-color: transparent;
       color: white;
+      margin-top: 0;
     }
     .w-color-sketch {
       --sketch-background: #323232 !important;

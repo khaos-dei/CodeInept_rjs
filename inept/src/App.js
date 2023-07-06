@@ -14,7 +14,7 @@ import ThemeChoice from 'components/theme_choice';
 import ButtonsLine from 'components/buttons';
 import Notepad from 'components/notepad/notepad';
 import Media from 'components/media';
-import Projects from 'components/projects';
+import Projects from 'components/projects/projects';
 import LowerLine from 'components/lower_line';
 
 function App() {

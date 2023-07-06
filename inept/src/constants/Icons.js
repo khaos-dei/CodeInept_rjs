@@ -34,6 +34,8 @@ import Yes_icn from '../assets/icn/yes.png'
 import No_icn from '../assets/icn/no.png'
 import Up_icn from '../assets/icn/Up.png'
 import Down_icn from '../assets/icn/Down.png'
+import Overview_icn from '../assets/icn/Overview.png'
+import MenuView_icn from '../assets/icn/MenuView.png'
 
 
 function Icon( key, size, deg=0){//icon, but made white
@@ -100,6 +102,8 @@ const Icons  = {
     "Up": Up_icn,
     "Down": Down_icn,
     
+    "Overview": Overview_icn,
+    "MenuView": MenuView_icn,    
   };
 
 const Alts  = {
@@ -148,6 +152,9 @@ const Alts  = {
 
     "Up": "up",
     "Down": "down",
+    
+    "Overview": "menu",
+    "MenuView": "Menu",  
   };
 
 
