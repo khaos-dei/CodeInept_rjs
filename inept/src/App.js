@@ -11,7 +11,7 @@ import DigiClock from 'components/digi_clck.js';
 import DatePage from 'components/date_page';
 import TriageBubble from 'components/triage';
 import ThemeChoice from 'components/theme_choice';
-import ButtonsLine from 'components/buttons';
+import ButtonsLine from 'components/buttons/buttons';
 import Notepad from 'components/notepad/notepad';
 import Media from 'components/media';
 import Projects from 'components/projects/projects';

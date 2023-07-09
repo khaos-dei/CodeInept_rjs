@@ -36,6 +36,8 @@ import Up_icn from '../assets/icn/Up.png'
 import Down_icn from '../assets/icn/Down.png'
 import Overview_icn from '../assets/icn/Overview.png'
 import MenuView_icn from '../assets/icn/MenuView.png'
+import Settings_icn from '../assets/icn/Settings.png'
+import Default_icn from '../assets/icn/Default.png'
 
 
 function Icon( key, size, deg=0){//icon, but made white
@@ -71,7 +73,9 @@ const Icons  = {
     "AlignR": AlgRight_icn,
     "FontL":BiggerFont_icn,
     "FontS":SmallerFont_icn,
-    "TextColor":TextColor_icn,
+    "TextColor": TextColor_icn,
+    "Settings": Settings_icn, 
+    "Default": Default_icn, 
 
     "H0":Heading_icn,
     "P":Paragraph_icn,
@@ -121,7 +125,9 @@ const Alts  = {
     "AlignR": "right",
     "FontL":"AA",
     "FontS":"aa",
-    "TextColor":"txtCol",
+    "TextColor": "txtCol",
+    "Settings": "settings",
+    "Default": "default", 
 
     "H0":"H0",
     "P":"P",

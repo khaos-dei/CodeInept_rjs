@@ -16,15 +16,10 @@
   
 .TButton {
       padding:10%;
-      font-size:65%; 
-      font-weight: 700;
-      width:115%;
-      text-align: center;
       background-color: transparent;
-      color: white;
-      margin-top: 0;
     }
-    .w-color-sketch {
+
+  .w-color-sketch {
       --sketch-background: #323232 !important;
       --sketch-swatch-border-top: 1px solid #525252 !important;    
     }

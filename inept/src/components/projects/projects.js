@@ -66,6 +66,42 @@ function Projects(props) {
                         <div className='ProgressColor' style={{ width:"100%"}}/>
                     </div>
                 </div>
+                <div className='OneProjectLine'>
+                    <div className='ProjectNameLine'>
+                        <div className='ProjectName'>Project Big</div>
+                        <button className='TButton'>{Icon("Overview", "3vmin")}</button>
+                        <button className='TButton'>{Icon("MenuView", "3vmin")}</button>
+                    </div>
+                    <div className='ProgressBar'>
+                        <div className='ProgressColor' style={{ width: "65%" }} />
+                    </div>
+                </div>
+                <div className='OneProjectLine'>
+                    <div className='ProjectNameLine'>
+                        <div className='ProjectName'>Project Big</div>
+                        <button className='TButton'>{Icon("Overview", "3vmin")}</button>
+                        <button className='TButton'>{Icon("MenuView", "3vmin")}</button>
+                    </div>
+                    <div className='ProgressBar'>
+                        <div className='ProgressColor' style={{ width: "45%" }} />
+                    </div>
+                </div>
+                <div className='OneProjectLine'>
+                    <div className='ProjectNameLine'>
+                        <div className='ProjectName'>Project Big</div>
+                        <button className='TButton'>{Icon("Overview", "3vmin")}</button>
+                        <button className='TButton'>{Icon("MenuView", "3vmin")}</button>
+                    </div>
+                    <div className='ProgressBar'>
+                        <div className='ProgressColor' style={{ width: "10%" }} />
+                    </div>
+                </div>
+
+                <div className='OneProjectLine'>
+                    <div className='ProjectNameLine'>
+                        <button className='TButton'>{Icon("Add", "3vmin")}</button>
+                    </div>
+                </div>
             </div>
         </div>
     );
