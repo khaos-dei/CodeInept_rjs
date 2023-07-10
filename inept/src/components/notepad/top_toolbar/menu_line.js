@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { IconO, IconRed, IconBlue, IconGreen } from '../../../constants/Icons'
-import { setToLS } from '../../../utils/localstorage_component';
+import { setToLS } from 'utils/localstorage_component';
+import IconButton from 'utils/IconButton';
 
 function TabMenu_Line(props) {
     const [showDelete, setDelete] = useState(false);
@@ -36,18 +36,18 @@ function TabMenu_Line(props) {
             {showRename && <input id={"Rename" + props.ind} name="NoteName" defaultValue={props.Name}></input>}
             {!showRename && <div className='NoteName'>{props.Name}</div>}
             {/* Delete specific buttons */}
-            {showDelete && !props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={deleteNote}> {IconO("Yes", "3vmin", 0)}</button>}
-            {showDelete && !props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={() => setDelete(false)}> {IconO("No", "3vmin", 0)}</button>}
+            {showDelete && !props.move[0] && !showRename && <IconButton is="Yes"  color='black' value={props.ind} onClick={deleteNote}/>}
+            {showDelete && !props.move[0] && !showRename && <IconButton is="No"   color='black' value={props.ind} onClick={() => setDelete(false)}/>}
             {/* Move specific buttons */}
-            {!showDelete && props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={props.up} disabled={(props.ind == 0)} > {(props.ind > 0) && IconO("Up", "3vmin", 0)} </button>}
-            {!showDelete && props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={props.down} disabled={(props.ind == props.noteList[0].length - 1)} > {(props.ind < props.noteList[0].length - 1) && IconO("Down", "3vmin", 0)} </button>}
+            {!showDelete && props.move[0] && !showRename && <IconButton is="Up"   color='black' value={props.ind} onClick={props.up}   disabled={(props.ind === 0)} visible={!(props.ind === 0)} />}
+            {!showDelete && props.move[0] && !showRename && <IconButton is="Down" color='black' value={props.ind} onClick={props.down} disabled={(props.ind === props.noteList[0].length - 1)} visible={!(props.ind === props.noteList[0].length - 1)} />}
             {/* Rename specific buttons */}
-            {!showDelete && !props.move[0] && showRename && <button className='IcnBtn' value={props.ind} onClick={RenameNote}> {IconO("Yes", "3vmin", 0)}</button>}
-            {!showDelete && !props.move[0] && showRename && <button className='IcnBtn' value={props.ind} onClick={() => { setRename(false)}}> {IconO("No", "3vmin", 0)}</button>}
+            {!showDelete && !props.move[0] && showRename && <IconButton is="Yes" color='black'  value={props.ind} onClick={RenameNote}/> }
+            {!showDelete && !props.move[0] && showRename && <IconButton is="No"  color='black'  value={props.ind} onClick={() => { setRename(false)}}/> }
             {/* Main buttons */}
-            {!showDelete && !showRename && <button className='IcnBtn' value={props.ind} onClick={() => props.move[1](!props.move[0]) }>{(props.move[0] ? IconBlue("Rearrange", "3vmin", 0) : IconO("Rearrange", "3vmin", 0))}</button>}
-            {!showDelete && !props.move[0] && <button className='IcnBtn' value={props.ind} onClick={() => setRename(!showRename)}>{(showRename ? IconGreen("Rename", "3vmin", 0) : IconO("Rename", "3vmin", 0))}</button>}
-            {!props.move[0] && !showRename && <button className='IcnBtn' value={props.ind} onClick={() => setDelete(!showDelete)}>{(showDelete ? IconRed("Delete", "3vmin", 0) : IconO("Delete", "3vmin", 0))}</button>}
+            {!showDelete && !showRename &&    <IconButton is="Rearrange" color={(props.move[0] ? 'blue' : 'black')}  value={props.ind} onClick={() => props.move[1](!props.move[0])}/>}
+            {!showDelete && !props.move[0] && <IconButton is="Rename"    color={(showRename ? 'green' : 'black')}  value={props.ind} onClick={() => setRename(!showRename)}/>}
+            {!props.move[0] && !showRename && <IconButton is="Delete"    color={(showDelete ? 'red' : 'black')}  value={props.ind} onClick={() => setDelete(!showDelete)}/>}
 
         </div>
     )

@@ -1,18 +1,19 @@
-import MiniDialog from '../../../../utils/mini_dialogue'
-import {Icon} from '../../../../constants/Icons'
+import MiniDialog from 'utils/mini_dialogue'
+import {Icon} from 'constants/Icons'
+import IconButton from 'utils/IconButton'
 
 function NotepadListPopup(props) {
 return(
 <MiniDialog /* List Types Buttons */
                 body={
                   <div className='ThreeButtonLine'>
-                  <button className='IcnBtn' onClick={() => props.editor.chain().focus().toggleBulletList().run()}> {Icon("Bullet","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => props.editor.chain().focus().toggleOrderedList().run()}> {Icon("Enum","3vmin",0)}</button>
-                  <button className='IcnBtn' onClick={() => props.editor.chain().focus().toggleTaskList().run()}> {Icon("Todo","3vmin",0)}</button>
+                    <IconButton is="Bullet" onClick={() => props.editor.chain().focus().toggleBulletList().run()}/>
+                    <IconButton is="Enum" onClick={() => props.editor.chain().focus().toggleOrderedList().run()}/>
+                    <IconButton is="Todo" onClick={() => props.editor.chain().focus().toggleTaskList().run()}/>
                   </div>
                 }
                 open={props.showMiniDialogLst}
-                position={["66.5%","70.5%","4.5vmin","11vmin"]}
+                position={["66.5%","81%","4.5vmin","11vmin"]}
                 background_color="gray"/>
 )
 }

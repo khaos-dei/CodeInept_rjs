@@ -20,7 +20,7 @@ function NotepadColorPopup(props) {
                     />
                   }
                   open={props.showMiniDialogColor}
-                  position={["66.5%","75%","32.5vmin","25.5vmin"]}
+                  position={["66.5%","80%","32.5vmin","25.5vmin"]}
                   background_color="gray"/>
   )
 }

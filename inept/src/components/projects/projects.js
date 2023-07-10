@@ -1,5 +1,5 @@
 import './projects.css';
-import {Icon} from 'constants/Icons';
+import IconButton from 'utils/IconButton';
 
 function Projects(props) {
 
@@ -9,97 +9,18 @@ function Projects(props) {
                 <div className='OneProjectLine'>
                     <div className='ProjectNameLine'>
                         <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview","3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView","3vmin")}</button>
+                        <IconButton is="Overview" size='3vmin' />
+                        <IconButton is="MenuView" size='3vmin' />
                     </div>
                     <div className='ProgressBar'>
                         <div className='ProgressColor' style={{ width:"17%"}}/>
                     </div>
                 </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview","3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView","3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width:"46%"}}/>
-                    </div>
-                </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview","3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView","3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width:"89%"}}/>
-                    </div>
-                </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview","3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView","3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width:"32%"}}/>
-                    </div>
-                </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview","3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView","3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width:"67%"}}/>
-                    </div>
-                </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview","3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView","3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width:"100%"}}/>
-                    </div>
-                </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview", "3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView", "3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width: "65%" }} />
-                    </div>
-                </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview", "3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView", "3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width: "45%" }} />
-                    </div>
-                </div>
-                <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <div className='ProjectName'>Project Big</div>
-                        <button className='TButton'>{Icon("Overview", "3vmin")}</button>
-                        <button className='TButton'>{Icon("MenuView", "3vmin")}</button>
-                    </div>
-                    <div className='ProgressBar'>
-                        <div className='ProgressColor' style={{ width: "10%" }} />
-                    </div>
-                </div>
+            
 
                 <div className='OneProjectLine'>
-                    <div className='ProjectNameLine'>
-                        <button className='TButton'>{Icon("Add", "3vmin")}</button>
+                    <div className='ProjectNameLine'> 
+                    <IconButton is="Add" size='3vmin' />
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import './tabs.css';
 import React, { useState} from 'react';
-import {Icon} from 'constants/Icons'
+import IconButton from 'utils/IconButton';
 import { setToLS, getFromLS } from 'utils/localstorage_component';
 import { NewNoteContent } from 'constants/LocalBrowseConsts';
 import MiniDialog from 'utils/mini_dialogue'
@@ -39,6 +39,7 @@ function NotepadTabs(props) {
         setcancelDeleteInMenu(!cancelDeleteInMenu);
         setShowDialog(!showDialog);
     }
+
     return (
       <>
         <Dialog /* Note Menu */
@@ -53,8 +54,8 @@ function NotepadTabs(props) {
           body={
             <div className='Popup_Dialog_Add' style={{width:"25vmin", height:"5vmin"}}>
               <input name="NewNameInpt" style={{ height: "3vmin", width: "100%", margin:"auto"}} value={newName} onInput={e => setnewName(e.target.value)}></input>
-              <button className='IcnBtn' onClick={SaveNewNote}> {Icon("Yes", "4vmin", 0)}</button>
-              <button className='IcnBtn' onClick={() => setShowAddDialog(!showAddDialog)}>{Icon("No", "4vmin", 0)}</button>
+              <IconButton is="Yes"  size='4vmin' onClick={SaveNewNote}/>
+              <IconButton is="No"  size='4vmin' onClick={() => setShowAddDialog(!showAddDialog)}/>
             </div>
           }
           open={showAddDialog}
@@ -65,8 +66,8 @@ function NotepadTabs(props) {
           body={
             <div className='Popup_Dialog_Delete'>
               <p style={{margin:"auto"}}>Delete?</p>
-              <button className='IcnBtn' onClick={deleteNote}>{Icon("Yes","4vmin",0)}</button>
-              <button className='IcnBtn' onClick={() => setShowDeleteDialog(!showDeleteDialog)}>{Icon("No", "4vmin", 0)}</button>
+              <IconButton is="Yes"  size='4vmin' onClick={deleteNote}/>
+              <IconButton is="No"   size='4vmin' onClick={() => setShowDeleteDialog(!showDeleteDialog)}/>
             </div>
           }
           open={showDeleteDialog}
@@ -76,14 +77,14 @@ function NotepadTabs(props) {
         <div className='Notebook_TopLine' />
           
         <div className='TabArr'> 
-          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])-3)}> {Icon("Arrows","4vmin",180)} </button>
-          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])-1)}> {Icon("Arrow","2vmin",180)} </button>
-            <button className='IcnBtn' onClick={()=>setShowAddDialog(!showAddDialog)}>{Icon("Add","2.5vmin")}</button>
-            <button className='IcnBtn' onClick={manageDialog}> {Icon("List","2.5vmin")}</button>
-            <button className='IcnBtn' onClick={()=>setShowDeleteDialog(!showDeleteDialog)}>{Icon("Delete","2.5vmin")}</button>
-          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.activeTab[0])-1)} >{Icon("Seek", "2.5vmin")}</button>
-          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])+1)}> {Icon("Arrow","2vmin")} </button>
-          <button className='IcnBtn' onClick={() => props.firstTab[1](Number(props.firstTab[0])+3)}> {Icon("Arrows","4vmin")} </button>
+          <IconButton is="Arrows" size='4vmin' deg={180} onClick={() => props.firstTab[1](Number(props.firstTab[0])-3)}/>
+          <IconButton is="Arrow"  size='2vmin' deg={180} onClick={() => props.firstTab[1](Number(props.firstTab[0])-1)}/>
+          <IconButton is="Add"    size='2.5vmin' onClick={()=>setShowAddDialog(!showAddDialog)}/>
+          <IconButton is="List"   size='2.5vmin' onClick={manageDialog}/>
+          <IconButton is="Delete" size='2.5vmin' onClick={()=>setShowDeleteDialog(!showDeleteDialog)}/>
+          <IconButton is="Seek"   size='2.5vmin' onClick={() => props.firstTab[1](Number(props.activeTab[0])-1)}/>
+          <IconButton is="Arrow"  size='2vmin' onClick={() => props.firstTab[1](Number(props.firstTab[0])+1)}/>
+          <IconButton is="Arrows" size='4vmin' onClick={() => props.firstTab[1](Number(props.firstTab[0])+3)}/>
         </div>
 
         <div className='TabLine'>

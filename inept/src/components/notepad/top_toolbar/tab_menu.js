@@ -1,6 +1,6 @@
 import "./tab_menu.css"
 import React, {useState} from 'react';
-import { IconO } from 'constants/Icons';
+import IconButton from 'utils/IconButton';
 import { setToLS } from 'utils/localstorage_component';
 import TabMenu_Line from './menu_line';
 import { NewNoteContent } from 'constants/LocalBrowseConsts';
@@ -49,10 +49,12 @@ function NotepadTabMenu(props) {
     <div className='TabsGrid'>
             {props.Tabs.map((currentElement, index) => { return (<TabMenu_Line noteList={props.noteList} noteContent={props.noteContent} Name={currentElement} ind={index} up={MoveNoteUp} down={MoveNoteDown} move={[showMove, setMove]} outSideCancelDelete={props.outSideCancelDelete} />) })}
         <div className='TabGridLine'>
-        <div className='NoteName'><input name="NewNameInpt" hidden={showNewName} style={{height:"100%", fontSize:"3vmin", width:"100%", margin:"0%"}} value={newName} onInput={e => setnewName(e.target.value)}></input></div>
-        {!showNewName&&<button className='IcnBtn' onClick={saveNote}> {IconO("Yes","3vmin",0)}</button>}
-        {!showNewName&&<button className='IcnBtn' onClick={() =>setshowNewName(!showNewName)}> {IconO("No","3vmin",0)}</button>}
-        {showNewName && <button className='IcnBtn' onClick={() => { setshowNewName(!showNewName)}} > {IconO("Add","3vmin",0)}</button>}
+        <div className='NoteName'>
+        <input name="NewNameInpt" hidden={showNewName} style={{height:"100%", fontSize:"3vmin", width:"100%", margin:"0%"}} value={newName} onInput={e => setnewName(e.target.value)}></input>
+        </div>
+        {!showNewName&& <IconButton is="Yes" color='black' onClick={saveNote} />}
+        {!showNewName&& <IconButton is="No"  color='black' onClick={() =>setshowNewName(!showNewName)} /> }
+        {showNewName && <IconButton is="Add" color='black' onClick={() => { setshowNewName(!showNewName)}} /> }
         </div>
     </div>
     )

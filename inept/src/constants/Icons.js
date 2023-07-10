@@ -40,12 +40,38 @@ import Settings_icn from '../assets/icn/Settings.png'
 import Default_icn from '../assets/icn/Default.png'
 
 
-function Icon( key, size, deg=0){//icon, but made white
+import Colorize from 'utils/colorize'
+
+function Icon( key, size, deg=0, color='white'){//icon, but made white
+  switch(color) {
+    case 'white':
+      return(IconW(key, size, deg));
+    case 'black':
+      return(IconO(key, size, deg));
+    case 'red':
+      return(IconRed(key, size, deg));
+    case 'blue':
+      return(IconBlue(key, size, deg));
+    case 'green':
+      return(IconGreen(key, size, deg));
+    default:
+      return(IconColor(key, size, deg, color));
+  }
+}
+function IconO( key, size, deg){//icon original
+  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, transform:'rotate('+deg+'deg)'}}/>)
+}
+function IconB( key, size, deg){//icon, black original
+  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, transform:'rotate('+deg+'deg)'}}/>)
+}
+function IconW( key, size, deg){//icon, but made white
   return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
 }
 
-function IconO( key, size, deg=0){//icon original
-  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, transform:'rotate('+deg+'deg)'}}/>)
+
+
+function IconColor(key, size, deg, color) {//icon colored Red
+  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: Colorize("00a4d6"), transform: 'rotate(' + deg + 'deg)' }} />)
 }
 
 function IconRed(key, size, deg = 0) {//icon colored Red
@@ -165,4 +191,4 @@ const Alts  = {
 
 
 
-export { Icons, Icon, IconO, IconRed, IconBlue, IconGreen}
+export { Icons, Icon}

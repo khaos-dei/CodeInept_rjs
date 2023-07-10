@@ -1,10 +1,9 @@
 import './IconButton.css';
-import { Icon, IconO, IconRed, IconBlue, IconGreen } from 'constants/Icons';
+import { Icon} from 'constants/Icons';
 
-function IconButton(props) {
+function IconButton({is, size='3vmin', onClick, color='white', deg=0, value=NaN, disabled=false, visible=true}){
     return (
-        <button className='TButton' onClick={props.onClick}>{Icon(props.is, props.size)}</button>
+        <button className='TButton' onClick={onClick} value={value} disabled={disabled}>{visible && Icon(is, size, deg, color)}</button>
     );
 }
-
 export default IconButton;
