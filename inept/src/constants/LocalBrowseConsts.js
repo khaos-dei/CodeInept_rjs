@@ -11,6 +11,53 @@ const ls_values  = {
   "note-List": ["Note"],
   "note-Contents": ["<p>Note text goes here</p>"],
 
+  "Project-List": [
+    {
+      name:"Default Project",
+      deadline: new Date("November 18 3020 11:17"),
+      parts:[
+        {
+          name:"Task 1",
+          deadline: false,
+          completed: true,
+          sub: [],
+        },
+        {
+          name:"Task 2",
+          deadline: false,
+          completed: false,
+          sub: [],
+        },
+        {
+          name:"Task 3",
+          deadline: false,
+          completed: false,
+          sub: [
+            {
+              name:"Task 3.1",
+              deadline: false,
+              completed: true,
+              sub: [],
+            },
+            {
+              name:"Task 3.2",
+              deadline: false,
+              completed: false,
+              sub: [
+                {
+                  name:"Task 3.2.1",
+                  deadline: false,
+                  completed: true,
+                  sub: [],
+                }
+              ],
+            }
+          ],
+        },
+      ]
+    },
+  ],
+
   "active-Tab": 0,
   "first-Tab": 0,
 
@@ -25,6 +72,9 @@ const ls_stringify  = {
 
   "note-List": true,
   "note-Contents": true,
+
+  "Project-List": true,
+  "Project-Contents": true,
 
   "active-Tab": false,
   "first-Tab":false,

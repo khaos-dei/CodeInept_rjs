@@ -6,7 +6,7 @@ return(
 <MiniDialog /* Heading types Buttons Working! */
                 body={
                   <div className='HeadingButtonLine'>
-                    <IconButton is="P" onClick={() => props.editor.chain().focus().setParagraph().run()}/>
+                    <IconButton is="P"  onClick={() => props.editor.chain().focus().setParagraph().run()}/>
                     <IconButton is="H1" onClick={() => props.editor.chain().focus().toggleHeading({ level: 1 }).run()}/>
                     <IconButton is="H2" onClick={() => props.editor.chain().focus().toggleHeading({ level: 2 }).run()}/>
                     <IconButton is="H3" onClick={() => props.editor.chain().focus().toggleHeading({ level: 3 }).run()}/>

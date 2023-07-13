@@ -26,32 +26,3 @@
   }
 
 
-.ProgressBar{
-  width:100%;
-  height:3vmin;
-  border-radius: 2vmin;
-  overflow:hidden;
-  border:solid black;
-}
-
-.ProjectNameLine {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 74% 10% 10%;
-  grid-gap: 2%;
-}
-
-.ProjectName{
-  width:100%;
-  height:3vmin;
-  padding-left:1vmin;
-  font-size: 2.8vmin;
-  font-weight: bold;
-  text-align: left;
-  /* border:solid black; */
-}
-.ProgressColor{
-  width:100%;
-  height:100%;
-  background-color: aqua;
-}

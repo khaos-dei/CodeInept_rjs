@@ -5,6 +5,7 @@ import IconButton from 'utils/IconButton';
 
 function ButtonsLine() {
     return (
+        
         <div className='Buttons_Line'>
             <IconButton is="Settings" />
             <IconButton is="Default"  onClick={restoreDefaults} />

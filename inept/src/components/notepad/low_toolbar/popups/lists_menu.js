@@ -1,5 +1,4 @@
 import MiniDialog from 'utils/mini_dialogue'
-import {Icon} from 'constants/Icons'
 import IconButton from 'utils/IconButton'
 
 function NotepadListPopup(props) {
@@ -8,8 +7,8 @@ return(
                 body={
                   <div className='ThreeButtonLine'>
                     <IconButton is="Bullet" onClick={() => props.editor.chain().focus().toggleBulletList().run()}/>
-                    <IconButton is="Enum" onClick={() => props.editor.chain().focus().toggleOrderedList().run()}/>
-                    <IconButton is="Todo" onClick={() => props.editor.chain().focus().toggleTaskList().run()}/>
+                    <IconButton is="Enum"   onClick={() => props.editor.chain().focus().toggleOrderedList().run()}/>
+                    <IconButton is="Todo"   onClick={() => props.editor.chain().focus().toggleTaskList().run()}/>
                   </div>
                 }
                 open={props.showMiniDialogLst}
