@@ -38,6 +38,9 @@ import Overview_icn from '../assets/icn/Overview.png'
 import MenuView_icn from '../assets/icn/MenuView.png'
 import Settings_icn from '../assets/icn/Settings.png'
 import Default_icn from '../assets/icn/Default.png'
+import Checked_icn from '../assets/icn/Checked.png'
+import Unchecked_icn from '../assets/icn/Unchecked.png'
+import Check_icn from '../assets/icn/Check.png'
 
 
 import Colorize from 'utils/colorize'
@@ -67,8 +70,6 @@ function IconB( key, size, deg){//icon, black original
 function IconW( key, size, deg){//icon, but made white
   return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
 }
-
-
 
 function IconColor(key, size, deg, color) {//icon colored Red
   return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: Colorize("00a4d6"), transform: 'rotate(' + deg + 'deg)' }} />)
@@ -133,7 +134,11 @@ const Icons  = {
     "Down": Down_icn,
     
     "Overview": Overview_icn,
-    "MenuView": MenuView_icn,    
+    "MenuView": MenuView_icn,   
+    
+    "Checked":Checked_icn,
+    "Unchecked":Unchecked_icn,
+    "Check":Check_icn,
   };
 
 const Alts  = {
@@ -186,7 +191,11 @@ const Alts  = {
     "Down": "down",
     
     "Overview": "menu",
-    "MenuView": "Menu",  
+    "MenuView": "Menu",
+    
+    "Checked":"[V]",
+    "Unchecked":"[ ]",
+    "Check":"V",
   };
 
 

@@ -1,0 +1,43 @@
+.TasksGrid {
+    display: grid;
+    margin: auto;
+    grid-auto-flow: row;
+    margin-bottom: 6%;
+  }
+.TasksGridLine {
+    display: grid;
+    margin: 1.5% 10%;
+    grid-auto-flow: row;
+    grid-template-columns:4% 4% 4% 4% 50% 20%;
+    grid-gap: 2%;
+  }
+.TasksButtonsLine {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-column-start: 6 ;
+  }
+
+.TaskNameT0 {
+    color: black;
+    text-align:left;
+    font-size: 3vmin;
+    border:solid;
+  }
+.TaskNameT1 {
+    color: black;
+    text-align:left;
+    font-size: 3vmin;
+  }
+.TaskNameT2 {
+    color: black;
+    text-align:left;
+    font-size: 3vmin;
+    }
+.TaskNameT3 {
+    color: black;
+    text-align:left;
+    font-size: 3vmin;
+    }
+    
+  
