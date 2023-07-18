@@ -6,10 +6,26 @@ const setToLS = (key, value) => {
     
 }
 
+function Fix_Dates(list) {
+    console.log(list);
+    if ((!list)&&(list.length == 0)){
+        return;
+    }
+    for (const element of list) {
+        if (element.deadline){
+            element.deadline = new Date(element.deadline);
+        }
+        Fix_Dates(element.tasks);
+    }
+}
+
 const getFromLS = key => {
     const value = ls_stringify[key] ? JSON.parse(localStorage.getItem(key)) : localStorage.getItem(key) ;
 
     if (value) {
+        if (key =="Project-List"){
+            Fix_Dates(value);
+        }
         return value;
     }else{
         setDefaultToLS(key);

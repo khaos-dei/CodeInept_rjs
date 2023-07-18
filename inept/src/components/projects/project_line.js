@@ -4,7 +4,7 @@ import IconButton from 'utils/IconButton';
 
 function ProjectLine({id, projectBulk, setactiveProj}) {
 
-    var progress_percent = Math.round( calculate_progress(projectBulk[id].parts)*10000 )/100
+    var progress_percent = Math.round(calculate_progress(projectBulk[id].tasks)*10000 )/100
     
     function calculate_progress(list){
         if(list.length===0){
@@ -12,7 +12,7 @@ function ProjectLine({id, projectBulk, setactiveProj}) {
         }
         var percent=0;
         for(const element of list){
-            percent+=element.completed? 1 : calculate_progress(element.sub)*element.sub.length/(element.sub.length+1);
+            percent += element.completed ? 1 : calculate_progress(element.tasks) * element.tasks.length / (element.tasks.length+1);
         } 
         return (percent/list.length);
     }

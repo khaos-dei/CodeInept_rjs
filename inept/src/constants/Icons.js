@@ -34,6 +34,9 @@ import Yes_icn from '../assets/icn/yes.png'
 import No_icn from '../assets/icn/no.png'
 import Up_icn from '../assets/icn/Up.png'
 import Down_icn from '../assets/icn/Down.png'
+import Left_icn from '../assets/icn/Left.png'
+import Right_icn from '../assets/icn/Right.png'
+import Movmp_icn from '../assets/icn/Movmp.png'
 import Overview_icn from '../assets/icn/Overview.png'
 import MenuView_icn from '../assets/icn/MenuView.png'
 import Settings_icn from '../assets/icn/Settings.png'
@@ -41,49 +44,10 @@ import Default_icn from '../assets/icn/Default.png'
 import Checked_icn from '../assets/icn/Checked.png'
 import Unchecked_icn from '../assets/icn/Unchecked.png'
 import Check_icn from '../assets/icn/Check.png'
+import Time_icn from '../assets/icn/Time.png'
+import Warning_icn from '../assets/icn/Warn.png'
+import WarningBad_icn from '../assets/icn/WarnBomb.png'
 
-
-import Colorize from 'utils/colorize'
-
-function Icon( key, size, deg=0, color='white'){//icon, but made white
-  switch(color) {
-    case 'white':
-      return(IconW(key, size, deg));
-    case 'black':
-      return(IconO(key, size, deg));
-    case 'red':
-      return(IconRed(key, size, deg));
-    case 'blue':
-      return(IconBlue(key, size, deg));
-    case 'green':
-      return(IconGreen(key, size, deg));
-    default:
-      return(IconColor(key, size, deg, color));
-  }
-}
-function IconO( key, size, deg){//icon original
-  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, transform:'rotate('+deg+'deg)'}}/>)
-}
-function IconB( key, size, deg){//icon, black original
-  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, transform:'rotate('+deg+'deg)'}}/>)
-}
-function IconW( key, size, deg){//icon, but made white
-  return(<img src={Icons[key]} alt={Alts[key]} style={{width:size, filter:'invert(1)', transform:'rotate('+deg+'deg)'}}/>)
-}
-
-function IconColor(key, size, deg, color) {//icon colored Red
-  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: Colorize("00a4d6"), transform: 'rotate(' + deg + 'deg)' }} />)
-}
-
-function IconRed(key, size, deg = 0) {//icon colored Red
-  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: 'invert(1) grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8)', transform: 'rotate(' + deg + 'deg)' }} />)
-}
-function IconBlue(key, size, deg = 0) {//icon colored Red
-  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: 'invert(1) grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8)', transform: 'rotate(' + deg + 'deg)' }} />)
-}
-function IconGreen(key, size, deg = 0) {//icon colored Red
-  return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, filter: 'invert(1) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg) saturate(1000%) contrast(0.8)', transform: 'rotate(' + deg + 'deg)' }} />)
-}
 
 const Icons  = {
     "Font":FontSize_icn,
@@ -103,6 +67,7 @@ const Icons  = {
     "TextColor": TextColor_icn,
     "Settings": Settings_icn, 
     "Default": Default_icn, 
+    "Time": Time_icn,
 
     "H0":Heading_icn,
     "P":Paragraph_icn,
@@ -132,6 +97,9 @@ const Icons  = {
 
     "Up": Up_icn,
     "Down": Down_icn,
+    "Left": Left_icn, 
+    "Right": Right_icn,
+    "Movmp": Movmp_icn,
     
     "Overview": Overview_icn,
     "MenuView": MenuView_icn,   
@@ -139,6 +107,9 @@ const Icons  = {
     "Checked":Checked_icn,
     "Unchecked":Unchecked_icn,
     "Check":Check_icn,
+
+    "Warn": Warning_icn,
+    "WarnBad": WarningBad_icn,
   };
 
 const Alts  = {
@@ -158,7 +129,8 @@ const Alts  = {
     "FontS":"aa",
     "TextColor": "txtCol",
     "Settings": "settings",
-    "Default": "default", 
+    "Default": "default",
+    "Time": "time",
 
     "H0":"H0",
     "P":"P",
@@ -189,6 +161,9 @@ const Alts  = {
 
     "Up": "up",
     "Down": "down",
+    "Left": "left",
+    "Right": "right",
+    "Movmp": "move",
     
     "Overview": "menu",
     "MenuView": "Menu",
@@ -196,8 +171,11 @@ const Alts  = {
     "Checked":"[V]",
     "Unchecked":"[ ]",
     "Check":"V",
+
+    "Warn": "[!]",
+    "WarnBad": "[!!!]",
   };
 
 
 
-export { Icons, Icon}
+export { Icons, Alts}

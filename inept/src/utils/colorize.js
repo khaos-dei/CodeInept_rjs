@@ -274,7 +274,7 @@ class Solver {
         function fmt(idx, multiplier = 1) {
             return Math.round(filters[idx] * multiplier);
         }
-        return `invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`;
+        return `invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%)`;
     }
 }
 
@@ -305,6 +305,7 @@ function Colorize(hex) {
     const color = new Color(rgb[0], rgb[1], rgb[2]);
     const solver = new Solver(color);
     const result = solver.solve();
+    console.log(result.loss)
     /* let lossMsg;
     if (result.loss < 1) {
         lossMsg = 'This is a perfect result.';

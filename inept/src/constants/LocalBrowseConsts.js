@@ -14,41 +14,47 @@ const ls_values  = {
   "Project-List": [
     {
       name:"Default Project",
-      deadline: new Date("November 18 3020 11:17"),
-      parts:[
+      deadline: new Date("August 19, 1975 23:15:30").toString(),
+      tasks:[
         {
           name:"Task 1",
           deadline: false,
           completed: true,
-          sub: [],
+          tasks: [],
         },
         {
           name:"Task 2",
           deadline: false,
           completed: false,
-          sub: [],
+          tasks: [],
         },
         {
           name:"Task 3",
-          deadline: false,
+          deadline: new Date("June 8, 2021 23:15:30").toString(),
           completed: false,
-          sub: [
+          tasks: [
             {
               name:"Task 3.1",
               deadline: false,
               completed: true,
-              sub: [],
+              tasks: [],
             },
             {
               name:"Task 3.2",
               deadline: false,
               completed: false,
-              sub: [
+              tasks: [
                 {
                   name:"Task 3.2.1",
-                  deadline: false,
+                  deadline: new Date("November 28, 2000 23:15:30").toString(),
                   completed: true,
-                  sub: [],
+                  tasks: [
+                    {
+                      name: "Task 3.2.1.1",
+                      deadline: new Date("November 28, 2000 23:15:30").toString(),
+                      completed: true,
+                      tasks: [],
+                    }],
                 }
               ],
             }

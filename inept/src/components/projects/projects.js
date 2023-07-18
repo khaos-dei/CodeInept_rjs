@@ -27,8 +27,8 @@ function Projects(props) {
 
         <div className='Projects'>
             <Dialog /* Note Menu */
-            header="Task List" 
-            body={<TasksMenu id={0}/>} 
+            header={projectBulk[0].name + " [due " + projectBulk[0].deadline.getDate() + "." + projectBulk[0].deadline.getMonth() + "." + projectBulk[0].deadline.getFullYear() +"]"}
+            body={<TasksMenu id={0} projectBulk={projectBulk[0]} />} 
             width={90}
             open={showDialog} 
             callback={closeDialog}
