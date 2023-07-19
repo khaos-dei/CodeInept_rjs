@@ -34,6 +34,7 @@
   font-size: 2vmin;
   grid-column-start: 6;
 }
+
 .VarietyButtonLine {
   display: grid;
   grid-auto-flow: row;

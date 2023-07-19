@@ -5,6 +5,7 @@ import IconButton from 'utils/IconButton';
 import ProjectLine from './project_line';
 import TasksMenu from './tasks_menu';
 import { getFromLS, setToLS } from 'utils/localstorage_component';
+import write_date from 'utils/date';
 
 
 function Projects(props) {
@@ -27,7 +28,7 @@ function Projects(props) {
 
         <div className='Projects'>
             <Dialog /* Note Menu */
-            header={projectBulk[0].name + " [due " + projectBulk[0].deadline.getDate() + "." + projectBulk[0].deadline.getMonth() + "." + projectBulk[0].deadline.getFullYear() +"]"}
+            header={projectBulk[0].name + " [due " + write_date(projectBulk[0].deadline) +"]"}
             body={<TasksMenu id={0} projectBulk={projectBulk[0]} />} 
             width={90}
             open={showDialog} 

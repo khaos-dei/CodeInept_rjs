@@ -8,7 +8,7 @@ function show_tasks(list, depth) {
     let content = [];
     if (list.length != 0)
         for (const element of list) {
-            content.push(<TaskLine depth={depth} name={element.name} check={element.completed} />);//the element itself
+            content.push(<TaskLine depth={depth} name={element.name} check={element.completed} task={element}/>);//the element itself
             content.push(show_tasks(element.tasks, depth+1));//the element babies
         }
     return content;
