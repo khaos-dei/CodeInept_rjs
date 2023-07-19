@@ -44,7 +44,7 @@ function App() {
         <ThemeChoice datentime={dateState} />
         <DigiClock datentime={dateState} />
         <ButtonsLine />
-        <Media /> 
+        {/* <Media />  */}
         <Projects />
         <LowerLine />
       </div>
