@@ -3,13 +3,17 @@ import { Icons, Alts } from 'constants/Icons';
 import Colorize from 'utils/colorize';
 
 
-function IconButton({is, size='3vmin', onClick, color='white', deg=0, value=NaN, disabled=false, visible=true, style=null}){
+function IconButton({is, size='3vmin', onClick, color='white', deg=0, value="NaN", disabled=false, visible=true, style=null}){
     return (
         <button className='TButton' onClick={onClick} value={value} disabled={visible&&disabled} style={style}>{Icon(is, size, deg, color, (visible? 1 : 0))}</button>
     );
 }
+function IconNoButton({is, size='3vmin', onClick, color='white', deg=0, value="NaN", disabled=false, visible=true, style=null}){
+    return (
+        Icon(is, size, deg, color, (visible? 1 : 0))
+    );
+}
 
-export default IconButton;
 
 
 function Icon(key, size, deg = 0, color = 'white', visible) {//icon, but made white
@@ -30,7 +34,7 @@ function Icon(key, size, deg = 0, color = 'white', visible) {//icon, but made wh
     return (IconColor(key, size, deg, color, (visible ? 1 : 0)));
 }
 
-function IconB(key, size, deg, vis = 1 ) {//icon, black original
+function IconB(key, size, deg, vis = 1) {//icon, black original
     return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, opacity: vis, transform: 'rotate(' + deg + 'deg)' }} />)
 }
 function IconW(key, size, deg, vis=1) {//icon, but made white
@@ -40,3 +44,7 @@ function IconW(key, size, deg, vis=1) {//icon, but made white
 function IconColor(key, size, deg, color, vis = 1 ) {//icon colored Red
     return (<img src={Icons[key]} alt={Alts[key]} style={{ width: size, opacity: vis, filter: Colorize(color), transform: 'rotate(' + deg + 'deg)' }} />)
 }
+
+
+export default IconButton;
+export {IconNoButton};

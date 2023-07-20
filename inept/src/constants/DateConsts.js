@@ -33,4 +33,9 @@ const days = [
         //12 months and the leap February
       ];
 
-  export {dates, weekdays, months, days};
+const now = new Date();
+const long_ago = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 14);
+now.setHours(0, 0, 0, 0);
+long_ago.setHours(0, 0, 0, 0);
+
+  export {dates, weekdays, months, days, now, long_ago};

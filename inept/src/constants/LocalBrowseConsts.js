@@ -14,13 +14,40 @@ const ls_values  = {
   "Project-List": [
     {
       name:"Default Project",
-      deadline: new Date("August 19, 1975 23:15:30").toString(),
+      deadline: new Date("August 19, 2023 23:15:30").toString(),
       tasks:[
         {
           name:"Task 1",
           deadline: false,
           completed: true,
-          tasks: [],
+          tasks: [
+            {
+              name:"Task 1.1",
+              deadline: false,
+              completed: true,
+              tasks: [],
+            },
+            {
+              name:"Task 1.2",
+              deadline: false,
+              completed: false,
+              tasks: [
+                {
+                  name:"Task 1.2.1",
+                  deadline: new Date("July 18, 2023 23:15:30").toString(),
+                  completed: true,
+                  tasks: [
+                    {
+                      name: "Task 1.2.1.1",
+                      deadline: new Date("November 28, 2023 23:15:30").toString(),
+                      completed: true,
+                      tasks: [],
+                    }],
+                }
+              ],
+            }
+
+          ],
         },
         {
           name:"Task 2",
@@ -30,7 +57,7 @@ const ls_values  = {
         },
         {
           name:"Task 3",
-          deadline: new Date("June 8, 2031 23:15:30").toString(),
+          deadline: new Date("June 8, 2023 23:15:30").toString(),
           completed: false,
           tasks: [
             {
@@ -51,7 +78,7 @@ const ls_values  = {
                   tasks: [
                     {
                       name: "Task 3.2.1.1",
-                      deadline: new Date("November 28, 2000 23:15:30").toString(),
+                      deadline: new Date("November 28, 2023 23:15:30").toString(),
                       completed: true,
                       tasks: [],
                     }],

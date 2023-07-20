@@ -7,7 +7,6 @@ const setToLS = (key, value) => {
 }
 
 function Fix_Dates(list) {
-    console.log(list);
     if ((!list)&&(list.length == 0)){
         return;
     }

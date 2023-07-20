@@ -305,7 +305,7 @@ function Colorize(hex) {
     const color = new Color(rgb[0], rgb[1], rgb[2]);
     const solver = new Solver(color);
     const result = solver.solve();
-    console.log(result.loss)
+    /* console.log(result.loss) */
     /* let lossMsg;
     if (result.loss < 1) {
         lossMsg = 'This is a perfect result.';
