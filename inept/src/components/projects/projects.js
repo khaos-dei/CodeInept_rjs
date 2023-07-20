@@ -39,10 +39,10 @@ function Projects(props) {
     }
 
     function searchTaskById(taskId, task, depth){
-        console.log(taskId);
-        console.log(task);
-        console.log(depth);
-        if((depth===4)||(taskId[depth]==-1)){return(task[taskId[depth]]);}
+                                                                                        console.log(taskId);
+                                                                                        console.log(task);
+                                                                                        console.log(depth);
+        if((depth===4)||(taskId[depth+1]===-1)){return(task[taskId[depth]]);}
         return(searchTaskById(taskId, task[taskId[depth]].tasks,depth+1))
     }
     function changeToProjectData(taskId,change, value){
