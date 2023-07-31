@@ -30,11 +30,10 @@
   text-align: right;
   margin: 0;
   padding: 0;
-  padding-bottom:0.2vmin;
+  vertical-align: bottom;
+  padding-bottom:0vmin;
   font-size: 2vmin;
   grid-column-start: 6;
-  grid-auto-flow: row;
-  grid-template-columns:40% 60% ;
 }
 
 .VarietyButtonLine {
@@ -47,8 +46,16 @@
 .DeadlineDate{
   background-color: transparent;
   border: none;
+  vertical-align: bottom;
   font-size: 2vmin;
   padding: 0;
   margin: 0;
   color: black;
+}
+
+.DatepickerDiv{
+  position:relative;
+  top: 32%;
+  vertical-align: bottom;
+  color: blueviolet;
 }
