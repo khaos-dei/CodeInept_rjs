@@ -39,9 +39,6 @@ function Projects(props) {
     }
 
     function searchTaskById(taskId, task, depth){
-                                                                                        console.log(taskId);
-                                                                                        console.log(task);
-                                                                                        console.log(depth);
         if((depth===4)||(taskId[depth+1]===-1)){return(task[taskId[depth]]);}
         return(searchTaskById(taskId, task[taskId[depth]].tasks,depth+1))
     }
@@ -52,6 +49,11 @@ function Projects(props) {
         switch (change){
             case 'deadline':
                 theTask.deadline=value;
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                return;
+            case 'completed':
+                theTask.completed=value;
                 setprojectBulk(Fix_Dates(deep_copy_projectBulk));
                 setToLS("Project-List", deep_copy_projectBulk);
                 return;

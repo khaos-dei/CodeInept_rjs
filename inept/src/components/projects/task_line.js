@@ -11,16 +11,17 @@ function TaskLine({ depth, name, id, max_id, check, feedback, onMove, task, baby
     function changeDeadline(newDdl){
         feedback(taskId, "deadline", newDdl);
     }
+    function checkMark(){
+        feedback(taskId, "completed", !check);
+    }
 
     return (
             <div className='TasksGridLine'>
-                <IconButton is={check ? "Checked" : "Unchecked"} size='3vmin' color='black' style={{ gridColumnStart: depth+1 }} />
+                <IconButton is={check ? "Checked" : "Unchecked"} onClick={checkMark} size='3vmin' color='black' style={{ gridColumnStart: depth+1 }} />
 
-                <div className='TaskName' style={{ gridColumnStart: depth + 2, gridColumnEnd: `span ${4 - depth}` }} >{name+" | "+ taskId}</div>
+                {/* <div className='TaskName' style={{ gridColumnStart: depth + 2, gridColumnEnd: `span ${4 - depth}` }} >{name +" | "+ taskId }</div>*/}
+                <div className='TaskName' style={{ gridColumnStart: depth + 2, gridColumnEnd: `span ${4 - depth}` }} >{name}</div>
             
-                {/* <div className='TaskWarning'><IconButton is="Warn" size='3vmin' color='ed6802' /></div> */}
-                {/* <div className='TaskWarning'><IconButton is="WarnBad" size='3vmin' color='ad0000'/></div> */}
-                
                 <DeadLine ddl={task.deadline} ddl_feedback={changeDeadline}/>
 
                 <div className='TasksButtonsLine'>
