@@ -52,6 +52,11 @@ function Projects(props) {
                 setprojectBulk(Fix_Dates(deep_copy_projectBulk));
                 setToLS("Project-List", deep_copy_projectBulk);
                 return;
+            case 'rename':
+                    theTask.name=value;
+                    setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                    setToLS("Project-List", deep_copy_projectBulk);
+                    return;
             case 'completed':
                 theTask.completed=value;
                 setprojectBulk(Fix_Dates(deep_copy_projectBulk));
