@@ -42,10 +42,27 @@ function Projects(props) {
         if((depth===4)||(taskId[depth+1]===-1)){return(task[taskId[depth]]);}
         return(searchTaskById(taskId, task[taskId[depth]].tasks,depth+1))
     }
+
+    function searchDadTask(taskId,deep_copy_projectBulk){
+        var DadTask=[... taskId];
+        for(let i = 0; i < taskId.length-1; i++){
+            if(taskId[i+1]===-1){
+                DadTask[i]=-1;
+                return(searchTaskById(DadTask,deep_copy_projectBulk,0));
+            }
+        }
+    }
+
     function changeToProjectData(taskId,change, value){
         var deep_copy_projectBulk = JSON.parse(JSON.stringify(projectBulk));
         console.log(value)
         var theTask = searchTaskById(taskId, deep_copy_projectBulk, 0);
+        var freshTask = {
+            name: "Fresh task",
+            deadline: false,
+            completed: false,
+            tasks: [],
+          }
         switch (change){
             case 'deadline':
                 theTask.deadline=value;
@@ -53,10 +70,16 @@ function Projects(props) {
                 setToLS("Project-List", deep_copy_projectBulk);
                 return;
             case 'rename':
-                    theTask.name=value;
-                    setprojectBulk(Fix_Dates(deep_copy_projectBulk));
-                    setToLS("Project-List", deep_copy_projectBulk);
-                    return;
+                theTask.name=value;
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                return;
+            case 'new':
+               /*  var dadTask = searchDadTask(taskId, deep_copy_projectBulk) */
+                theTask.tasks.push(freshTask);
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                return;
             case 'completed':
                 theTask.completed=value;
                 setprojectBulk(Fix_Dates(deep_copy_projectBulk));
