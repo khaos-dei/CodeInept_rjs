@@ -44,18 +44,28 @@ function Projects(props) {
     }
 
     function searchDadTask(taskId,deep_copy_projectBulk){
-        var DadTask=[... taskId];
-        for(let i = 0; i < taskId.length-1; i++){
-            if(taskId[i+1]===-1){
-                DadTask[i]=-1;
-                return(searchTaskById(DadTask,deep_copy_projectBulk,0));
+        var DadTaskID=[... taskId];
+        for(let i = 0; i < DadTaskID.length-1; i++){
+            if(DadTaskID[i+1]==-1){
+                DadTaskID[i]=-1;
+                return(searchTaskById(DadTaskID,deep_copy_projectBulk,0));
             }
         }
+        DadTaskID[DadTaskID.length-1]=-1;
+        return(searchTaskById(DadTaskID,deep_copy_projectBulk,0));
+    }
+    function childId(taskId){
+        for(let i = 0; i < taskId.length-1; i++){
+            if(taskId[i+1]===-1){
+                return(taskId[i]);
+            }
+        }
+        return(taskId[taskId.length-1]);
     }
 
     function changeToProjectData(taskId,change, value){
         var deep_copy_projectBulk = JSON.parse(JSON.stringify(projectBulk));
-        console.log(value)
+        console.log(taskId)
         var theTask = searchTaskById(taskId, deep_copy_projectBulk, 0);
         var freshTask = {
             name: "Fresh task",
@@ -75,8 +85,15 @@ function Projects(props) {
                 setToLS("Project-List", deep_copy_projectBulk);
                 return;
             case 'new':
-               /*  var dadTask = searchDadTask(taskId, deep_copy_projectBulk) */
                 theTask.tasks.push(freshTask);
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                return;
+            case 'delete':
+                var dadTask = searchDadTask(taskId, deep_copy_projectBulk) 
+                let id = childId(taskId);
+                console.log(id);
+                if(id>0){dadTask.tasks.splice(id, id);}else{dadTask.tasks.shift()}
                 setprojectBulk(Fix_Dates(deep_copy_projectBulk));
                 setToLS("Project-List", deep_copy_projectBulk);
                 return;

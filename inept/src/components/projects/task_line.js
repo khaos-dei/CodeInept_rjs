@@ -26,6 +26,10 @@ function TaskLine({ depth, name, id, max_id, check, feedback, onMove, task, baby
         feedback(taskId, "new", false);
     }
 
+    function deleteTask(){
+        feedback(taskId, "delete", false);
+    }
+
     return (
             <div className='TasksGridLine'>
                 <IconButton is={check ? "Checked" : "Unchecked"} onClick={checkMark} size='3vmin' color='black' style={{ gridColumnStart: depth+1 }} />
@@ -37,7 +41,7 @@ function TaskLine({ depth, name, id, max_id, check, feedback, onMove, task, baby
                 <div className='TasksButtonsLine'>
                     <IconButton is="Add" size='3vmin' onClick={newTask} color='black' visible={depth<3} />
                     <IconButton is="Rename" size='3vmin' onClick={()=>{setRename(!showRename)}} color='black' />
-                    <IconButton is="Delete" size='3vmin' color='black' />
+                    <IconButton is="Delete" size='3vmin' onClick={deleteTask} color='black' />
                     <IconButton is="Rearrange" size='3vmin' color='black' />
                 </div>
             </div>
