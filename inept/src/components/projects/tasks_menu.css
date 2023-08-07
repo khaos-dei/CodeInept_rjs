@@ -8,7 +8,7 @@
     display: grid;
     margin: 0.7% 6%;
     grid-auto-flow: row;
-    grid-template-columns:1.7% 1.7% 1.7% 1.7% 48% 25% 14%;
+    grid-template-columns:1.7% 1.7% 1.7% 1.7% 48% 18% 14%;
     grid-gap: 2%;
   }
 .TasksButtonsLine {
@@ -39,7 +39,7 @@
 .VarietyButtonLine {
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: 20% 20% 20% 20%;
+  grid-template-columns: 24% 24% 24% 24%;
   grid-column-start: 6;
 }
 

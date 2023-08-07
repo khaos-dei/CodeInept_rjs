@@ -24,6 +24,7 @@ function Fix_Dates(list) {
 function Projects(props) {
     const [showDialog, setShowDialog] = useState(false);
     const [showMiniDialog, setShowMiniDialog] = useState(false);
+    const [taskmoved, setTaskMoved] = useState(false);
     const [newName, setnewName] = useState("Project");
     const [activeProj, setactiveProj] = useState(-1);
     const [projectBulk, setprojectBulk] = useState(Fix_Dates(getFromLS("Project-List")));
@@ -43,17 +44,40 @@ function Projects(props) {
         return(searchTaskById(taskId, task[taskId[depth]].tasks,depth+1))
     }
 
-    function searchDadTask(taskId,deep_copy_projectBulk){
+    function daddifyTaskId(taskId){
         var DadTaskID=[... taskId];
         for(let i = 0; i < DadTaskID.length-1; i++){
             if(DadTaskID[i+1]==-1){
                 DadTaskID[i]=-1;
-                return(searchTaskById(DadTaskID,deep_copy_projectBulk,0));
+                return(DadTaskID);
             }
         }
         DadTaskID[DadTaskID.length-1]=-1;
-        return(searchTaskById(DadTaskID,deep_copy_projectBulk,0));
+        return(DadTaskID);
     }
+    function oneeSanTaskId(taskId){
+        var oneeTaskId=[... taskId];
+        for(let i = 0; i < oneeTaskId.length-1; i++){
+            if(oneeTaskId[i+1]==-1){
+                oneeTaskId[i]-=1;
+                return(oneeTaskId);
+            }
+        }
+        oneeTaskId[oneeTaskId.length-1]-=1;
+        return(oneeTaskId);
+    }
+    function oniiChanTaskId(taskId){
+        var oniiTaskId=[... taskId];
+        for(let i = 0; i < oniiTaskId.length-1; i++){
+            if(oniiTaskId[i+1]==-1){
+                oniiTaskId[i]+=1;
+                return(oniiTaskId);
+            }
+        }
+        oniiTaskId[oniiTaskId.length-1]+=1;
+        return(oniiTaskId);
+    }
+
     function childId(taskId){
         for(let i = 0; i < taskId.length-1; i++){
             if(taskId[i+1]===-1){
@@ -65,8 +89,10 @@ function Projects(props) {
 
     function changeToProjectData(taskId,change, value){
         var deep_copy_projectBulk = JSON.parse(JSON.stringify(projectBulk));
-        console.log(taskId)
+        //console.log(taskId)
         var theTask = searchTaskById(taskId, deep_copy_projectBulk, 0);
+        var dadTask = searchTaskById(daddifyTaskId(taskId), deep_copy_projectBulk,0) 
+        var id = childId(taskId);
         var freshTask = {
             name: "Fresh task",
             deadline: false,
@@ -89,10 +115,35 @@ function Projects(props) {
                 setprojectBulk(Fix_Dates(deep_copy_projectBulk));
                 setToLS("Project-List", deep_copy_projectBulk);
                 return;
+            case 'lower':
+                dadTask.tasks[id-1].tasks.push(theTask);
+                if(id>0){dadTask.tasks.splice(id, id);}else{dadTask.tasks.shift()}
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                setTaskMoved(true);
+                return;
+            case 'up':
+                dadTask.tasks[id] = dadTask.tasks.splice(id-1,1,theTask)[0];
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                setTaskMoved(true);
+                return;
+            case 'down':
+                dadTask.tasks[id] = dadTask.tasks.splice(id+1,1,theTask)[0];
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                setTaskMoved(true);
+                return;
+            case 'upper':
+                var grandDadTask = searchTaskById(daddifyTaskId(daddifyTaskId(taskId)), deep_copy_projectBulk,0) 
+                var dadid = childId(daddifyTaskId(taskId));
+                grandDadTask.tasks.splice(dadid+1,0,theTask);
+                if(id>0){dadTask.tasks.splice(id, id);}else{dadTask.tasks.shift()}
+                setprojectBulk(Fix_Dates(deep_copy_projectBulk));
+                setToLS("Project-List", deep_copy_projectBulk);
+                setTaskMoved(true);
+                return;
             case 'delete':
-                var dadTask = searchDadTask(taskId, deep_copy_projectBulk) 
-                let id = childId(taskId);
-                console.log(id);
                 if(id>0){dadTask.tasks.splice(id, id);}else{dadTask.tasks.shift()}
                 setprojectBulk(Fix_Dates(deep_copy_projectBulk));
                 setToLS("Project-List", deep_copy_projectBulk);
@@ -112,7 +163,7 @@ function Projects(props) {
         <div className='Projects'>
             <Dialog /* Note Menu */
             header={projectBulk[0].name + " [due " + write_date(projectBulk[0].deadline) +"]"}
-            body={<TasksMenu id={0} project={projectBulk[0]} feedback={changeToProjectData} />} 
+            body={<TasksMenu id={0} project={projectBulk[0]} feedback={changeToProjectData} smthchanged={taskmoved} />} 
             width={90}
             open={showDialog} 
             callback={closeDialog}

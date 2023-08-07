@@ -8,7 +8,7 @@ function RenameLine({renameID, feedback, cancelback}) {
             <div className='VarietyButtonLine'>
                 <div style={{ paddingRight: "1vmin", gridColumnEnd: 'span 2'}}>Rename?</div>
                 <IconButton is="Yes" size='3vmin' onClick={feedback} color='black' />
-                <IconButton is="No" size='3vmin' onClick={()=>{cancelback(false)}} color='black' />
+                <IconButton is="No" size='3vmin' onClick={()=>{cancelback("deadline")}} color='black' />
             </div> 
         </div>
     );

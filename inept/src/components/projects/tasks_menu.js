@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import IconButton from 'utils/IconButton';
 import TaskLine from './task_line';
 
-function TasksMenu({id, project, feedback}) {
+function TasksMenu({id, project, feedback, smthchanged}) {
 
      function taskChange(taskId, change, value){
         feedback([id, ... taskId], change, value);
@@ -17,13 +17,13 @@ function TasksMenu({id, project, feedback}) {
             for (const element of list) {
                 let tempContent=[]
                 tempContent.push(show_tasks(element.tasks, depth+1));//the element babies
-                tempContent.unshift(
-                <TaskLine
+                tempContent.unshift(<TaskLine
                     task={element}
                     check={element.completed}
                     name={element.name} 
                     depth={depth}
                     babyDepth={BabyDepth-depth-1} 
+                    max_id={list.length-1}
                     taskId={[
                         taskId[0],depth>0?taskId[1]:-1,depth>1?taskId[2]:-1,depth>2?taskId[3]:-1
                     ]}
@@ -31,7 +31,9 @@ function TasksMenu({id, project, feedback}) {
                     />);//the element itself
                 taskId[depth]+=1;
                 content.push(tempContent);
+
             }
+            taskId=[depth<1?0:taskId[0],depth<2?0:taskId[1],depth<3?0:taskId[2],depth<4?0:taskId[3]];
         }else{
             taskId=[depth<1?0:taskId[0],depth<2?0:taskId[1],depth<3?0:taskId[2],depth<4?0:taskId[3]];
             BabyDepth=depth;
