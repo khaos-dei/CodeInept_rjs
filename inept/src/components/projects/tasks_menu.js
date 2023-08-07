@@ -45,7 +45,7 @@ function TasksMenu({id, project, feedback, smthchanged}) {
         <div className='TasksGrid'>
             {show_tasks(project.tasks, 0)}
             <div className='TasksGridLine'>
-                <IconButton is="Add" size='3vmin' color='black' />
+                <IconButton is="Add" onClick={()=>{feedback([id, -1,-1,-1,-1], "new", false)}}size='3vmin' color='black' />
                 <div className='TaskName' style={{gridColumnEnd: `span 5`, fontSize:"2.8vmin"}} > New task?</div>
             </div>
         </div>

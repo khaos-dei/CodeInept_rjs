@@ -50,7 +50,7 @@ function TaskLine({ depth, name, id, max_id, check, feedback, onMove, task, baby
             <div className='TasksGridLine'>
                 <IconButton is={check ? "Checked" : "Unchecked"} onClick={checkMark} size='3vmin' color='black' style={{ gridColumnStart: depth+1 }} />
 
-                {showVariety==='rename' ? <input id={"Rename" + taskId} name="TaskName" style={{ gridColumnStart: depth + 2, gridColumnEnd: `span ${4 - depth}` }} defaultValue={name}></input> : <div className='TaskName' style={{ gridColumnStart: depth + 2, gridColumnEnd: `span ${4 - depth}` }} >{name + "|" + taskId}</div> }
+                {showVariety==='rename' ? <input id={"Rename" + taskId} name="TaskName" style={{ gridColumnStart: depth + 2, gridColumnEnd: `span ${4 - depth}` }} defaultValue={name}></input> : <div className='TaskName' style={{ gridColumnStart: depth + 2, gridColumnEnd: `span ${4 - depth}` }} >{name}</div> }
 
                 {varietyLine()}
 
