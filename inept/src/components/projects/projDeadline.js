@@ -1,5 +1,5 @@
 
-import "../tasks_menu.css"
+import "./tasks_menu.css"
 import React, { useState, forwardRef} from 'react';
 import IconButton from 'utils/IconButton';
 import {IconNoButton} from 'utils/IconButton';
@@ -11,8 +11,26 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function DeadLine({ ddl, ddl_feedback}) {
+    function numberRange (start, end) {
+        return new Array(end - start).fill().map((d, i) => i + start);
+      }
     const [pick, showPick] = useState(false);
-    
+    let date=ddl;
+    const years =numberRange(1990, 2100);
+    const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+    ];
     function status_icon(){
     if(ddl < long_ago)
             return(<IconNoButton is="WarnBad" size='2.5vmin' color='ad0000' style={{marginRight: "0.5vmin", marginTop:"0.5vmin"}}/>)
@@ -34,12 +52,11 @@ function DeadLine({ ddl, ddl_feedback}) {
         ));
 
     return (
-            <div className='TaskDDL' onMouseOverCapture={()=>{showPick(true)}} onMouseLeave={()=>{showPick(false)}}>
-                <div className="DatepickerDiv">
+            <div style={{position:"absolute", top:"3vmin", left:"65%"}}  onMouseOverCapture={()=>{showPick(true)}} onMouseLeave={()=>{showPick(false)}}>
                 {ddl && pick && <IconButton is="No" size='1.6vmin' color='blue' onClick={()=>{ddl_feedback(false)}}   style={{position: "relative", top:"-30%"}}/>} 
-                <DatePicker showPopperArrow={false} selected={ddl} onChange={(date) => {ddl=date; ddl_feedback(date)}} customInput={ddl?<ExistingInput />:<NewInput />} onCalendarOpen={() => {showPick(!pick)}} onCalendarClose={() => showPick(!pick)} />
-                </div>
-                  
+                <DatePicker
+                popperPlacement="top-end" showPopperArrow={false} selected={ddl} onChange={(date) => {ddl=date; ddl_feedback(date)}} customInput={ddl?<ExistingInput />:<NewInput />} onCalendarOpen={() => {showPick(false)}} onCalendarClose={() => showPick(!pick)} /> &nbsp;
+                
             </div>
             );
     }

@@ -21,8 +21,8 @@ function ProjectLine({id, projectBulk, setactiveProj}) {
                 <div className='OneProjectLine'>
                     <div className='ProjectNameLine'>
                         <div className='ProjectName'>{projectBulk[id].name}</div>
-                        <IconButton is="Overview" size='3vmin' />
-                        <IconButton is="MenuView" onClick={() => setactiveProj(id)} size='3vmin' />
+                        <IconButton is="Overview" size='3vmin' visible={false}/>
+                        <IconButton is="MenuView" onClick={() => {setactiveProj(id)}} size='3vmin' />
                     </div>
                     <div className='ProgressBar'>
                         <div className='ProgressColor' style={{ width:(progress_percent+"%")}}>{progress_percent+"%"}</div>

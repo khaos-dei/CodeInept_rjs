@@ -12,13 +12,14 @@ const Dialog = props => {
         setShow(false);
         props.callback()
     }
-
+    let z =  props.z ? 1 : props.z;
     return (
-        <dialog className='PopupBacking' open={show}>
+        <dialog className='PopupBacking' open={show} style={{zIndex : z}}>
             <div className='PopupItself' style={{width:props.width+"%"}}>
                 <div className='PopupHeader'>
                     <span className='CloseCross' onClick={closeDialog}>&times;</span>
-                    <div>{props.header}</div>
+                    {props.headerSpecial}
+                    <div>{props.header} {props.headerAddition}</div>
                 </div>
                 <div className="PopupBody">
                     {props.body}
