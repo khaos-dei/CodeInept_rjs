@@ -1,15 +1,11 @@
 import './projects.css';
 import Dialog from 'utils/dialogue';
-import MiniDialog from 'utils/mini_dialogue';
 import React, { useState, useEffect} from 'react';
 import IconButton from 'utils/IconButton';
 import ProjectLine from './project_line';
 import TasksMenu from './tasks_menu';
 import { getFromLS, setToLS } from 'utils/localstorage_component';
-import write_date from 'utils/date';
 import DeadLine from './projDeadline';
-import DeleteLine from './task_line/deleting';
-import RenameLine from './task_line/renaming';
 
 
 function Fix_Dates(list) {
