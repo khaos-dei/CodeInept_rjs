@@ -15,3 +15,25 @@
   left:0%;
   height:100%;
 }
+
+.Gif_Grid {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  font-size:1fr;
+  margin-bottom:4vmin;
+}
+
+.tile {
+  display: grid;
+}
+
+.Gif_In_Grid{
+  display:inline-block;
+  object-fit: contain;
+  position: grid;
+  width:100%;
+  height:fit-content;
+  background-color:white;
+  padding:2%
+}
