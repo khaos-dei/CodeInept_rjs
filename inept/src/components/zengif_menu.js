@@ -1,46 +1,22 @@
 import './zen_gifs.css';
 import React, {useState} from 'react';
 import IconButton from 'utils/IconButton';
-import gif1 from '../assets/424-breathing.gif'
-import gif2 from '../assets/Zen_Garden.gif'
 
-function ZenMenu({id, feedback}) {
+function ZenMenu({id, feedback, gifs}) {
+    
 
+    function gif_options(active){
+        console.log(active);
+        let content=[];
+        for(let i=0; i<gifs.length;i++){
+            content.push(<img src={gifs[i]} onClick={()=>{feedback(i)}} alt="It should be a gif here..." className='Gif_In_Grid' style={{backgroundColor:(i==active?'lightblue':'white')}} />)
+        }
+        return content;
+    } 
     return(
         <>
         <div className='Gif_Grid'>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
-            <img src={gif1} alt="It should be a gif here..." className='Gif_In_Grid'/>
+            {gif_options(id)}
         </div>
         </>
     );
