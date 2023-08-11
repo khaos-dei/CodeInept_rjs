@@ -24,9 +24,6 @@
   margin-bottom:4vmin;
 }
 
-.tile {
-  display: grid;
-}
 
 .Gif_In_Grid{
   display:inline-block;
@@ -35,4 +32,11 @@
   width:100%;
   height:fit-content;
   padding:2%
+}
+
+.yt_container{
+  position: absolute;
+  right:0%;
+  bottom:-3%;
+  float:left;
 }
