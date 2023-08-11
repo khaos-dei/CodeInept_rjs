@@ -9,7 +9,6 @@ function LowerLine(props) {
     return(
         <div className='Lower_Line'>
             <ZenGifs />
-            <p>~~~~~~~Other embeds will go here </p>
         </div>
     );
   }

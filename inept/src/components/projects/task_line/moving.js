@@ -7,8 +7,6 @@ function MoveLine({feedback, depth, babyDepth, id, max_id, taskId}) {
     let Up    = (id!==0);
     let Down  = (id!==max_id);
     let Lower = (depth !== 3)&&(depth+babyDepth!==3)&&(id!==0);
-    console.log(taskId)
-
 
     return (
         <div className='TaskDDL'>

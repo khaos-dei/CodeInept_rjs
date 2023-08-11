@@ -5,12 +5,13 @@ import ZenMenu from './zengif_menu';
 import React, { useState, useEffect} from 'react';
 import YouTube from 'react-youtube';
 import IconButton from 'utils/IconButton';
+import {setToLS, getFromLS} from '../utils/localstorage_component';
 
 function ZenGifs(props) {
     const [showDialogue, setDialogue] = useState(false);
-    const [activeGif, setActiveGif] = useState(1);
+    const [activeGif, setActiveGif] = useState(getFromLS("active-gif"));
     const [showYTDialog, setYTDialog] = useState(false);
-    const [YTid, setYTid] = useState("2g811Eo7K8U");
+    const [YTid, setYTid] = useState(getFromLS("active-vid"));
     const opts = {
         height: '180vmin',
         width: '304vmin',
@@ -36,7 +37,7 @@ function ZenGifs(props) {
             body={<div>
                     <div>Input Video ID</div>
                     <input id="YoutubeInput" style={{height:"3.5vmin", width:"30vmin", paddingTop:"1.5vmin", marginRight:"1vmin"}} value={props.fontSize}></input>
-                    <IconButton onClick={()=>{setYTDialog(!showYTDialog); setYTid(document.getElementById("YoutubeInput").value); console.log(document.getElementById("YoutubeInput").value);}} is="Yes" color='black' size='3vmin' />
+                    <IconButton onClick={()=>{setYTDialog(!showYTDialog); setYTid(document.getElementById("YoutubeInput").value); setToLS("active-vid",document.getElementById("YoutubeInput").value)}} is="Yes" color='black' size='3vmin' />
                     </div>}
             open={showYTDialog}
             callback={setYTDialog}

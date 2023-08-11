@@ -26,7 +26,7 @@ function TriageBubble(props) {
     function textResponse(event){
         autoResize();
         setToLS('Priority'+(triageState+1),document.getElementById('parent').childNodes[0].textContent)
-        console.log(triageTextStateRef[triageState].current); 
+        //console.log(triageTextStateRef[triageState].current); 
     }
     function changeTriage(event){
         if(triageState===2){setTriageState(0);}else{setTriageState(triageState+1);}

@@ -94,6 +94,10 @@ const ls_values  = {
   "active-Tab": 0,
   "first-Tab": 0,
 
+  
+  "active-gif": 0,
+  "active-vid": "2g811Eo7K8U",
+
   "Priority1":"Highest Priority",
   "Priority2":"Mid Priority",
   "Priority3":"Eh Priority"
@@ -111,6 +115,10 @@ const ls_stringify  = {
 
   "active-Tab": false,
   "first-Tab":false,
+
+  
+  "active-gif": false,
+  "active-vid": false,
 
   "Priority1":false,
   "Priority2":false,
