@@ -9,6 +9,8 @@ import IconButton from 'utils/IconButton';
 function ZenGifs(props) {
     const [showDialogue, setDialogue] = useState(false);
     const [activeGif, setActiveGif] = useState(1);
+    const [showYTDialog, setYTDialog] = useState(false);
+    const [YTid, setYTid] = useState("2g811Eo7K8U");
     const opts = {
         height: '180vmin',
         width: '304vmin',
@@ -28,12 +30,25 @@ function ZenGifs(props) {
             width={90}
             background_color="gray"
             />
+        
+        <Dialog /* Change youtube */
+            header={"Youtube Settings"}
+            body={<div>
+                    <div>Input Video ID</div>
+                    <input id="YoutubeInput" style={{height:"3.5vmin", width:"30vmin", paddingTop:"1.5vmin", marginRight:"1vmin"}} value={props.fontSize}></input>
+                    <IconButton onClick={()=>{setYTDialog(!showYTDialog); setYTid(document.getElementById("YoutubeInput").value); console.log(document.getElementById("YoutubeInput").value);}} is="Yes" color='black' size='3vmin' />
+                    </div>}
+            open={showYTDialog}
+            callback={setYTDialog}
+            width={90}
+            background_color="gray"
+            />
 
         <img onClick={()=>{setDialogue(!showDialogue)}} src={gifs[activeGif]} alt="It should be a gif here..." className='SquareGif'/>
         <div className='yt_container'>
-        <YouTube videoId="2g811Eo7K8U" opts={opts} />
+        <YouTube videoId={YTid} opts={opts} />
         </div>
-        <IconButton is="Settings" size='3vmin' visible={true} style={{position:"absolute", left:"94%", bottom:"82%"}}/>
+        <IconButton onClick={()=>{setYTDialog(!showYTDialog)}} is="Settings" size='3vmin' visible={true} style={{position:"absolute", left:"94%", bottom:"82%"}}/>
         </>
     );
   }
